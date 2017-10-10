@@ -25,7 +25,7 @@ public class GuestViewController implements Initializable {
     @FXML
     ListView<String> listHotel,listCamp,listTent;
     @FXML
-    Label labelNameH,labelNameC,labelNameT,labelCityH,labelCityC,labelCityT,labelRegionH,labelRegionC,labelRegionT,labelFreeRoomsH,labelFreeApartamentsH,labelFreeC,labelFreeT;
+    Label labelNameH,labelNameC,labelNameT,labelCityH,labelCityC,labelCityT,labelRegionH,labelRegionC,labelRegionT,labelFreeRoomsH,labelFreeApartamentsH,labelFreeC,labelFreeT,labelWeaatherH,labelWeatherC,labelWeatherT;
     @FXML
     Button buttonReserveH, buttonReserveC, buttonReserveT, buttonWeatherH, buttonWeatherC, buttonWeatherT;
     @FXML
@@ -53,24 +53,18 @@ public class GuestViewController implements Initializable {
         //   listTent.setItems(observableTent);
 
 
-        //TODO: buttony, labelki
-
-        //dołączenie radioButton do grupy
         rButtonPriceApartmentH.setToggleGroup(group);
         rButtonFreeRoomH.setToggleGroup(group);
         rButtonCityH.setToggleGroup(group);
         rButtonPriceRoomH.setToggleGroup(group);
 
-        //obsługa sortowania listy wg kryteriów hotele
         rButtonPriceApartmentH.setOnMouseClicked(s -> sortByApartmentPrice());
         rButtonPriceRoomH.setOnMouseClicked(s -> sortByRoomPrice());
         rButtonFreeRoomH.setOnMouseClicked(s -> sortByFreeRooms());
         rButtonCityH.setOnMouseClicked(s -> sortByCities());
 
-        //obsługa rezerwacji - przeniesienie do okna logowania/rehestracji
         buttonReserveH.setOnMouseClicked(s -> tryReserve());
 
-        //wyświetlanie informacji o hotelu po kliknięcu na nazwę
         listHotel.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             labelNameH.setText(newValue);
             labelCityH.setText(hotelDao.getCityName(newValue));
@@ -79,7 +73,6 @@ public class GuestViewController implements Initializable {
             //labelFreeApartaments.setText();
         });
 
-        //zawężanie wyboru ze względu na checkBoxy
         cBoxAnimalsH.selectedProperty().addListener((observable, oldValue, newValue) -> {
             showAnimals();
         });
@@ -95,6 +88,8 @@ public class GuestViewController implements Initializable {
         cBoxWiFiH.selectedProperty().addListener(((observable, oldValue, newValue) -> {
             showWiFi();
         }));
+
+
     }
 
     private void showWiFi() {

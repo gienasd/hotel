@@ -1,5 +1,9 @@
 package pl.teamjava.hotel.models;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -20,6 +24,24 @@ public class Utils {
 
             return stringBuilder.toString();
         } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String makeHttpRequest(String url){
+        try {
+            HttpURLConnection urlConnection = (HttpURLConnection) new URL(url)
+                    .openConnection();//otwiera połączenie do strony
+            StringBuilder builder = new StringBuilder();
+            InputStream inputStream = urlConnection.getInputStream();
+            int read = 0;
+            while((read = inputStream.read()) != -1){
+                builder.append((char) read);
+            }
+
+            return builder.toString();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
