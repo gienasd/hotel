@@ -6,6 +6,7 @@ import pl.teamjava.hotel.models.RoomModel;
 import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.dao.ManagmentDao;
 
+import javax.swing.text.html.ListView;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -126,7 +127,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
             statement.setBoolean(7, model.canIHaveAPet());
             statement.setBoolean(8, model.isThereSwimmingPool());
             statement.setBoolean(9, model.isThereSpa());
-            statement.setString(10, session.getAccessCode());
+            statement.setString(10, "123123");
             statement.execute();
             statement.close();
 
@@ -195,26 +196,22 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return null;
     }
 
-    public Map<String, Double> bookedRooms(boolean isBooked, String category) {
+    public List<String> bookedRooms() {
 
-        Map<String, Double> mapOfRooms = new LinkedHashMap<String, Double>();
-
+        List<String> bookedRoomsList = new ArrayList<>();
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
-                    "SELECT room.name, room.price FROM room INNER JOIN place ON place.id = room.hotel_id" +
-                            " WHERE room.isBooked = ?, hotel.category = ?"
+                    "SELECT name FROM rooms WHERE isBooked = 1"
             );
 
-            statement.setBoolean(1, isBooked);
-            statement.setString(2, category);
             ResultSet set = statement.executeQuery();
 
             while (set.next()){
-                mapOfRooms.put(set.getString("name"), set.getDouble("price"));
+                bookedRoomsList.add("name");
             }
             statement.close();
 
-            return mapOfRooms;
+            return bookedRoomsList;
         } catch (SQLException e) {
             e.printStackTrace();
         }

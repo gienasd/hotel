@@ -11,11 +11,23 @@ public class PlaceModel {
     private boolean isThereSpa;
     private boolean canIHaveAPet;
 
-    public PlaceModel(String string, String resultSetString, String setString) {
+    public PlaceModel(String name, String resultSetString, String setString) {
         this.name = name;
         this.city = city;
         this.region = region;
         this.accessCode = accessCode;
+        this.category = category;
+        this.isThereWiFi = isThereWiFi;
+        this.isThereSwimmingPool = isThereSwimmingPool;
+        this.isThereSpa = isThereSpa;
+        this.canIHaveAPet = canIHaveAPet;
+    }
+
+    public PlaceModel(String name, String city, String region, String category, boolean isThereWiFi,
+                      boolean isThereSwimmingPool, boolean isThereSpa, boolean canIHaveAPet) {
+        this.name = name;
+        this.city = city;
+        this.region = region;
         this.category = category;
         this.isThereWiFi = isThereWiFi;
         this.isThereSwimmingPool = isThereSwimmingPool;

@@ -10,6 +10,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import pl.teamjava.hotel.models.PlaceModel;
+import pl.teamjava.hotel.models.dao.ManagmentDao;
+import pl.teamjava.hotel.models.dao.impl.ManagmentDaoImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,14 +32,25 @@ public class AddPropertyController implements Initializable {
     @FXML
     Button buttonBack, buttonLogout, buttonAdd;
 
+    private ManagmentDao managmentDao = new ManagmentDaoImpl();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonBack.setOnMouseClicked(e-> switchView(buttonBack, "propertiesManagmentView.fxml"));
         buttonLogout.setOnMouseClicked(e-> switchView(buttonLogout, "mainView.fxml"));
 
+        buttonAdd.setOnMouseClicked(e-> addProperty());
+
     }
 
-    public void switchView(Button button, String name){
+    private void addProperty() {
+        managmentDao.addProperty(new PlaceModel(
+                textName.getText(), textCity.getText(), textRegion.getText(),
+                splitCategory.getText(), checkboxWifi.isSelected(), checkboxPool.isSelected(),
+                checkboxSpa.isSelected(), checkboxPets.isSelected()));
+    }
+
+    private void switchView(Button button, String name){
         Stage stage = (Stage)button.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(name));

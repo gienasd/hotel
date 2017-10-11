@@ -16,6 +16,6 @@ public interface ManagmentDao {
     boolean deleteProperty (String name);
     boolean addToBlockedList (String email);
     List<String> showBlockedList ();
-    Map<String, Double> bookedRooms (boolean isBooked, String category);
+    List<String> bookedRooms ();
     List<String> userList();
 }

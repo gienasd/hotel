@@ -1,5 +1,7 @@
 package pl.teamjava.hotel.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +12,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.SplitMenuButton;
 import javafx.stage.Stage;
+import pl.teamjava.hotel.models.dao.ManagmentDao;
+import pl.teamjava.hotel.models.dao.impl.ManagmentDaoImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,10 +33,16 @@ public class ReservationViewController implements Initializable {
     @FXML
     SplitMenuButton splitProperty;
 
+    private ManagmentDao managmentDao = new ManagmentDaoImpl();
+    private ObservableList<String> observableList;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonBack.setOnMouseClicked(e-> switchView(buttonBack, "managmentView.fxml"));
         buttonLogout.setOnMouseClicked(e-> switchView(buttonLogout, "mainView.fxml"));
+
+        observableList = FXCollections.observableList(managmentDao.bookedRooms());
+        listReservation.setItems(observableList);
 
     }
 
