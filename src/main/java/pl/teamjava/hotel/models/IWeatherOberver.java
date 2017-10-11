@@ -1,5 +1,5 @@
 package pl.teamjava.hotel.models;
 
-public interface iWeatherOberver {
+public interface IWeatherOberver {
     void onWeatherUpdate(WeatherInfo info);
 }

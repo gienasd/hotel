@@ -19,7 +19,7 @@ public class WeatherService {
         return instance;
     }
 
-    //private List<iWeatherOberver> observer = new ArrayList<>();
+    //private List<IWeatherOberver> observer = new ArrayList<>();
     private ExecutorService executorService;
     private WeatherService(){
         executorService = Executors.newSingleThreadExecutor();
