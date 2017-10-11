@@ -1,5 +1,11 @@
 package pl.teamjava.hotel.models;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -46,4 +52,5 @@ public class Utils {
         }
         return null;
     }
+
 }
