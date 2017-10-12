@@ -21,32 +21,29 @@
                             <children>
                                 <ListView fx:id="listHotel" layoutY="92.0" prefHeight="279.0" prefWidth="200.0" />
                                 <Label layoutX="7.0" layoutY="6.0" text="Sortuj wg:" />
-                                <RadioButton fx:id="rButtonCityH" layoutX="74.0" layoutY="56.0" mnemonicParsing="false" text="miasta" />
+                                <RadioButton fx:id="rButtonCityH" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="miasta" />
                                 <RadioButton fx:id="rButtonPriceRoomH" layoutX="226.0" layoutY="6.0" mnemonicParsing="false" text="ceny za pokój" />
-                                <RadioButton fx:id="rButtonOpinionH" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="średniej oceny gości" />
                                 <RadioButton fx:id="rButtonFreeRoomH" layoutX="74.0" layoutY="31.0" mnemonicParsing="false" text="liczby wolnych miejsc" />
                                 <RadioButton fx:id="rButtonPriceApartmentH" layoutX="74.0" layoutY="6.0" mnemonicParsing="false" text="ceny za apartament" />
                                 <Label layoutX="367.0" layoutY="6.0" text="Udogodnienia: " />
-                                <CheckBox fx:id="cBoxAquaPH" layoutX="478.0" layoutY="6.0" mnemonicParsing="false" text="Aquapark" />
-                                <CheckBox fx:id="cBoxPoolH" layoutX="478.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
-                                <CheckBox fx:id="cBoxWellSpaH" layoutX="479.0" layoutY="56.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
+                                <CheckBox fx:id="cBoxPoolH" layoutX="479.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
+                                <CheckBox fx:id="cBoxWellSpaH" layoutX="479.0" layoutY="6.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
                                 <CheckBox fx:id="cBoxAnimalsH" layoutX="372.0" layoutY="31.0" mnemonicParsing="false" text="Zwierzęta" />
                                 <CheckBox fx:id="cBoxWiFiH" layoutX="372.0" layoutY="56.0" mnemonicParsing="false" text="Wi - Fi" />
                                 <Separator layoutX="364.0" layoutY="4.0" orientation="VERTICAL" prefHeight="89.0" prefWidth="1.0" />
                                 <Separator layoutY="91.0" prefHeight="3.0" prefWidth="600.0" />
                                 <Button fx:id="buttonReserveH" layoutX="274.0" layoutY="173.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Zarezerwuj" />
-                                <Button fx:id="buttonWeatherH" alignment="CENTER" layoutX="262.0" layoutY="219.0" mnemonicParsing="false" text="Sprawdź pogodę" />
                         <Label fx:id="labelNameH" alignment="CENTER" layoutX="408.0" layoutY="94.0" prefHeight="17.0" prefWidth="193.0" />
-                        <Label fx:id="labelCityH" alignment="CENTER" layoutX="408.0" layoutY="111.0" prefHeight="17.0" prefWidth="193.0" text="2" />
-                        <Label fx:id="labelRegionH" alignment="CENTER" layoutX="408.0" layoutY="128.0" prefHeight="17.0" prefWidth="194.0" text="3" />
-                        <Label fx:id="labelFreeRoomsH" alignment="CENTER" layoutX="408.0" layoutY="145.0" prefHeight="17.0" prefWidth="193.0" text="4" />
-                        <Label fx:id="labelFreeApartamentsH" alignment="CENTER" layoutX="408.0" layoutY="165.0" prefHeight="17.0" prefWidth="194.0" text="5" />
+                        <Label fx:id="labelCityH" alignment="CENTER" layoutX="408.0" layoutY="111.0" prefHeight="17.0" prefWidth="193.0" />
+                        <Label fx:id="labelRegionH" alignment="CENTER" layoutX="408.0" layoutY="128.0" prefHeight="17.0" prefWidth="194.0" />
+                        <Label fx:id="labelFreeRoomsH" alignment="CENTER" layoutX="408.0" layoutY="145.0" prefHeight="17.0" prefWidth="193.0" />
+                        <Label fx:id="labelFreeApartamentsH" alignment="CENTER" layoutX="408.0" layoutY="165.0" prefHeight="17.0" prefWidth="194.0" />
                         <Label alignment="CENTER" layoutX="408.0" layoutY="200.0" prefHeight="17.0" prefWidth="193.0" text="Pogoda">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelWeatherH" alignment="CENTER" layoutX="408.0" layoutY="244.0" prefHeight="17.0" prefWidth="193.0" text="l" />
+                        <Label fx:id="labelWeatherH" alignment="CENTER" layoutX="408.0" layoutY="244.0" prefHeight="17.0" prefWidth="193.0" />
                         <Separator layoutX="400.0" layoutY="197.0" prefWidth="200.0" />
                             </children>
                         </AnchorPane>
@@ -60,30 +57,27 @@
                                 <RadioButton fx:id="rButtonPriceApartmentC" layoutX="74.0" layoutY="6.0" mnemonicParsing="false" text="ceny za apartament" />
                                 <RadioButton fx:id="rButtonPriceRoomC" layoutX="226.0" layoutY="6.0" mnemonicParsing="false" text="ceny za pokój" />
                                 <RadioButton fx:id="rButtonFreeRoomC" layoutX="74.0" layoutY="31.0" mnemonicParsing="false" text="liczby wolnych miejsc" />
-                                <RadioButton fx:id="rButtonOpinionC" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="średniej oceny gości" />
-                                <RadioButton fx:id="rButtonCityC" layoutX="74.0" layoutY="56.0" mnemonicParsing="false" text="miasta" />
+                                <RadioButton fx:id="rButtonCityC" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="miasta" />
                                 <Label layoutX="367.0" layoutY="6.0" text="Udogodnienia:" />
-                                <CheckBox fx:id="cBoxAquaPC" layoutX="478.0" layoutY="6.0" mnemonicParsing="false" text="Aquapark" />
                                 <CheckBox fx:id="cBoxAnimalsC" layoutX="372.0" layoutY="31.0" mnemonicParsing="false" text="Zwierzęta" />
-                                <CheckBox fx:id="cBoxPoolC" layoutX="477.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
-                                <CheckBox fx:id="cBoxWellSpaC" layoutX="477.0" layoutY="56.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
+                                <CheckBox fx:id="cBoxPoolC" layoutX="479.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
+                                <CheckBox fx:id="cBoxWellSpaC" layoutX="478.0" layoutY="6.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
                                 <CheckBox fx:id="cBoxWiFiC" layoutX="372.0" layoutY="56.0" mnemonicParsing="false" text="Wi - Fi" />
                                 <ListView fx:id="listCamp" layoutY="91.0" prefHeight="280.0" prefWidth="200.0" />
                                 <Separator layoutY="90.0" prefHeight="0.0" prefWidth="600.0" />
                                 <Separator layoutX="364.0" layoutY="6.0" orientation="VERTICAL" prefHeight="85.0" prefWidth="0.0" />
                                 <Button fx:id="buttonReserveC" layoutX="274.0" layoutY="173.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Zarezerwuj" />
-                                <Button fx:id="buttonWeatherC" layoutX="262.0" layoutY="219.0" mnemonicParsing="false" text="Sprawdź pogodę" />
-                        <Label fx:id="labelNameC" alignment="CENTER" layoutX="408.0" layoutY="93.0" prefHeight="17.0" prefWidth="194.0" text="1" />
-                        <Label fx:id="labelCityC" alignment="CENTER" layoutX="408.0" layoutY="110.0" prefHeight="17.0" prefWidth="193.0" text="2" />
-                        <Label fx:id="labelRegionC" alignment="CENTER" layoutX="408.0" layoutY="127.0" prefHeight="17.0" prefWidth="192.0" text="3" />
-                        <Label fx:id="labelFreeC" alignment="CENTER" layoutX="408.0" layoutY="144.0" prefHeight="17.0" prefWidth="192.0" text="4" />
+                        <Label fx:id="labelNameC" alignment="CENTER" layoutX="408.0" layoutY="93.0" prefHeight="17.0" prefWidth="194.0" />
+                        <Label fx:id="labelCityC" alignment="CENTER" layoutX="408.0" layoutY="110.0" prefHeight="17.0" prefWidth="193.0" />
+                        <Label fx:id="labelRegionC" alignment="CENTER" layoutX="408.0" layoutY="127.0" prefHeight="17.0" prefWidth="192.0" />
+                        <Label fx:id="labelFreeC" alignment="CENTER" layoutX="408.0" layoutY="144.0" prefHeight="17.0" prefWidth="192.0" />
                         <Separator layoutX="400.0" layoutY="198.0" prefWidth="200.0" />
                         <Label alignment="CENTER" layoutX="406.0" layoutY="201.0" prefHeight="17.0" prefWidth="196.0" text="Pogoda">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelWeatherC" alignment="CENTER" layoutX="406.0" layoutY="244.0" prefHeight="17.0" prefWidth="195.0" text="l" />
+                        <Label fx:id="labelWeatherC" alignment="CENTER" layoutX="406.0" layoutY="244.0" prefHeight="17.0" prefWidth="195.0" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -96,29 +90,25 @@
                                 <RadioButton fx:id="rButtonPriceApartmentT" layoutX="74.0" layoutY="6.0" mnemonicParsing="false" text="ceny za namiot" />
                                 <RadioButton fx:id="rButtonCityT" layoutX="226.0" layoutY="6.0" mnemonicParsing="false" text="miasta" />
                                 <RadioButton fx:id="rButtonFreeRoomT" layoutX="74.0" layoutY="31.0" mnemonicParsing="false" text="liczby wolnych miejsc" />
-                                <RadioButton fx:id="rButtonOpinionT" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="średniej oceny gości" />
                                 <Label layoutX="367.0" layoutY="6.0" text="Udogodnienia: " />
-                                <CheckBox fx:id="cBoxAquaPT" layoutX="478.0" layoutY="6.0" mnemonicParsing="false" text="Aquapark" />
                                 <CheckBox fx:id="cBoxAnimalsT" layoutX="372.0" layoutY="31.0" mnemonicParsing="false" text="Zwierzęta" />
-                                <CheckBox fx:id="cBoxWiFiT" layoutX="372.0" layoutY="56.0" mnemonicParsing="false" text="Wi - Fi" />
-                                <CheckBox fx:id="cBoxPoolT" layoutX="478.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
-                                <CheckBox fx:id="cBoxWellSpaT" layoutX="478.0" layoutY="56.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
+                                <CheckBox fx:id="cBoxWiFiT" layoutX="479.0" layoutY="31.0" mnemonicParsing="false" text="Wi - Fi" />
+                                <CheckBox fx:id="cBoxPoolT" layoutX="479.0" layoutY="6.0" mnemonicParsing="false" text="Basen" />
                                 <ListView fx:id="listTent" layoutX="-1.0" layoutY="92.0" prefHeight="279.0" prefWidth="201.0" />
                                 <Separator layoutX="2.0" layoutY="91.0" prefHeight="2.0" prefWidth="600.0" />
                                 <Separator layoutX="364.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="1.0" />
                                 <Button fx:id="buttonReserveT" layoutX="274.0" layoutY="173.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Zarezerwuj" />
-                                <Button fx:id="buttonWeatherT" layoutX="262.0" layoutY="219.0" mnemonicParsing="false" text="Sprawdź pogodę" />
-                        <Label fx:id="labelNameT" alignment="CENTER" layoutX="408.0" layoutY="94.0" prefHeight="17.0" prefWidth="193.0" text="1" />
-                        <Label fx:id="labelCityT" alignment="CENTER" layoutX="408.0" layoutY="111.0" prefHeight="17.0" prefWidth="194.0" text="2" />
-                        <Label fx:id="labelRegionT" alignment="CENTER" layoutX="408.0" layoutY="128.0" prefHeight="17.0" prefWidth="194.0" text="3" />
-                        <Label fx:id="labelFreeT" alignment="CENTER" layoutX="408.0" layoutY="145.0" prefHeight="17.0" prefWidth="194.0" text="4" />
+                        <Label fx:id="labelNameT" alignment="CENTER" layoutX="408.0" layoutY="94.0" prefHeight="17.0" prefWidth="193.0" />
+                        <Label fx:id="labelCityT" alignment="CENTER" layoutX="408.0" layoutY="111.0" prefHeight="17.0" prefWidth="194.0" />
+                        <Label fx:id="labelRegionT" alignment="CENTER" layoutX="408.0" layoutY="128.0" prefHeight="17.0" prefWidth="194.0" />
+                        <Label fx:id="labelFreeT" alignment="CENTER" layoutX="408.0" layoutY="145.0" prefHeight="17.0" prefWidth="194.0" />
                         <Separator layoutX="393.0" layoutY="197.0" prefWidth="200.0" />
                         <Label alignment="CENTER" layoutX="394.0" layoutY="200.0" prefHeight="17.0" prefWidth="207.0" text="Pogoda">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelWeatherT" alignment="CENTER" layoutX="395.0" layoutY="244.0" prefHeight="17.0" prefWidth="206.0" text="l" />
+                        <Label fx:id="labelWeatherT" alignment="CENTER" layoutX="395.0" layoutY="244.0" prefHeight="17.0" prefWidth="206.0" />
                             </children>
                         </AnchorPane>
                     </content>

@@ -9,48 +9,49 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import pl.teamjava.hotel.models.dao.CampingDao;
-import pl.teamjava.hotel.models.dao.HotelDao;
-import pl.teamjava.hotel.models.dao.TentDao;
-import pl.teamjava.hotel.models.dao.impl.CampingDaoImpl;
-import pl.teamjava.hotel.models.dao.impl.HotelDaoImpl;
-import pl.teamjava.hotel.models.dao.impl.TentDaoImpl;
+import pl.teamjava.hotel.models.*;
+import pl.teamjava.hotel.models.dao.PlaceDao;
+import pl.teamjava.hotel.models.dao.WeatherDao;
+import pl.teamjava.hotel.models.dao.impl.PlaceDaoImpl;
+import pl.teamjava.hotel.models.dao.impl.WeatherDaoImpl;
+import pl.teamjava.hotel.models.services.WeatherService1;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GuestViewController implements Initializable {
+public class GuestViewController implements Initializable, IWeatherOberver {
 
     @FXML
     ListView<String> listHotel,listCamp,listTent;
     @FXML
-    Label labelNameH,labelNameC,labelNameT,labelCityH,labelCityC,labelCityT,labelRegionH,labelRegionC,labelRegionT,labelFreeRoomsH,labelFreeApartamentsH,labelFreeC,labelFreeT,labelWeaatherH,labelWeatherC,labelWeatherT;
+    Label labelNameH,labelNameC,labelNameT,labelCityH,labelCityC,labelCityT,labelRegionH,labelRegionC,labelRegionT,
+            labelFreeRoomsH,labelFreeApartamentsH,labelFreeC,labelFreeT,labelWeatherH,labelWeatherC,labelWeatherT;
     @FXML
-    Button buttonReserveH, buttonReserveC, buttonReserveT, buttonWeatherH, buttonWeatherC, buttonWeatherT;
+    Button buttonReserveH, buttonReserveC, buttonReserveT;
     @FXML
     RadioButton rButtonPriceApartmentH, rButtonPriceApartmentC, rButtonPriceApartmentT, rButtonPriceRoomH,
-            rButtonPriceRoomC,rButtonFreeRoomH,rButtonFreeRoomC,rButtonFreeRoomT,
-            rButtonOpinionH,rButtonOpinionC,rButtonOpinionT,rButtonCityH,rButtonCityC,rButtonCityT;
+            rButtonPriceRoomC,rButtonFreeRoomH,rButtonFreeRoomC,rButtonFreeRoomT,rButtonCityH,rButtonCityC,rButtonCityT;
     @FXML
-    CheckBox cBoxAquaPH,cBoxAquaPC,cBoxAquaPT,cBoxPoolH,cBoxPoolC,cBoxPoolT,cBoxAnimalsH,cBoxAnimalsC,cBoxAnimalsT,
-            cBoxWiFiH,cBoxWiFiC,cBoxWiFiT,cBoxWellSpaH,cBoxWellSpaC,cBoxWellSpaT;
+    CheckBox cBoxPoolH,cBoxPoolC,cBoxPoolT,cBoxAnimalsH,cBoxAnimalsC,cBoxAnimalsT,
+            cBoxWiFiH,cBoxWiFiC,cBoxWiFiT,cBoxWellSpaH,cBoxWellSpaC;
 
     private ObservableList<String> observableHotel, observableCamp, observableTent;
-    private HotelDao hotelDao = new HotelDaoImpl();
-    private CampingDao campingDao = new CampingDaoImpl();
-    private TentDao tentDao = new TentDaoImpl();
+    private PlaceDao placeDao = new PlaceDaoImpl();
     private ToggleGroup group = new ToggleGroup();
+    private WeatherDao weatherDao = new WeatherDaoImpl();
+    private WeatherService1 weatherService = WeatherService1.getService();
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        //wyświetlanie głównej listy hoteli, kampingów i pól namioptowych
-        observableHotel = FXCollections.observableList(hotelDao.getAllHotelsNames());
+        weatherService.registerObserver(this);
+
+        observableHotel = FXCollections.observableList(placeDao.getAllPlaceNames(new PlaceModel("Hotel")));
         listHotel.setItems(observableHotel);
-        //   observableCamp = FXCollections.observableList(campingDao.getAllCampingNames());
-        //   listCamp.setItems(observableCamp);
-        //   observableTent = FXCollections.observableList(tentDao.getAllTentsNames());
-        //   listTent.setItems(observableTent);
+        observableCamp = FXCollections.observableList(placeDao.getAllPlaceNames(new PlaceModel("Camping")));
+        listCamp.setItems(observableCamp);
+        observableTent = FXCollections.observableList(placeDao.getAllPlaceNames(new PlaceModel("Tent")));
+        listTent.setItems(observableTent);
 
 
         rButtonPriceApartmentH.setToggleGroup(group);
@@ -58,67 +59,112 @@ public class GuestViewController implements Initializable {
         rButtonCityH.setToggleGroup(group);
         rButtonPriceRoomH.setToggleGroup(group);
 
-        rButtonPriceApartmentH.setOnMouseClicked(s -> sortByApartmentPrice());
-        rButtonPriceRoomH.setOnMouseClicked(s -> sortByRoomPrice());
-        rButtonFreeRoomH.setOnMouseClicked(s -> sortByFreeRooms());
-        rButtonCityH.setOnMouseClicked(s -> sortByCities());
+        rButtonPriceApartmentH.setOnMouseClicked(s -> GuestUtils.sortByApartmentPrice(observableHotel,new PlaceModel("Hotel"),listHotel));
+        rButtonPriceRoomH.setOnMouseClicked(s -> GuestUtils.sortByRoomPrice(observableHotel,new PlaceModel("Hotel"),listHotel));
+        rButtonFreeRoomH.setOnMouseClicked(s -> GuestUtils.sortByFreeRooms(observableHotel,new PlaceModel("Hotel"),listHotel));
+        rButtonCityH.setOnMouseClicked(s -> GuestUtils.sortByCities(observableHotel,new PlaceModel("Hotel"),listHotel));
 
-        buttonReserveH.setOnMouseClicked(s -> tryReserve());
+        rButtonPriceApartmentC.setToggleGroup(group);
+        rButtonFreeRoomC.setToggleGroup(group);
+        rButtonCityC.setToggleGroup(group);
+        rButtonPriceRoomC.setToggleGroup(group);
+
+        rButtonPriceApartmentC.setOnMouseClicked(s -> GuestUtils.sortByApartmentPrice(observableCamp,new PlaceModel("Camping"), listCamp));
+        rButtonPriceRoomC.setOnMouseClicked(s -> GuestUtils.sortByRoomPrice(observableCamp,new PlaceModel("Camping"),listCamp));
+        rButtonFreeRoomC.setOnMouseClicked(s -> GuestUtils.sortByFreeRooms(observableCamp,new PlaceModel("Camping"),listCamp));
+        rButtonCityC.setOnMouseClicked(s -> GuestUtils.sortByCities(observableCamp,new PlaceModel("Camping"),listCamp));
+
+        rButtonPriceApartmentT.setToggleGroup(group);
+        rButtonFreeRoomT.setToggleGroup(group);
+        rButtonCityT.setToggleGroup(group);
+
+        rButtonPriceApartmentT.setOnMouseClicked(s -> GuestUtils.sortByApartmentPrice(observableTent,new PlaceModel("Tent"),listTent));
+        rButtonFreeRoomT.setOnMouseClicked(s -> GuestUtils.sortByFreeRooms(observableTent,new PlaceModel("Tent"),listTent));
+        rButtonCityT.setOnMouseClicked(s -> GuestUtils.sortByCities(observableTent,new PlaceModel("Tent"),listTent));
+
+        buttonReserveH.setOnMouseClicked(s -> tryReserve(buttonReserveH));
+        buttonReserveC.setOnMouseClicked(s -> tryReserve(buttonReserveC));
+        buttonReserveT.setOnMouseClicked(s -> tryReserve(buttonReserveT));
+
 
         listHotel.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             labelNameH.setText(newValue);
-            labelCityH.setText(hotelDao.getCityName(newValue));
-            labelRegionH.setText(hotelDao.getRegionName(newValue));
+            //labelCityH.setText(hotelDao.getCityName(newValue));
+            labelCityH.setText(placeDao.getCityName(new PlaceModel(newValue,"Hotel")));
+            //labelRegionH.setText(hotelDao.getRegionName(newValue));
+            labelRegionH.setText(placeDao.getRegionName(new PlaceModel(newValue,"Hotel")));
             //labelFreeRoomsH.setText();
             //labelFreeApartaments.setText();
         });
 
-        cBoxAnimalsH.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            showAnimals();
-        });
-        cBoxAquaPH.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            showAquapark();
-        });
-        cBoxPoolH.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            showPools();
-        });
-        cBoxWellSpaH.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            showSpa();
-        });
-        cBoxWiFiH.selectedProperty().addListener(((observable, oldValue, newValue) -> {
-            showWiFi();
+        listCamp.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+            labelNameC.setText(newValue);
+            labelCityC.setText(placeDao.getCityName(new PlaceModel(newValue,"Camping")));
+            labelRegionC.setText(placeDao.getRegionName(new PlaceModel(newValue,"Camping")));
         }));
 
+        listTent.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+            labelNameT.setText(newValue);
+            labelCityT.setText(placeDao.getCityName(new PlaceModel(newValue,"Tent")));
+            labelRegionT.setText(placeDao.getRegionName(new PlaceModel(newValue,"Tent")));
+        }));
 
+        cBoxAnimalsH.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showAnimals(observableHotel,new PlaceModel("Hotel"),listHotel);
+        });
+        cBoxPoolH.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showPools(observableHotel,new PlaceModel("Hotel"),listHotel);
+        });
+        cBoxWellSpaH.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showSpa(observableHotel,new PlaceModel("Hotel"),listHotel);
+        });
+        cBoxWiFiH.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+            GuestUtils.showWiFi(observableHotel,new PlaceModel("Hotel"),listHotel);
+        }));
+
+        cBoxAnimalsC.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showAnimals(observableCamp,new PlaceModel("Camping"),listCamp);
+        });
+        cBoxPoolC.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showPools(observableCamp,new PlaceModel("Camping"),listCamp);
+        });
+        cBoxWellSpaC.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showSpa(observableCamp,new PlaceModel("Camping"),listCamp);
+        });
+        cBoxWiFiC.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+            GuestUtils.showWiFi(observableCamp,new PlaceModel("Camping"),listCamp);
+        }));
+
+        cBoxAnimalsT.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showAnimals(observableTent,new PlaceModel("Tent"),listTent);
+        });
+        cBoxPoolT.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showPools(observableTent,new PlaceModel("Tent"),listTent);
+        });
+        cBoxWiFiT.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+            GuestUtils.showWiFi(observableTent,new PlaceModel("Tent"),listTent);
+        }));
+
+       // listHotel.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+       //     weatherService.makeRequest(hotelDao.getCityName(newValue));
+       // }));
+
+        listHotel.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            weatherService.makeRequest(placeDao.getCityName(new PlaceModel(newValue,"Hotel")));
+        });
+
+        listCamp.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            weatherService.makeRequest(placeDao.getCityName(new PlaceModel(newValue,"Camping")));
+        });
+
+        listTent.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            weatherService.makeRequest(placeDao.getCityName(new PlaceModel(newValue,"Tent")));
+        });
     }
 
-    private void showWiFi() {
-        observableHotel = FXCollections.observableList(hotelDao.getWiFiHotels());
-        listHotel.setItems(observableHotel);
-    }
 
-    private void showSpa() {
-        observableHotel = FXCollections.observableList(hotelDao.getSpaHotels());
-        listHotel.setItems(observableHotel);
-    }
-
-    private void showPools() {
-        observableHotel = FXCollections.observableList(hotelDao.getPoolHotels());
-        listHotel.setItems(observableHotel);
-    }
-
-    private void showAquapark() {
-        observableHotel = FXCollections.observableList(hotelDao.getAquaparkHotels());
-        listHotel.setItems(observableHotel);
-    }
-
-    private void showAnimals() {
-        observableHotel = FXCollections.observableList(hotelDao.getAnimalsHotels());
-        listHotel.setItems(observableHotel  );
-    }
-
-    private void tryReserve() {
-        Stage stage = (Stage)buttonReserveH.getScene().getWindow();
+    public void tryReserve(Button button) {
+        Stage stage = (Stage)button.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("loggedGuestView.fxml"));
             stage.setScene(new Scene(root,600,400));
@@ -127,23 +173,9 @@ public class GuestViewController implements Initializable {
         }
     }
 
-    private void sortByApartmentPrice() {
-        observableHotel = FXCollections.observableList(hotelDao.getCheapApartment());
-        listHotel.setItems(observableHotel);
-    }
-
-    private void sortByFreeRooms() {
-        observableHotel = FXCollections.observableList(hotelDao.getFreeHotels());
-        listHotel.setItems(observableHotel);
-    }
-
-    private void sortByRoomPrice() {
-        observableHotel = FXCollections.observableList(hotelDao.getCheapRoom());
-        listHotel.setItems(observableHotel);
-    }
-
-    private void sortByCities() {
-        observableHotel = FXCollections.observableList(hotelDao.getHotelsNames());
-        listHotel.setItems(observableHotel);
+    @Override
+    public void onWeatherUpdate(WeatherInfo info) {
+        labelWeatherH.setText("Temp: " + info.getTemp() + " | Ciśnienie: " + info.getPressure());
+        weatherDao.addWeather(new WeatherModel(info));
     }
 }
