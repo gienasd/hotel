@@ -3,6 +3,7 @@ package pl.teamjava.hotel.models;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -51,6 +52,13 @@ public class Utils {
             e.printStackTrace();
         }
         return null;
+    }
+    public static void createSimpleDialog(String name, String header, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(name);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.show();
     }
 
 }
