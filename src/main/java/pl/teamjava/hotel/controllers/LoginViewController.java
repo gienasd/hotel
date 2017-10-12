@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.teamjava.hotel.models.Session;
@@ -44,6 +46,17 @@ public class LoginViewController implements Initializable{
 
 
     public void initialize(URL location, ResourceBundle resources) {
+        buttonMainPage.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
+
+        buttonLogin.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
+        buttonLogin.setOnMouseClicked(e -> tryLogin());
+       Parent parent= textLogin.getParent();
+       parent.addEventHandler(KeyEvent.KEY_PRESSED, e->{
+           if (e.getCode() == KeyCode.ENTER) {
+              tryLogin();
+
+           }
+       });
 
     }
 
@@ -68,6 +81,7 @@ public class LoginViewController implements Initializable{
             return;
         }
         if(userdao.login(login,password)){
+
             userSession.setUsername(login);
             userSession.setLogedIn(true);
 
@@ -80,6 +94,7 @@ public class LoginViewController implements Initializable{
                 //  stageRoot.setScene(new Scene(root, 600,400));
                 Stage stage = new Stage();
                 Scene scene=new Scene(root,800,500);
+                stage.setResizable(false);
                 stage.initStyle(StageStyle.DECORATED);
                 stage.setTitle("Hotel");
                 stage.setScene(scene);

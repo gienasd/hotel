@@ -61,4 +61,9 @@ public class UserDaoImpl implements UserDao {
         return false;
     }
 
+    @Override
+    public boolean loginByAccessCode(String accessCode) {
+        return false;
+    }
+
 }

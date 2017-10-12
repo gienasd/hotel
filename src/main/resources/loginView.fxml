@@ -13,7 +13,7 @@
 
 <AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.LoginViewController">
    <children>
-      <ImageView fitHeight="420.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
+      <ImageView fitHeight="428.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
          <image>
             <Image url="@images/index.jpg" />
          </image>
@@ -47,7 +47,7 @@
       <Hyperlink fx:id="labelRegistration" layoutX="183.0" layoutY="335.0" text="Zarejestruj" />
       <Hyperlink fx:id="labelPasswordRecovery" layoutX="47.0" layoutY="335.0" text="Zapomniałeś hasła ?" />
       <Hyperlink fx:id="labelAuthor" layoutX="536.0" layoutY="391.0" text="Autorzy" />
-      <Button fx:id="buttonLogin" defaultButton="true" layoutX="93.0" layoutY="361.0" mnemonicParsing="false" opacity="0.6" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: black;" text="OK" textFill="WHITE" textOverrun="CLIP">
+      <Button fx:id="buttonLogin" defaultButton="true" layoutX="74.0" layoutY="368.0" mnemonicParsing="false" opacity="0.42" prefHeight="40.0" prefWidth="178.0" style="-fx-background-color: black;" text="OK" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font size="14.0" />
          </font>
@@ -57,7 +57,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="buttonMainPage" layoutX="450.0" layoutY="10.0" mnemonicParsing="false" opacity="0.6" prefHeight="40.0" prefWidth="140.0" text="Strona główna">
+      <Button fx:id="buttonMainPage" layoutX="450.0" layoutY="10.0" mnemonicParsing="false" opacity="0.6" prefHeight="40.0" prefWidth="140.0" stylesheets="@css/btnLogin.css" text="Strona główna">
          <font>
             <Font size="18.0" />
          </font>

@@ -15,7 +15,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Utils {
-
+     public static final String VERSION="1.0";
     public static String shaHash(String message){
         try {
             MessageDigest sha2 = MessageDigest.getInstance("SHA-256");
