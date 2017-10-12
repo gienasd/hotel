@@ -19,7 +19,7 @@ public class UserDaoImpl implements UserDao {
 
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
-                    "INSERT INTO user VALUES(?,?,?,?,?,?,?,?)"
+                    "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?)"
             );
 
             statement.setInt(1,0);
@@ -28,8 +28,10 @@ public class UserDaoImpl implements UserDao {
             statement.setString(4, model.getUsername());
             statement.setString(5, model.getEmail());
             statement.setString(6, model.getPhoneNumber());
-            statement.setString(7, model.getAccessCode());
-            statement.setBoolean(8, false);
+            statement.setBoolean(7, false);
+            statement.setString(8, model.getAccessCode());
+            statement.setString(9, model.getPassword());
+
 
             statement.execute();
             statement.close();
