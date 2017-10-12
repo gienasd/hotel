@@ -25,23 +25,22 @@ public class GuestViewController implements Initializable, IWeatherOberver {
     @FXML
     ListView<String> listHotel,listCamp,listTent;
     @FXML
-    Label labelNameH,labelNameC,labelNameT,labelCityH,labelCityC,labelCityT,labelRegionH,labelRegionC,labelRegionT,labelFreeRoomsH,labelFreeApartamentsH,labelFreeC,labelFreeT,labelWeatherH,labelWeatherC,labelWeatherT;
+    Label labelNameH,labelNameC,labelNameT,labelCityH,labelCityC,labelCityT,labelRegionH,labelRegionC,labelRegionT,
+            labelFreeRoomsH,labelFreeApartamentsH,labelFreeC,labelFreeT,labelWeatherH,labelWeatherC,labelWeatherT;
     @FXML
     Button buttonReserveH, buttonReserveC, buttonReserveT;
     @FXML
     RadioButton rButtonPriceApartmentH, rButtonPriceApartmentC, rButtonPriceApartmentT, rButtonPriceRoomH,
-            rButtonPriceRoomC,rButtonFreeRoomH,rButtonFreeRoomC,rButtonFreeRoomT,
-            rButtonOpinionH,rButtonOpinionC,rButtonOpinionT,rButtonCityH,rButtonCityC,rButtonCityT;
+            rButtonPriceRoomC,rButtonFreeRoomH,rButtonFreeRoomC,rButtonFreeRoomT,rButtonCityH,rButtonCityC,rButtonCityT;
     @FXML
-    CheckBox cBoxAquaPH,cBoxAquaPC,cBoxAquaPT,cBoxPoolH,cBoxPoolC,cBoxPoolT,cBoxAnimalsH,cBoxAnimalsC,cBoxAnimalsT,
-            cBoxWiFiH,cBoxWiFiC,cBoxWiFiT,cBoxWellSpaH,cBoxWellSpaC,cBoxWellSpaT;
+    CheckBox cBoxPoolH,cBoxPoolC,cBoxPoolT,cBoxAnimalsH,cBoxAnimalsC,cBoxAnimalsT,
+            cBoxWiFiH,cBoxWiFiC,cBoxWiFiT,cBoxWellSpaH,cBoxWellSpaC;
 
     private ObservableList<String> observableHotel, observableCamp, observableTent;
     private PlaceDao placeDao = new PlaceDaoImpl();
     private ToggleGroup group = new ToggleGroup();
     private WeatherDao weatherDao = new WeatherDaoImpl();
     private WeatherService1 weatherService = WeatherService1.getService();
-    private PlaceModel model = new PlaceModel();
 
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -99,9 +98,6 @@ public class GuestViewController implements Initializable, IWeatherOberver {
         cBoxAnimalsH.selectedProperty().addListener((observable, oldValue, newValue) -> {
             GuestUtils.showAnimals(observableHotel,new PlaceModel("Hotel"),listHotel);
         });
-        //cBoxAquaPH.selectedProperty().addListener((observable, oldValue, newValue) -> {
-          //  GuestUtils.showAquapark(observableHotel,model.setCategory("Hotel"),listHotel);
-        //});
         cBoxPoolH.selectedProperty().addListener((observable, oldValue, newValue) -> {
             GuestUtils.showPools(observableHotel,new PlaceModel("Hotel"),listHotel);
         });
@@ -131,7 +127,6 @@ public class GuestViewController implements Initializable, IWeatherOberver {
     @Override
     public void onWeatherUpdate(WeatherInfo info) {
         labelWeatherH.setText("Temp: " + info.getTemp() + " | Ciśnienie: " + info.getPressure());
-
         weatherDao.addWeather(new WeatherModel(info));
     }
 }

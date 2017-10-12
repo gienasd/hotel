@@ -59,7 +59,7 @@ public class PlaceDaoImpl implements PlaceDao {
         try {
             PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
                     "SELECT DISTINCT place.name FROM place INNER JOIN room ON room.hotel_id = place.id WHERE place.category = ? AND room.isBooked = ?" //
-                    //jak posortować ilością wolnych miejsc, nie zlicza normalnie
+                    //TODO: jak posortować ilością wolnych miejsc, nie zlicza normalnie
             );
 
             preparedStatement.setString(1,model.getCategory());

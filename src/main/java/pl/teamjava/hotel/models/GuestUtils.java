@@ -6,8 +6,6 @@ import javafx.scene.control.ListView;
 import pl.teamjava.hotel.models.dao.PlaceDao;
 import pl.teamjava.hotel.models.dao.impl.PlaceDaoImpl;
 
-import java.io.IOException;
-
 public class GuestUtils {
 
     private static PlaceDao placeDao = new PlaceDaoImpl();
@@ -26,11 +24,6 @@ public class GuestUtils {
         observableList = FXCollections.observableList(placeDao.getPoolPlace(model));
         listView.setItems(observableList);
     }
-
-    //private void showAquapark(ObservableList<String> observableList, PlaceModel model, ListView<String> listView) {
-    //  observableList = FXCollections.observableList(placeDao.getAquaparkPlace(model));
-    //  listView.setItems(observableList);
-    //}
 
     public static void showAnimals(ObservableList<String> observableList, PlaceModel model, ListView<String> listView) {
         observableList = FXCollections.observableList(placeDao.getAnimalsPlace(model));

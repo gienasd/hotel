@@ -21,15 +21,13 @@
                             <children>
                                 <ListView fx:id="listHotel" layoutY="92.0" prefHeight="279.0" prefWidth="200.0" />
                                 <Label layoutX="7.0" layoutY="6.0" text="Sortuj wg:" />
-                                <RadioButton fx:id="rButtonCityH" layoutX="74.0" layoutY="56.0" mnemonicParsing="false" text="miasta" />
+                                <RadioButton fx:id="rButtonCityH" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="miasta" />
                                 <RadioButton fx:id="rButtonPriceRoomH" layoutX="226.0" layoutY="6.0" mnemonicParsing="false" text="ceny za pokój" />
-                                <RadioButton fx:id="rButtonOpinionH" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="średniej oceny gości" />
                                 <RadioButton fx:id="rButtonFreeRoomH" layoutX="74.0" layoutY="31.0" mnemonicParsing="false" text="liczby wolnych miejsc" />
                                 <RadioButton fx:id="rButtonPriceApartmentH" layoutX="74.0" layoutY="6.0" mnemonicParsing="false" text="ceny za apartament" />
                                 <Label layoutX="367.0" layoutY="6.0" text="Udogodnienia: " />
-                                <CheckBox fx:id="cBoxAquaPH" layoutX="478.0" layoutY="6.0" mnemonicParsing="false" text="Aquapark" />
-                                <CheckBox fx:id="cBoxPoolH" layoutX="478.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
-                                <CheckBox fx:id="cBoxWellSpaH" layoutX="479.0" layoutY="56.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
+                                <CheckBox fx:id="cBoxPoolH" layoutX="479.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
+                                <CheckBox fx:id="cBoxWellSpaH" layoutX="479.0" layoutY="6.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
                                 <CheckBox fx:id="cBoxAnimalsH" layoutX="372.0" layoutY="31.0" mnemonicParsing="false" text="Zwierzęta" />
                                 <CheckBox fx:id="cBoxWiFiH" layoutX="372.0" layoutY="56.0" mnemonicParsing="false" text="Wi - Fi" />
                                 <Separator layoutX="364.0" layoutY="4.0" orientation="VERTICAL" prefHeight="89.0" prefWidth="1.0" />
@@ -59,13 +57,11 @@
                                 <RadioButton fx:id="rButtonPriceApartmentC" layoutX="74.0" layoutY="6.0" mnemonicParsing="false" text="ceny za apartament" />
                                 <RadioButton fx:id="rButtonPriceRoomC" layoutX="226.0" layoutY="6.0" mnemonicParsing="false" text="ceny za pokój" />
                                 <RadioButton fx:id="rButtonFreeRoomC" layoutX="74.0" layoutY="31.0" mnemonicParsing="false" text="liczby wolnych miejsc" />
-                                <RadioButton fx:id="rButtonOpinionC" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="średniej oceny gości" />
-                                <RadioButton fx:id="rButtonCityC" layoutX="74.0" layoutY="56.0" mnemonicParsing="false" text="miasta" />
+                                <RadioButton fx:id="rButtonCityC" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="miasta" />
                                 <Label layoutX="367.0" layoutY="6.0" text="Udogodnienia:" />
-                                <CheckBox fx:id="cBoxAquaPC" layoutX="478.0" layoutY="6.0" mnemonicParsing="false" text="Aquapark" />
                                 <CheckBox fx:id="cBoxAnimalsC" layoutX="372.0" layoutY="31.0" mnemonicParsing="false" text="Zwierzęta" />
-                                <CheckBox fx:id="cBoxPoolC" layoutX="477.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
-                                <CheckBox fx:id="cBoxWellSpaC" layoutX="477.0" layoutY="56.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
+                                <CheckBox fx:id="cBoxPoolC" layoutX="479.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
+                                <CheckBox fx:id="cBoxWellSpaC" layoutX="478.0" layoutY="6.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
                                 <CheckBox fx:id="cBoxWiFiC" layoutX="372.0" layoutY="56.0" mnemonicParsing="false" text="Wi - Fi" />
                                 <ListView fx:id="listCamp" layoutY="91.0" prefHeight="280.0" prefWidth="200.0" />
                                 <Separator layoutY="90.0" prefHeight="0.0" prefWidth="600.0" />
@@ -94,13 +90,10 @@
                                 <RadioButton fx:id="rButtonPriceApartmentT" layoutX="74.0" layoutY="6.0" mnemonicParsing="false" text="ceny za namiot" />
                                 <RadioButton fx:id="rButtonCityT" layoutX="226.0" layoutY="6.0" mnemonicParsing="false" text="miasta" />
                                 <RadioButton fx:id="rButtonFreeRoomT" layoutX="74.0" layoutY="31.0" mnemonicParsing="false" text="liczby wolnych miejsc" />
-                                <RadioButton fx:id="rButtonOpinionT" layoutX="226.0" layoutY="31.0" mnemonicParsing="false" text="średniej oceny gości" />
                                 <Label layoutX="367.0" layoutY="6.0" text="Udogodnienia: " />
-                                <CheckBox fx:id="cBoxAquaPT" layoutX="478.0" layoutY="6.0" mnemonicParsing="false" text="Aquapark" />
                                 <CheckBox fx:id="cBoxAnimalsT" layoutX="372.0" layoutY="31.0" mnemonicParsing="false" text="Zwierzęta" />
-                                <CheckBox fx:id="cBoxWiFiT" layoutX="372.0" layoutY="56.0" mnemonicParsing="false" text="Wi - Fi" />
-                                <CheckBox fx:id="cBoxPoolT" layoutX="478.0" layoutY="31.0" mnemonicParsing="false" text="Basen" />
-                                <CheckBox fx:id="cBoxWellSpaT" layoutX="478.0" layoutY="56.0" mnemonicParsing="false" text="Wellness &amp; Spa" />
+                                <CheckBox fx:id="cBoxWiFiT" layoutX="479.0" layoutY="31.0" mnemonicParsing="false" text="Wi - Fi" />
+                                <CheckBox fx:id="cBoxPoolT" layoutX="479.0" layoutY="6.0" mnemonicParsing="false" text="Basen" />
                                 <ListView fx:id="listTent" layoutX="-1.0" layoutY="92.0" prefHeight="279.0" prefWidth="201.0" />
                                 <Separator layoutX="2.0" layoutY="91.0" prefHeight="2.0" prefWidth="600.0" />
                                 <Separator layoutX="364.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="1.0" />
