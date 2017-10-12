@@ -172,7 +172,7 @@ public class PlaceDaoImpl implements PlaceDao {
         List<String> WiFiList = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connector.getConnection().prepareStatement("" +
-                    "SELECT place.name FROM place WHERE place.category AND place.wifi = ?");
+                    "SELECT place.name FROM place WHERE place.category = ? AND place.wifi = ?");
             preparedStatement.setString(1,model.getCategory());
             preparedStatement.setInt(2,1);
 
@@ -208,11 +208,6 @@ public class PlaceDaoImpl implements PlaceDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
-    }
-
-    @Override
-    public List<String> getAquaparkHotels() {
         return null;
     }
 

@@ -90,10 +90,24 @@ public class GuestViewController implements Initializable, IWeatherOberver {
         listHotel.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             labelNameH.setText(newValue);
             //labelCityH.setText(hotelDao.getCityName(newValue));
+            labelCityH.setText(placeDao.getCityName(new PlaceModel(newValue,"Hotel")));
             //labelRegionH.setText(hotelDao.getRegionName(newValue));
+            labelRegionH.setText(placeDao.getRegionName(new PlaceModel(newValue,"Hotel")));
             //labelFreeRoomsH.setText();
             //labelFreeApartaments.setText();
         });
+
+        listCamp.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+            labelNameC.setText(newValue);
+            labelCityC.setText(placeDao.getCityName(new PlaceModel(newValue,"Camping")));
+            labelRegionC.setText(placeDao.getRegionName(new PlaceModel(newValue,"Camping")));
+        }));
+
+        listTent.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+            labelNameT.setText(newValue);
+            labelCityT.setText(placeDao.getCityName(new PlaceModel(newValue,"Tent")));
+            labelRegionT.setText(placeDao.getRegionName(new PlaceModel(newValue,"Tent")));
+        }));
 
         cBoxAnimalsH.selectedProperty().addListener((observable, oldValue, newValue) -> {
             GuestUtils.showAnimals(observableHotel,new PlaceModel("Hotel"),listHotel);
@@ -108,9 +122,44 @@ public class GuestViewController implements Initializable, IWeatherOberver {
             GuestUtils.showWiFi(observableHotel,new PlaceModel("Hotel"),listHotel);
         }));
 
+        cBoxAnimalsC.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showAnimals(observableCamp,new PlaceModel("Camping"),listCamp);
+        });
+        cBoxPoolC.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showPools(observableCamp,new PlaceModel("Camping"),listCamp);
+        });
+        cBoxWellSpaC.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showSpa(observableCamp,new PlaceModel("Camping"),listCamp);
+        });
+        cBoxWiFiC.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+            GuestUtils.showWiFi(observableCamp,new PlaceModel("Camping"),listCamp);
+        }));
+
+        cBoxAnimalsT.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showAnimals(observableTent,new PlaceModel("Tent"),listTent);
+        });
+        cBoxPoolT.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            GuestUtils.showPools(observableTent,new PlaceModel("Tent"),listTent);
+        });
+        cBoxWiFiT.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+            GuestUtils.showWiFi(observableTent,new PlaceModel("Tent"),listTent);
+        }));
+
        // listHotel.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
        //     weatherService.makeRequest(hotelDao.getCityName(newValue));
        // }));
+
+        listHotel.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            weatherService.makeRequest(placeDao.getCityName(new PlaceModel(newValue,"Hotel")));
+        });
+
+        listCamp.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            weatherService.makeRequest(placeDao.getCityName(new PlaceModel(newValue,"Camping")));
+        });
+
+        listTent.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            weatherService.makeRequest(placeDao.getCityName(new PlaceModel(newValue,"Tent")));
+        });
     }
 
 
