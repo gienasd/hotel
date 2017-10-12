@@ -23,6 +23,14 @@ public class PlaceModel {
         this.canIHaveAPet = canIHaveAPet;
     }
 
+    public PlaceModel(String category) {
+        this.category = category;
+    }
+
+
+    public PlaceModel() {
+    }
+
     public PlaceModel(String name, String city, String region, String category, boolean isThereWiFi,
                       boolean isThereSwimmingPool, boolean isThereSpa, boolean canIHaveAPet) {
         this.name = name;

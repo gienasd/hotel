@@ -13,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("managmentView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("guestView.fxml"));
         primaryStage.setTitle("Hotel ver: "+version);
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.setScene(new Scene(root, 600, 430));
