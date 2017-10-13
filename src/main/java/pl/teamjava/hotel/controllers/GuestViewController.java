@@ -89,9 +89,7 @@ public class GuestViewController implements Initializable, IWeatherOberver {
 
         listHotel.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             labelNameH.setText(newValue);
-            //labelCityH.setText(hotelDao.getCityName(newValue));
             labelCityH.setText(placeDao.getCityName(new PlaceModel(newValue,"Hotel")));
-            //labelRegionH.setText(hotelDao.getRegionName(newValue));
             labelRegionH.setText(placeDao.getRegionName(new PlaceModel(newValue,"Hotel")));
             //labelFreeRoomsH.setText();
             //labelFreeApartaments.setText();
@@ -108,6 +106,7 @@ public class GuestViewController implements Initializable, IWeatherOberver {
             labelCityT.setText(placeDao.getCityName(new PlaceModel(newValue,"Tent")));
             labelRegionT.setText(placeDao.getRegionName(new PlaceModel(newValue,"Tent")));
         }));
+
 
         cBoxAnimalsH.selectedProperty().addListener((observable, oldValue, newValue) -> {
             GuestUtils.showAnimals(observableHotel,new PlaceModel("Hotel"),listHotel);
@@ -145,9 +144,6 @@ public class GuestViewController implements Initializable, IWeatherOberver {
             GuestUtils.showWiFi(observableTent,new PlaceModel("Tent"),listTent);
         }));
 
-       // listHotel.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
-       //     weatherService.makeRequest(hotelDao.getCityName(newValue));
-       // }));
 
         listHotel.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             weatherService.makeRequest(placeDao.getCityName(new PlaceModel(newValue,"Hotel")));
@@ -166,7 +162,7 @@ public class GuestViewController implements Initializable, IWeatherOberver {
     public void tryReserve(Button button) {
         Stage stage = (Stage)button.getScene().getWindow();
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("loggedGuestView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("registerView.fxml"));
             stage.setScene(new Scene(root,600,400));
         } catch (IOException e) {
             e.printStackTrace();

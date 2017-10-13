@@ -118,10 +118,6 @@ public class PlaceDaoImpl implements PlaceDao {
         return sortedCheapRoomList;
     }
 
-    public List<String> getOpinionHotel() {
-        return null;
-    }
-
     @Override
     public List<PlaceModel> gettAllPlaceData(PlaceModel model) {
         List<PlaceModel> hotelsList = new ArrayList<>();
