@@ -37,18 +37,6 @@
         </Button>
         <Button fx:id="buttonBack" blendMode="COLOR_BURN" layoutX="27.0" layoutY="379.0" mnemonicParsing="false" text="Wróć" />
         <ListView fx:id="listProperty" layoutX="27.0" layoutY="50.0" opacity="0.6" prefHeight="310.0" prefWidth="200.0" />
-        <SplitMenuButton fx:id="splitCategory" layoutX="248.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Wybierz kategorię">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </SplitMenuButton>
-        <SplitMenuButton fx:id="splitCity" layoutX="248.0" layoutY="90.0" mnemonicParsing="false" text="Wybierz miejscowość">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </SplitMenuButton>
         <Button fx:id="buttonEdit" layoutX="520.0" layoutY="335.0" mnemonicParsing="false" text="Edytuj" />
         <ScrollBar fx:id="scrollProperty" layoutX="213.0" layoutY="50.0" orientation="VERTICAL" prefHeight="310.0" prefWidth="14.0" />
       <TextField fx:id="textName" layoutX="267.0" layoutY="180.0" prefHeight="25.0" prefWidth="300.0" promptText="Wprowadź nową nazwę" />

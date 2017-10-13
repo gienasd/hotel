@@ -6,14 +6,11 @@ import pl.teamjava.hotel.models.RoomModel;
 import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.dao.ManagmentDao;
 
-import javax.swing.text.html.ListView;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ManagmentDaoImpl implements ManagmentDao {
 
@@ -33,7 +30,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
             ResultSet set = statement.executeQuery();
 
             while(set.next()){
-                propertiesList.add(set.toString());
+                propertiesList.add(set.getString("name"));
             }
 
             statement.close();
@@ -58,7 +55,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
             statement.setString(5, model.getPlaceName());
             statement.setDouble(6, model.getPrice());
             statement.setBoolean(7, false);
-            statement.setString(8, session.getAccessCode());
+            statement.setInt(8, 0); // TODO: powiązać z id_hotelu
             statement.execute();
             statement.close();
 
@@ -127,7 +124,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
             statement.setBoolean(7, model.canIHaveAPet());
             statement.setBoolean(8, model.isThereSwimmingPool());
             statement.setBoolean(9, model.isThereSpa());
-            statement.setString(10, "123123");
+            statement.setString(10, session.getAccessCode());
             statement.execute();
             statement.close();
 
@@ -185,7 +182,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
             ResultSet set = statement.executeQuery();
 
             while (set.next()){
-                blockedList.add(set.toString());
+                blockedList.add(set.getString("name"));
             }
 
             statement.close();
@@ -207,7 +204,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
             ResultSet set = statement.executeQuery();
 
             while (set.next()){
-                bookedRoomsList.add("name");
+                bookedRoomsList.add(set.getString("name"));
             }
             statement.close();
 
@@ -220,7 +217,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
 
     public List<String> userList() {
 
-        List<String> userList = new ArrayList<String>();
+        List<String> userList = new ArrayList<>();
 
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
@@ -229,7 +226,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
 
             ResultSet set = statement.executeQuery();
             while (set.next()){
-                userList.add(set.toString());
+                userList.add(set.getString("name"));
             }
             statement.close();
 
@@ -239,4 +236,68 @@ public class ManagmentDaoImpl implements ManagmentDao {
         }
         return null;
     }
+
+    @Override
+    public List<String> cityList() {
+        List<String> cityList = new ArrayList<>();
+
+        try {
+            PreparedStatement statement = connector.getConnection().prepareStatement(
+                    "SELECT DISTINCT city FROM place"
+            );
+
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                cityList.add(set.getString("city"));
+            }
+            statement.close();
+            return cityList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<String> placeNames() {
+        List<String> placeNames = new ArrayList<>();
+
+        try {
+            PreparedStatement statement = connector.getConnection().prepareStatement(
+                    "SELECT DISTINCT name FROM place"
+            );
+
+            ResultSet set = statement.executeQuery();
+            while(set.next()){
+                placeNames.add(set.getString("name"));
+            }
+
+            statement.close();
+            return placeNames;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<String> showRooms(String name) {
+        List<String> roomList = new ArrayList<>();
+        try {
+            PreparedStatement statement = connector.getConnection().prepareStatement(
+                    "SELECT name FROM room WHERE placeName = ?"
+            );
+            statement.setString(1, name);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                roomList.add(set.getString("name"));
+            }
+            statement.close();
+            return roomList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

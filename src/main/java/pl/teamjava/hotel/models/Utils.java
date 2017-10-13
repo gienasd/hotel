@@ -39,7 +39,7 @@ public class Utils {
     public static String makeHttpRequest(String url){
         try {
             HttpURLConnection urlConnection = (HttpURLConnection) new URL(url)
-                    .openConnection();//otwiera połączenie do strony
+                    .openConnection();
             StringBuilder builder = new StringBuilder();
             InputStream inputStream = urlConnection.getInputStream();
             int read = 0;

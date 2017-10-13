@@ -37,33 +37,13 @@
         </Button>
         <Button fx:id="buttonBack" blendMode="COLOR_BURN" layoutX="27.0" layoutY="379.0" mnemonicParsing="false" text="Wróć" />
         <ListView fx:id="listRoom" layoutX="27.0" layoutY="50.0" opacity="0.6" prefHeight="310.0" prefWidth="200.0" />
-        <SplitMenuButton fx:id="splitName" layoutX="248.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" text="Wybierz nazwę własności">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </SplitMenuButton>
-        <SplitMenuButton fx:id="splitCity" layoutX="248.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" text="Wybierz miejscowość">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </SplitMenuButton>
         <Button fx:id="buttonEdit" layoutX="512.0" layoutY="379.0" mnemonicParsing="false" text="Edytuj" />
         <ScrollBar fx:id="scrollRoom" layoutX="213.0" layoutY="50.0" orientation="VERTICAL" prefHeight="310.0" prefWidth="14.0" />
-      <TextField fx:id="textName" layoutX="412.0" layoutY="236.0" promptText="Nowa nazwa" />
-      <SplitMenuButton fx:id="splitCategory" layoutX="413.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Nowa kategoria">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </SplitMenuButton>
-      <SplitMenuButton fx:id="splitCapacity" layoutX="413.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Nowa ilość miejsc">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </SplitMenuButton>
+      <TextField fx:id="textName" layoutX="413.0" layoutY="210.0" promptText="Nowa nazwa" />
       <TextField fx:id="textPrice" layoutX="413.0" layoutY="335.0" promptText="Nowa cena" />
+      <ChoiceBox fx:id="choiceCategory" layoutX="413.0" layoutY="255.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceCapacity" layoutX="413.0" layoutY="303.0" prefWidth="150.0" />
+      <Label layoutX="450.0" layoutY="235.0" text="Kategoria:" />
+      <Label layoutX="446.0" layoutY="286.0" text="Ilość miejsc:" />
     </children>
 </AnchorPane>

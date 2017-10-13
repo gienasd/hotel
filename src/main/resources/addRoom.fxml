@@ -37,25 +37,10 @@
         </Button>
         <Button fx:id="buttonBack" blendMode="COLOR_BURN" layoutX="27.0" layoutY="379.0" mnemonicParsing="false" text="Wróć" />
       <TextField fx:id="textName" layoutX="218.0" layoutY="91.0" prefHeight="25.0" prefWidth="149.0" promptText="Nazwa" />
-      <SplitMenuButton fx:id="splitCategory" layoutX="218.0" layoutY="127.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Kategoria">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </SplitMenuButton>
-      <SplitMenuButton fx:id="splitCapacity" layoutX="218.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Ilość miejsc">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </SplitMenuButton>
-      <SplitMenuButton fx:id="splitPlaceName" layoutX="218.0" layoutY="210.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Nazwa własności">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </SplitMenuButton>
       <TextField fx:id="textPrice" layoutX="218.0" layoutY="251.0" promptText="Cena" />
       <Button fx:id="buttonAdd" layoutX="319.0" layoutY="301.0" mnemonicParsing="false" text="Dodaj" />
+      <ChoiceBox fx:id="splitCategory" layoutX="218.0" layoutY="128.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="splitCapacity" layoutX="218.0" layoutY="166.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="splitPlaceName" layoutX="218.0" layoutY="210.0" prefWidth="150.0" />
     </children>
 </AnchorPane>

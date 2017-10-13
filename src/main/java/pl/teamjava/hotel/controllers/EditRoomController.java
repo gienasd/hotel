@@ -14,8 +14,10 @@ import java.util.ResourceBundle;
 
 public class EditRoomController implements Initializable {
 
+    //TODO: Dokończyć
+
     @FXML
-    SplitMenuButton splitName, splitCategory, splitCity, splitCapacity;
+    ChoiceBox choiceCategory, choiceCapacity;
 
     @FXML
     Button buttonEdit, buttonBack, buttonLogout;

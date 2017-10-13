@@ -36,20 +36,9 @@
             </font>
         </Button>
         <Button fx:id="buttonBack" blendMode="COLOR_BURN" layoutX="27.0" layoutY="379.0" mnemonicParsing="false" text="Wróć" />
-        <ListView fx:id="listProperty" layoutX="27.0" layoutY="50.0" opacity="0.6" prefHeight="310.0" prefWidth="200.0" />
-        <SplitMenuButton fx:id="splitName" layoutX="248.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" text="Wybierz nazwę własności">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </SplitMenuButton>
-        <SplitMenuButton fx:id="splitCity" layoutX="248.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" text="Wybierz miejscowość">
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </SplitMenuButton>
+        <ListView fx:id="listRooms" layoutX="27.0" layoutY="50.0" opacity="0.6" prefHeight="310.0" prefWidth="200.0" />
         <Button fx:id="buttonDelete" layoutX="248.0" layoutY="335.0" mnemonicParsing="false" text="Usuń" />
         <ScrollBar fx:id="scrollProperty" layoutX="213.0" layoutY="50.0" orientation="VERTICAL" prefHeight="310.0" prefWidth="14.0" />
+      <ChoiceBox fx:id="splitProperty" layoutX="250.0" layoutY="50.0" prefWidth="150.0" />
     </children>
 </AnchorPane>
