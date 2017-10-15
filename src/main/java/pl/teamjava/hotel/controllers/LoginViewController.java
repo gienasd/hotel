@@ -46,10 +46,11 @@ public class LoginViewController implements Initializable{
 
 
     public void initialize(URL location, ResourceBundle resources) {
-        buttonMainPage.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
+      //  buttonMainPage.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
+// buttonLogin.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
 
-        buttonLogin.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
         buttonLogin.setOnMouseClicked(e -> tryLogin());
+        labelRegistration.setOnMouseClicked((e -> openRegister()));
        Parent parent= textLogin.getParent();
        parent.addEventHandler(KeyEvent.KEY_PRESSED, e->{
            if (e.getCode() == KeyCode.ENTER) {
@@ -58,6 +59,25 @@ public class LoginViewController implements Initializable{
            }
        });
 
+    }
+
+    private void openRegister() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("registerView.fxml"));      // getClassLoader - przeszukuje wszystkie foldery w obrebie projektu
+        Stage stageRoot = (Stage)buttonLogin.getScene().getWindow();
+            stageRoot.close();
+
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
+            primaryStage.initStyle(StageStyle.UTILITY);
+            primaryStage.setScene(new Scene(root, 600, 430));
+            primaryStage.setResizable(false);
+            primaryStage.show();
+//
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean checkLoginData(){
