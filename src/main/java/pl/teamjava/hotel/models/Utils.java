@@ -39,7 +39,7 @@ public class Utils {
     public static String makeHttpRequest(String url){
         try {
             HttpURLConnection urlConnection = (HttpURLConnection) new URL(url)
-                    .openConnection();//otwiera połączenie do strony
+                    .openConnection();
             StringBuilder builder = new StringBuilder();
             InputStream inputStream = urlConnection.getInputStream();
             int read = 0;
@@ -60,5 +60,15 @@ public class Utils {
         alert.setContentText(message);
         alert.show();
     }
+   /* public static void switchView(Button button, String name){
+        Stage stage = (Stage)button.getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
+            stage.setScene(new Scene(root,600,420));
+            stage.setResizable(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 
 }

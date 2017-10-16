@@ -4,7 +4,7 @@ public class RoomModel {
     private String name;
     private String kindOfRoom;
     private int capacity;
-    private String placeName; // (powiązanie do hotelu/domku/pola (Paweł)
+    private String placeName;
     private double price;
     private boolean isBooked;
 

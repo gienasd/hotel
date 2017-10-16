@@ -14,8 +14,7 @@ import java.util.ResourceBundle;
 
 public class EditPropertyController implements Initializable {
 
-    @FXML
-    SplitMenuButton splitCategory, splitCity;
+    //TODO: dokończyć;
 
     @FXML
     Button buttonEdit, buttonBack, buttonLogout;

@@ -43,7 +43,6 @@ public class ReservationViewController implements Initializable {
 
         observableList = FXCollections.observableList(managmentDao.bookedRooms());
         listReservation.setItems(observableList);
-
     }
 
     public void switchView(Button button, String name){

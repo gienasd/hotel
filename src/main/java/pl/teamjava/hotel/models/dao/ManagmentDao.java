@@ -2,10 +2,8 @@ package pl.teamjava.hotel.models.dao;
 
 import pl.teamjava.hotel.models.PlaceModel;
 import pl.teamjava.hotel.models.RoomModel;
-import pl.teamjava.hotel.models.UserModel;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ManagmentDao {
     List<String> showProperties(String accessCode);
@@ -18,4 +16,7 @@ public interface ManagmentDao {
     List<String> showBlockedList ();
     List<String> bookedRooms ();
     List<String> userList();
+    List<String> cityList();
+    List<String> placeNames();
+    List<String> showRooms(String name);
 }

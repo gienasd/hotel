@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.LoginViewController">
+<AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.RegisterViewController">
    <children>
       <ImageView fitHeight="420.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
          <image>
@@ -37,7 +36,6 @@
             <Reflection />
          </effect>
       </Label>
-      <Hyperlink fx:id="labelAuthorR" layoutX="536.0" layoutY="391.0" text="Autorzy" />
       <Button fx:id="buttonLogin" defaultButton="true" layoutX="260.0" layoutY="388.0" mnemonicParsing="false" opacity="0.6" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: black;" text="Zarejestruj" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font size="14.0" />
@@ -48,9 +46,9 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Label layoutX="243.0" layoutY="10.0" text="Rejestracja" textFill="WHITE">
+      <Label layoutX="243.0" layoutY="10.0" text="Rejestracja" textFill="#f8f8f8">
          <font>
-            <Font name="Times New Roman" size="36.0" />
+            <Font name="Times New Roman Bold Italic" size="36.0" />
          </font>
       </Label>
       <VBox layoutX="168.0" layoutY="50.0" opacity="0.89" prefHeight="277.0" prefWidth="310.0">

@@ -40,15 +40,10 @@
       <TextField fx:id="textCity" layoutX="190.0" layoutY="117.0" prefHeight="25.0" prefWidth="245.0" promptText="Miejscowość" />
       <TextField fx:id="textRegion" layoutX="190.0" layoutY="159.0" prefHeight="25.0" prefWidth="245.0" promptText="Region" />
       <Button fx:id="buttonAdd" layoutX="240.0" layoutY="367.0" mnemonicParsing="false" text="Dodaj własność" />
-      <SplitMenuButton fx:id="splitCategory" layoutX="190.0" layoutY="198.0" mnemonicParsing="false" text="Wybierz kategorię">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </SplitMenuButton>
       <CheckBox fx:id="checkboxWifi" layoutX="190.0" layoutY="241.0" mnemonicParsing="false" text="Wi-Fi" />
       <CheckBox fx:id="checkboxPets" layoutX="190.0" layoutY="272.0" mnemonicParsing="false" text="Zwierzęta" />
       <CheckBox fx:id="checkboxPool" layoutX="190.0" layoutY="302.0" mnemonicParsing="false" text="Basen" />
       <CheckBox fx:id="checkboxSpa" layoutX="190.0" layoutY="327.0" mnemonicParsing="false" text="SPA" />
+      <ChoiceBox fx:id="splitCategory" layoutX="187.0" layoutY="198.0" prefWidth="150.0" />
     </children>
 </AnchorPane>
