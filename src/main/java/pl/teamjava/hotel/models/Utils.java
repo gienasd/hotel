@@ -3,6 +3,7 @@ package pl.teamjava.hotel.models;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -14,7 +15,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Utils {
-
+     public static final String VERSION="1.0";
     public static String shaHash(String message){
         try {
             MessageDigest sha2 = MessageDigest.getInstance("SHA-256");
@@ -51,6 +52,13 @@ public class Utils {
             e.printStackTrace();
         }
         return null;
+    }
+    public static void createSimpleDialog(String name, String header, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(name);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.show();
     }
 
 }
