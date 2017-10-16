@@ -3,12 +3,12 @@ package pl.teamjava.hotel.models;
 public class WeatherInfo {
     private double temp;
     private int pressure;
-    private String cityname;
+    private String city;
 
-    public WeatherInfo(double temp, int pressure, String cityname) {
+    public WeatherInfo(double temp, int pressure, String city) {
         this.temp = temp;
         this.pressure = pressure;
-        this.cityname = cityname;
+        this.city = city;
     }
 
     public double getTemp() {
@@ -27,11 +27,12 @@ public class WeatherInfo {
         this.pressure = pressure;
     }
 
-    public String getCityname() {
-        return cityname;
+    public String getCity() {
+        return city;
     }
 
-    public void setCityname(String cityname) {
-        this.cityname = cityname;
+    public void setCityname(String city) {
+        this.city = city;
     }
+
 }

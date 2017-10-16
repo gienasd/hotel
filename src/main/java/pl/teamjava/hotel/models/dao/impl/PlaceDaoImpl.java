@@ -264,4 +264,16 @@ public class PlaceDaoImpl implements PlaceDao {
         }
         return null;
     }
+
+    @Override
+    public List<String> getPlaceByAmount(PlaceModel model) {
+       // List<String> placeList = new ArrayList<>();
+      //  try {
+      //      PreparedStatement preparedStatement = connector.getConnection().prepareStatement("" +
+       //             "SELECT place.name FROM place WHERE place.category = ? AND ")
+       // } catch (SQLException e) {
+       //     e.printStackTrace();
+      //  }
+        return null;
+    }
 }

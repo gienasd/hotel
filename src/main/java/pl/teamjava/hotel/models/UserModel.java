@@ -17,6 +17,13 @@ public class UserModel {
         this.isBlocked = isBlocked;
     }
 
+    public UserModel() {
+    }
+
+    public UserModel(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

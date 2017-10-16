@@ -4,29 +4,29 @@ import java.sql.Date;
 
 public class WeatherModel {
 
-    private String cityname;
+    private String city;
     private float temp;
     private Date date;
 
-    public WeatherModel(String cityname, float temp, Date date) {
-        this.cityname = cityname;
+    public WeatherModel(String city, float temp, Date date) {
+        this.city = city;
         this.temp = temp;
         this.date = date;
     }
 
     public WeatherModel(WeatherInfo info){
-        this.cityname = info.getCityname();
+        this.city = info.getCity();
         this.temp = (float) info.getTemp();
         this.date = new Date(0);
     }
 
-    public String getCityname() {
+    public String getCity() {
 
-        return cityname;
+        return city;
     }
 
-    public void setCityname(String cityname) {
-        this.cityname = cityname;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public float getTemp() {
