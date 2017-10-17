@@ -152,14 +152,33 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return false;
     }
 
-    public boolean addToBlockedList(String email) {
+    public boolean deleteFromBlockedList(String email) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
                     "UPDATE user SET isBlocked = ? WHERE email = ?"
             );
 
-            statement.setBoolean(1, true);
+            statement.setBoolean(1, false);
             statement.setString(2, email);
+            statement.execute();
+            statement.close();
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteFromReservation(String name) {
+        try {
+            PreparedStatement statement = connector.getConnection().prepareStatement(
+                    "UPDATE room SET isBooked = ? WHERE name = ?"
+            );
+
+            statement.setBoolean(1, false);
+            statement.setString(2, name);
             statement.execute();
             statement.close();
 
@@ -176,13 +195,13 @@ public class ManagmentDaoImpl implements ManagmentDao {
 
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
-                    "SELECT name FROM user WHERE isBlocked = 1"
+                    "SELECT email FROM user WHERE isBlocked = 1"
             );
 
             ResultSet set = statement.executeQuery();
 
             while (set.next()){
-                blockedList.add(set.getString("name"));
+                blockedList.add(set.getString("email"));
             }
 
             statement.close();

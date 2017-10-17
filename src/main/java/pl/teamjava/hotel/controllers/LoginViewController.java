@@ -56,7 +56,6 @@ public class LoginViewController implements Initializable{
        parent.addEventHandler(KeyEvent.KEY_PRESSED, e->{
            if (e.getCode() == KeyCode.ENTER) {
               tryLogin();
-
            }
        });
     }
@@ -107,7 +106,6 @@ public class LoginViewController implements Initializable{
             stage.close();
             Parent root = null;
             try {
-
                 root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
                 Stage newStage = new Stage();
                 Scene scene=new Scene(root,width,height);
