@@ -60,7 +60,7 @@ public class Utils {
         alert.setContentText(message);
         alert.show();
     }
-    public  void switchView(Button button, String name){
+   /* public static void switchView(Button button, String name){
         Stage stage = (Stage)button.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
@@ -69,6 +69,6 @@ public class Utils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 }

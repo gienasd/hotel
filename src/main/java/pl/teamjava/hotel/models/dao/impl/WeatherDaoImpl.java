@@ -22,7 +22,7 @@ public class WeatherDaoImpl implements WeatherDao{
             );
 
             preparedStatement.setInt(1,0);
-            preparedStatement.setString(2,model.getCityname());
+            preparedStatement.setString(2,model.getCity());
             preparedStatement.setFloat(3,model.getTemp());
             preparedStatement.setDate(4,null);
 

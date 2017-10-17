@@ -12,7 +12,8 @@ public interface ManagmentDao {
     boolean editRoom (RoomModel model, int id);
     boolean addProperty (PlaceModel model);
     boolean deleteProperty (String name);
-    boolean addToBlockedList (String email);
+    boolean deleteFromBlockedList (String email);
+    boolean deleteFromReservation(String name);
     List<String> showBlockedList ();
     List<String> bookedRooms ();
     List<String> userList();

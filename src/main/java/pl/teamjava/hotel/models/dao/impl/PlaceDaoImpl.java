@@ -118,10 +118,6 @@ public class PlaceDaoImpl implements PlaceDao {
         return sortedCheapRoomList;
     }
 
-    public List<String> getOpinionHotel() {
-        return null;
-    }
-
     @Override
     public List<PlaceModel> gettAllPlaceData(PlaceModel model) {
         List<PlaceModel> hotelsList = new ArrayList<>();
@@ -266,6 +262,18 @@ public class PlaceDaoImpl implements PlaceDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public List<String> getPlaceByAmount(PlaceModel model) {
+       // List<String> placeList = new ArrayList<>();
+      //  try {
+      //      PreparedStatement preparedStatement = connector.getConnection().prepareStatement("" +
+       //             "SELECT place.name FROM place WHERE place.category = ? AND ")
+       // } catch (SQLException e) {
+       //     e.printStackTrace();
+      //  }
         return null;
     }
 }

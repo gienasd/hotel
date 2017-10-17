@@ -17,4 +17,5 @@ public interface PlaceDao {
     List<String> getPoolPlace(PlaceModel model);
     String getCityName(PlaceModel model);
     String getRegionName(PlaceModel model);
+    List<String> getPlaceByAmount(PlaceModel model);
 }

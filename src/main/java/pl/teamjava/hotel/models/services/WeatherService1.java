@@ -7,11 +7,7 @@ import java.util.concurrent.Executors;
 
 import javafx.application.Platform;
 import org.json.JSONObject;
-import pl.teamjava.hotel.models.Config;
-import pl.teamjava.hotel.models.Config;
-import pl.teamjava.hotel.models.IWeatherOberver;
-import pl.teamjava.hotel.models.Utils;
-import pl.teamjava.hotel.models.WeatherInfo;
+import pl.teamjava.hotel.models.*;
 
 public class WeatherService1 {
     private static WeatherService1 ourInstance = new WeatherService1();
@@ -29,7 +25,7 @@ public class WeatherService1 {
     }
 
     public void makeRequest(String city){
-        Runnable runnable = () -> readJsonData(Utils.makeHttpRequest(Config.APP_BASE_URL + city + "&appid=" + Config.APP_ID),city);
+        Runnable runnable = () -> readJsonData(Utils.makeHttpRequest(Config1.APP_BASE_URL + city + "&appid=" + Config1.APP_ID),city);
 
         executorService.execute(runnable);
     }
