@@ -59,20 +59,17 @@ public class LoginViewController implements Initializable{
 
            }
        });
-
     }
-
-
 
     private boolean checkLoginData(){
         String login = textLogin.getText();
         String password = textPassword.getText();
 
         if(login.isEmpty()|| password.isEmpty()){
-            Utils.createSimpleDialog("Logowanie","","Pola nie mog± byæ puste !");
+            Utils.createSimpleDialog("Logowanie","","Pola nie mogï¿½ byï¿½ puste !");
         }
         if(login.length()<=3 || password.length() <=5){
-            Utils.createSimpleDialog("Logowanie","","Dane za krótkie !");
+            Utils.createSimpleDialog("Logowanie","","Dane za krï¿½tkie !");
             textLogin.clear();
             textPassword.clear();
         }
@@ -118,12 +115,10 @@ public class LoginViewController implements Initializable{
                 newStage.initStyle(StageStyle.DECORATED);
                 newStage.setTitle("Hotel");
                 newStage.setScene(scene);
-//
                 newStage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

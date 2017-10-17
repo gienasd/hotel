@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import pl.teamjava.hotel.models.Utils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,23 +18,14 @@ public class RoomManagmentViewController implements Initializable {
     @FXML
     Button buttonAdd, buttonRemove, buttonEdit, buttonLogout, buttonBack;
 
+    private Utils utils = new Utils();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttonAdd.setOnMouseClicked(e-> switchView(buttonAdd, "addRoom.fxml"));
-        buttonEdit.setOnMouseClicked(e-> switchView(buttonEdit, "editRoom.fxml"));
-        buttonRemove.setOnMouseClicked(e-> switchView(buttonRemove, "deleteRoom.fxml"));
-        buttonBack.setOnMouseClicked(e-> switchView(buttonBack, "managmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> switchView(buttonLogout, "mainView.fxml"));
-    }
-
-    public void switchView(Button button, String name){
-        Stage stage = (Stage)button.getScene().getWindow();
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
-            stage.setScene(new Scene(root,600,420));
-            stage.setResizable(false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        buttonAdd.setOnMouseClicked(e-> utils.switchView(buttonAdd, "addRoom.fxml"));
+        buttonEdit.setOnMouseClicked(e-> utils.switchView(buttonEdit, "editRoom.fxml"));
+        buttonRemove.setOnMouseClicked(e-> utils.switchView(buttonRemove, "deleteRoom.fxml"));
+        buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "managmentView.fxml"));
+        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
     }
 }

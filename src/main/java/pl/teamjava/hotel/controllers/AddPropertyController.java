@@ -33,11 +33,12 @@ public class AddPropertyController implements Initializable {
     Button buttonBack, buttonLogout, buttonAdd;
 
     private ManagmentDao managmentDao = new ManagmentDaoImpl();
+    private Utils utils = new Utils();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttonBack.setOnMouseClicked(e-> switchView(buttonBack, "propertiesManagmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> switchView(buttonLogout, "mainView.fxml"));
+        buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "propertiesManagmentView.fxml"));
+        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
 
         buttonAdd.setOnMouseClicked(e-> addProperty());
 
@@ -60,16 +61,5 @@ public class AddPropertyController implements Initializable {
         checkboxSpa.setSelected(false);
         checkboxPets.setSelected(false);
         checkboxWifi.setSelected(false);
-    }
-
-    private void switchView(Button button, String name){
-        Stage stage = (Stage)button.getScene().getWindow();
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
-            stage.setScene(new Scene(root,600,420));
-            stage.setResizable(false);
-         } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

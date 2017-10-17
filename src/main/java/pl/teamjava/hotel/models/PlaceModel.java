@@ -1,5 +1,8 @@
 package pl.teamjava.hotel.models;
 
+import lombok.Data;
+
+@Data
 public class PlaceModel {
     private String name;
     private String city;

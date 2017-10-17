@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -38,12 +39,7 @@
       <ListView fx:id="listReservation" layoutX="14.0" layoutY="50.0" opacity="0.6" prefHeight="320.0" prefWidth="200.0" />
       <Button fx:id="buttonCancel" layoutX="225.0" layoutY="345.0" mnemonicParsing="false" text="Usuń" />
       <ScrollBar fx:id="scrollReservation" layoutX="200.0" layoutY="50.0" orientation="VERTICAL" prefHeight="320.0" prefWidth="14.0" />
-      <SplitMenuButton fx:id="splitProperty" layoutX="225.0" layoutY="50.0" mnemonicParsing="false" text="Wybierz własność">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </SplitMenuButton>
       <Button fx:id="buttonShowProfile" layoutX="225.0" layoutY="314.0" mnemonicParsing="false" text="Wyświetl profil użytkownika" />
+      <ChoiceBox fx:id="splitProperty" layoutX="232.0" layoutY="50.0" prefWidth="150.0" />
     </children>
 </AnchorPane>

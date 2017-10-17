@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.ManagmentDao;
 import pl.teamjava.hotel.models.dao.impl.ManagmentDaoImpl;
 
@@ -27,26 +28,16 @@ public class BlockedListViewController implements Initializable {
 
     private ManagmentDao managmentDao = new ManagmentDaoImpl();
     private ObservableList<String> blockedList;
+    private Utils utils = new Utils();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttonBack.setOnMouseClicked(e-> switchView(buttonBack, "managmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> switchView(buttonLogout, "mainView.fxml"));
+        buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "managmentView.fxml"));
+        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
 
         blockedList = FXCollections.observableList(managmentDao.showBlockedList());
         listBlocked.setItems(blockedList);
 
-    }
-
-    public void switchView(Button button, String name){
-        Stage stage = (Stage)button.getScene().getWindow();
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
-            stage.setScene(new Scene(root,600,420));
-            stage.setResizable(false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

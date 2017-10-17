@@ -61,7 +61,7 @@ public class GuestViewController implements Initializable, IWeatherOberver {
         rButtonFreeRoomC.setOnMouseClicked(s -> GuestUtils.sortByFreeRooms(observableCamp,new PlaceModel("Camping"),listCamp));
         rButtonCityC.setOnMouseClicked(s -> GuestUtils.sortByCities(observableCamp,new PlaceModel("Camping"),listCamp));
 
-        createToggleGroup(rButtonPriceApartmentT,rButtonFreeRoomT,rButtonCityT,null);
+        createToggleGroup(rButtonPriceApartmentT,rButtonFreeRoomT,rButtonCityT, rButtonFreeRoomT);
 
         rButtonPriceApartmentT.setOnMouseClicked(s -> GuestUtils.sortByApartmentPrice(observableTent,new PlaceModel("Tent"),listTent));
         rButtonFreeRoomT.setOnMouseClicked(s -> GuestUtils.sortByFreeRooms(observableTent,new PlaceModel("Tent"),listTent));
@@ -129,6 +129,4 @@ public class GuestViewController implements Initializable, IWeatherOberver {
         labelWeatherT.setText("Temp: " + info.getTemp() + " | Ciśnienie: " + info.getPressure());
         weatherDao.addWeather(new WeatherModel(info));
     }
-
-
 }

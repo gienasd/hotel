@@ -9,14 +9,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Utils {
-     public static final String VERSION="1.0";
-    public static String shaHash(String message){
+    public static final String VERSION = "1.0";
+
+    public static String shaHash(String message) {
         try {
             MessageDigest sha2 = MessageDigest.getInstance("SHA-256");
 
@@ -25,7 +27,7 @@ public class Utils {
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            for(int i = 0; i < bytesOfCryptoMessage.length; i++){
+            for (int i = 0; i < bytesOfCryptoMessage.length; i++) {
                 stringBuilder.append(Integer.toHexString(0xFF & bytesOfCryptoMessage[i]));
             }
 
@@ -36,14 +38,14 @@ public class Utils {
         return null;
     }
 
-    public static String makeHttpRequest(String url){
+    public static String makeHttpRequest(String url) {
         try {
             HttpURLConnection urlConnection = (HttpURLConnection) new URL(url)
                     .openConnection();
             StringBuilder builder = new StringBuilder();
             InputStream inputStream = urlConnection.getInputStream();
             int read = 0;
-            while((read = inputStream.read()) != -1){
+            while ((read = inputStream.read()) != -1) {
                 builder.append((char) read);
             }
 
@@ -53,22 +55,23 @@ public class Utils {
         }
         return null;
     }
-    public static void createSimpleDialog(String name, String header, String message){
+
+    public static void createSimpleDialog(String name, String header, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(name);
         alert.setHeaderText(header);
         alert.setContentText(message);
         alert.show();
     }
-   /* public static void switchView(Button button, String name){
-        Stage stage = (Stage)button.getScene().getWindow();
+
+    public void switchView(Button button, String name) {
+        Stage stage = (Stage) button.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
-            stage.setScene(new Scene(root,600,420));
+            stage.setScene(new Scene(root, 600, 420));
             stage.setResizable(false);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
-
+    }
 }

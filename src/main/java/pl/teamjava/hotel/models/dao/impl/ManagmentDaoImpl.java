@@ -198,7 +198,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
         List<String> bookedRoomsList = new ArrayList<>();
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
-                    "SELECT name FROM rooms WHERE isBooked = 1"
+                    "SELECT name FROM room WHERE isBooked = 1"
             );
 
             ResultSet set = statement.executeQuery();

@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import pl.teamjava.hotel.models.Utils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,21 +32,12 @@ public class EditPropertyController implements Initializable {
     @FXML
     CheckBox checkWifi, checkPets, checkPool, checkSpa;
 
+    private Utils utils = new Utils();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttonBack.setOnMouseClicked(e-> switchView(buttonBack, "propertiesManagmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> switchView(buttonLogout, "mainView.fxml"));
+        buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "propertiesManagmentView.fxml"));
+        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
 
-    }
-
-    public void switchView(Button button, String name){
-        Stage stage = (Stage)button.getScene().getWindow();
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
-            stage.setScene(new Scene(root,600,420));
-            stage.setResizable(false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
