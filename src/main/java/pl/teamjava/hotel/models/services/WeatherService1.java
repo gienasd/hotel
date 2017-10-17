@@ -25,7 +25,7 @@ public class WeatherService1 {
     }
 
     public void makeRequest(String city){
-        Runnable runnable = () -> readJsonData(Utils.makeHttpRequest(Config1.APP_BASE_URL + city + "&appid=" + Config1.APP_ID),city);
+        Runnable runnable = () -> readJsonData(Utils.makeHttpRequest(Config.APP_BASE_URL + city + "&appid=" + Config.APP_ID),city);
 
         executorService.execute(runnable);
     }
