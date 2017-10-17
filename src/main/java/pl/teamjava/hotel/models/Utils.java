@@ -72,14 +72,14 @@ public class Utils {
             e.printStackTrace();
         }
     }
-    private static void switchView2(Node node, String fxml, int width, int height, boolean newWindow){
+    public static void switchView2(Node node, String fxml, int width, int height, boolean newWindow){
         Stage stage = (Stage)node.getScene().getWindow();
         if(!newWindow) {
             Parent root =null;
             try {
 
-                FXMLLoader loader = new FXMLLoader(Utils.class.getResource(fxml));
-                root = loader.load();
+                root =  FXMLLoader.load(Utils.class.getResource(fxml));
+               // root = loader.load();
                 stage.setScene(new Scene(root, width, height));
                 stage.setResizable(false);
             } catch (IOException e) {
@@ -89,8 +89,8 @@ public class Utils {
             stage.close();
             Parent root = null;
             try {
-                FXMLLoader loader = new FXMLLoader(Utils.class.getResource(fxml));
-                root = loader.load();
+              root= FXMLLoader.load(Utils.class.getResource(fxml));
+               // root = loader.load();
                 Stage newStage = new Stage();
                 Scene scene=new Scene(root,width,height);
                 newStage.setResizable(false);

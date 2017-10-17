@@ -15,7 +15,7 @@
 
 <AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.RegisterViewController">
    <children>
-      <ImageView fitHeight="420.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
+      <ImageView fitHeight="438.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
          <image>
             <Image url="@images/index.jpg" />
          </image>
@@ -36,23 +36,23 @@
             <Reflection />
          </effect>
       </Label>
-      <Button fx:id="buttonLogin" defaultButton="true" layoutX="260.0" layoutY="388.0" mnemonicParsing="false" opacity="0.6" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: black;" text="Zarejestruj" textFill="WHITE" textOverrun="CLIP">
+      <Button fx:id="buttonRegister" defaultButton="true" layoutX="489.0" layoutY="379.0" mnemonicParsing="false" opacity="0.6" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: black;" text="Zarejestruj" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="buttonMainPageR" layoutX="450.0" layoutY="10.0" mnemonicParsing="false" opacity="0.6" prefHeight="40.0" prefWidth="140.0" text="Strona główna">
+      <Button fx:id="buttonMainPageR" layoutX="450.0" layoutY="10.0" mnemonicParsing="false" opacity="0.6" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 20;" text="Strona główna">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Label layoutX="243.0" layoutY="10.0" text="Rejestracja" textFill="#f8f8f8">
-         <font>
-            <Font name="Times New Roman Bold Italic" size="36.0" />
-         </font>
-      </Label>
-      <VBox layoutX="168.0" layoutY="50.0" opacity="0.89" prefHeight="277.0" prefWidth="310.0">
+      <VBox layoutX="188.0" layoutY="55.0" opacity="0.89" prefHeight="375.0" prefWidth="271.0">
          <children>
+            <TextField fx:id="textUsernameR" alignment="CENTER" opacity="0.92" prefHeight="8.0" prefWidth="310.0" promptText="Nazwa użytkownika">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
             <TextField fx:id="textNameR" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Imię">
                <font>
                   <Font size="14.0" />
@@ -61,7 +61,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="textSurnameR" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Nazwisko">
+            <TextField fx:id="textLastnameR" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Nazwisko">
                <font>
                   <Font size="14.0" />
                </font>
@@ -109,16 +109,27 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
+            <CheckBox fx:id="checkBoxTermsAccept" mnemonicParsing="false" opacity="0.89" text="Akceptuję warunki korzytsania z seriwsu" textFill="#3418ab">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="checkBoxEmailsAccept" mnemonicParsing="false" opacity="0.89" prefHeight="68.0" prefWidth="271.0" text="Wyrażam zgodę na otrzymywanie informacji handlowych&#10;drogą elektroniczną" textFill="#3418ab" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </CheckBox>
          </children>
       </VBox>
-      <CheckBox fx:id="checkBoxTermsAccept" layoutX="168.0" layoutY="334.0" mnemonicParsing="false" opacity="0.89" text="Akceptuję warunki korzytsania z seriwsu" textFill="#3418ab">
-         <font>
-            <Font size="10.0" />
-         </font></CheckBox>
-      <CheckBox fx:id="checkBoxEmailsAccept" layoutX="168.0" layoutY="349.0" mnemonicParsing="false" opacity="0.89" text="Wyrażam zgodę na otrzymywanie informacji handlowych&#10;drogą elektroniczną" textFill="#3418ab" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font size="10.0" />
-         </font></CheckBox>
       <Label layoutX="478.0" layoutY="253.0" text="*" textFill="WHITE">
          <font>
             <Font size="24.0" />
@@ -127,6 +138,11 @@
       <Label layoutX="478.0" layoutY="295.0" text="*" textFill="WHITE">
          <font>
             <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="240.0" layoutY="2.0" text="Rejestracja" textFill="#f8f8f8">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="36.0" />
          </font>
       </Label>
    </children>

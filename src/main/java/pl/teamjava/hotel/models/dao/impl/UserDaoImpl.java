@@ -64,6 +64,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public boolean register(String username,String name, String lastname, String email,String password, String telephone, String accessCode, boolean mailing) {
+        return false;
+    }
+
+    @Override
     public boolean loginByAccessCode(String accessCode) {
         return false;
     }
