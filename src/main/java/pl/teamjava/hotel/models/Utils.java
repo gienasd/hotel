@@ -1,11 +1,13 @@
 package pl.teamjava.hotel.models;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -68,6 +70,37 @@ public class Utils {
             stage.setResizable(false);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    private static void switchView2(Node node, String fxml, int width, int height, boolean newWindow){
+        Stage stage = (Stage)node.getScene().getWindow();
+        if(!newWindow) {
+            Parent root =null;
+            try {
+
+                FXMLLoader loader = new FXMLLoader(Utils.class.getResource(fxml));
+                root = loader.load();
+                stage.setScene(new Scene(root, width, height));
+                stage.setResizable(false);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            stage.close();
+            Parent root = null;
+            try {
+                FXMLLoader loader = new FXMLLoader(Utils.class.getResource(fxml));
+                root = loader.load();
+                Stage newStage = new Stage();
+                Scene scene=new Scene(root,width,height);
+                newStage.setResizable(false);
+                newStage.initStyle(StageStyle.DECORATED);
+                newStage.setTitle("Hotel");
+                newStage.setScene(scene);
+                newStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
