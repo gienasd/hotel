@@ -13,7 +13,8 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ReservationViewController implements Initializable {
+public class
+ReservationViewController implements Initializable {
 
     @FXML
     Button buttonLogout, buttonCancel, buttonShowProfile, buttonBack;
