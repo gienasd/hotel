@@ -17,6 +17,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
     MySqlConnector connector = MySqlConnector.getInstance();
     Session session = Session.getInstance();
 
+    @Override
     public List<String> showProperties(String accessCode) {
 
         List<String> propertiesList = new ArrayList<String>();
@@ -41,6 +42,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return null;
     }
 
+    @Override
     public boolean addRoom(RoomModel model) {
 
         try {
@@ -66,6 +68,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return false;
     }
 
+    @Override
     public boolean deleteRoom(String name) {
 
         try {
@@ -84,31 +87,31 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return false;
     }
 
-    public boolean editRoom(RoomModel model, int id) {
+    @Override
+    public boolean editRoom(String name, String newName, String category, int capacity, double price) {
 
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
                     "UPDATE room SET name = ?, kindOfRoom = ?, capacity = ?," +
-                            " placeName = ?, price = ?, isBooked = ? WHERE name = ?"
+                            "price = ?, WHERE name = ?"
             );
 
-            statement.setString(1, model.getName());
-            statement.setString(2, model.getKindOfRoom());
-            statement.setInt(3, model.getCapacity());
-            statement.setString(4, model.getPlaceName());
-            statement.setDouble(5, model.getPrice());
-            statement.setInt(6, id);
+            statement.setString(1, newName);
+            statement.setString(2, category);
+            statement.setInt(3, capacity);
+            statement.setDouble(4, price);
+            statement.setString(5, name);
             statement.execute();
             statement.close();
 
             return true;
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
 
+    @Override
     public boolean addProperty(PlaceModel model) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
@@ -135,6 +138,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return false;
     }
 
+    @Override
     public boolean deleteProperty(String name) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
@@ -152,6 +156,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return false;
     }
 
+    @Override
     public boolean deleteFromBlockedList(String email) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
@@ -189,6 +194,66 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return false;
     }
 
+    @Override
+    public boolean editProperty(String name, String newName, boolean isThereWifi, boolean isTherePool, boolean isThereSpa, boolean canIHaveAPet) {
+        try {
+            PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
+                    "UPDATE place SET name = ?, wifi = ?, pets = ?, swimmingPool = ?, spa = ? WHERE name = ?"
+            );
+
+            preparedStatement.setString(1, newName);
+            preparedStatement.setBoolean(2, isThereWifi);
+            preparedStatement.setBoolean(3, canIHaveAPet);
+            preparedStatement.setBoolean(4, isTherePool);
+            preparedStatement.setBoolean(5, isThereSpa);
+            preparedStatement.setString(6, name);
+
+            preparedStatement.execute();
+            preparedStatement.close();
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean getFromProperty(String addonName,String name) {
+        try {
+            PreparedStatement statement = connector.getConnection().prepareStatement(
+                    "SELECT ? FROM place WHERE name = ?");
+
+            statement.setString(1, addonName);
+            statement.setString(2, name);
+            ResultSet set = statement.executeQuery();
+
+            while (set.next()){
+                return set.getBoolean(addonName);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public String getFromRoom(String name) {
+        return null;
+    }
+
+    @Override
+    public int getCapacityRoom(String name) {
+        return 0;
+    }
+
+    @Override
+    public double getPriceRoom(String name) {
+        return 0;
+    }
+
+    @Override
     public List<String> showBlockedList() {
 
         List<String> blockedList = new ArrayList<String>();
@@ -212,6 +277,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return null;
     }
 
+    @Override
     public List<String> bookedRooms() {
 
         List<String> bookedRoomsList = new ArrayList<>();
@@ -234,6 +300,7 @@ public class ManagmentDaoImpl implements ManagmentDao {
         return null;
     }
 
+    @Override
     public List<String> userList() {
 
         List<String> userList = new ArrayList<>();

@@ -17,7 +17,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Utils {
-     public static final String VERSION="1.0";
+    public static final String VERSION="1.0";
+
     public static String shaHash(String message){
         try {
             MessageDigest sha2 = MessageDigest.getInstance("SHA-256");
@@ -44,7 +45,7 @@ public class Utils {
                     .openConnection();
             StringBuilder builder = new StringBuilder();
             InputStream inputStream = urlConnection.getInputStream();
-            int read = 0;
+            int read;
             while((read = inputStream.read()) != -1){
                 builder.append((char) read);
             }
@@ -103,5 +104,4 @@ public class Utils {
             }
         }
     }
-
 }
