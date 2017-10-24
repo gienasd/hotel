@@ -65,8 +65,31 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean register(String username,String name, String lastname, String email,String password, String telephone, String accessCode, boolean mailing) {
-        return false;
-    }
+
+            try {
+                PreparedStatement preparedStatement = connector.getConnection().prepareStatement("SELECT * FROM user WHERE username =?");
+                preparedStatement.setString(1,username);
+                ResultSet resulSet = preparedStatement.executeQuery();
+                if(resulSet.next()){  // na początku jest -1, sprawdzamy, jezeli jest 0 tzn że jest taki uzytkownik, jezeli -1, zwracamy false, tzn nie ma takiego użytkownika
+                    return  false;
+                }
+                PreparedStatement preparedStatementInsert = connector.getConnection().prepareStatement("INSERT INTO user VALUES(?,?,?)");
+                preparedStatementInsert.setInt(1,0);
+                preparedStatementInsert.setString(2,name);
+                preparedStatementInsert.setString(3,Utils.shaHash(password));
+                preparedStatementInsert.execute();
+                preparedStatement.close();
+                preparedStatementInsert.close();
+
+
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+
+
 
     @Override
     public boolean loginByAccessCode(String accessCode) {
