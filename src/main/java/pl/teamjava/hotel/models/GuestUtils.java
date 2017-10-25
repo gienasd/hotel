@@ -152,13 +152,12 @@ public class GuestUtils {
         });
     }
 
-    public static void showList(ListView<String> listView,Label label1, Label label2, Label label3, String category) {
+    public static void showList(ListView<String> listView,Label label1, Label label2, Label label3, Label label4, String category) {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             label1.setText(newValue);
-            label2.setText(placeDao.getCityName(new PlaceModel(newValue,category)));
-            label3.setText(placeDao.getRegionName(new PlaceModel(newValue,category)));
-            //labelFreeRoomsH.setText();
-            //labelFreeApartaments.setText();
+            label2.setText("Miasto: " + placeDao.getCityName(new PlaceModel(newValue,category)));
+            label3.setText("Województwo: " + placeDao.getRegionName(new PlaceModel(newValue,category)));
+            label4.setText("Liczba wolnych miejsc: " + String.valueOf(placeDao.getFreePlaceNumber(new PlaceModel(newValue,category))));
         });
     }
 

@@ -58,7 +58,6 @@
       <Button fx:id="buttonLogOut" layoutX="526.0" layoutY="15.0" mnemonicParsing="false" text="Wyloguj" />
       <Label layoutX="114.0" layoutY="192.0" text="LICZBA OSÓB W POKOJU" />
       <ChoiceBox fx:id="choiceBoxPeopleInRoom" layoutX="160.0" layoutY="209.0" prefHeight="25.0" prefWidth="43.0" />
-      <Button fx:id="buttonReserve" layoutX="77.0" layoutY="265.0" mnemonicParsing="false" text="REZERWUJ" />
-      <Label fx:id="labelInfo" alignment="CENTER" layoutX="5.0" layoutY="325.0" prefHeight="62.0" prefWidth="293.0" />
+      <Button fx:id="buttonReserve" layoutX="77.0" layoutY="290.0" mnemonicParsing="false" text="REZERWUJ" />
    </children>
 </AnchorPane>

@@ -54,11 +54,12 @@ public class PlaceDaoImpl implements PlaceDao {
         return nameList;
     }
 
+
     public List<String> getFreePlace(PlaceModel model) {
         List<String> sortedFreeList = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
-                    "SELECT DISTINCT place.name FROM place INNER JOIN room ON room.hotel_id = place.id WHERE place.category = ? AND room.isBooked = ?" //
+                  "SELECT DISTINCT place.name FROM place INNER JOIN room ON room.hotel_id = place.id WHERE place.category = ? AND room.isBooked = ?" //
                     //TODO: jak posortować ilością wolnych miejsc, nie zlicza normalnie
             );
 
@@ -74,6 +75,27 @@ public class PlaceDaoImpl implements PlaceDao {
             e.printStackTrace();
         }
         return sortedFreeList;
+    }
+
+    public Integer getFreePlaceNumber(PlaceModel model) {
+        try {
+            PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
+                    "SELECT place.name, COUNT(room.isBooked) AS num FROM place INNER JOIN room ON room.hotel_id = place.id WHERE place.category = ? AND room.isBooked = ? AND place.name = ? GROUP BY place.name"
+            );
+//TODO: rozdzielić liczby dla poszczególnych hoteli
+            preparedStatement.setString(1,model.getCategory());
+            preparedStatement.setInt(2,0);
+            preparedStatement.setString(3,model.getName());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                return resultSet.getInt("num");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+            return null;
     }
 
     public List<String> getCheapApartment(PlaceModel model) {
