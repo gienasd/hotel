@@ -1,5 +1,8 @@
 package pl.teamjava.hotel.models;
 
+import lombok.Data;
+
+@Data
 public class ManagmentModel extends UserModel {
     private String accessCode;
     private String password;

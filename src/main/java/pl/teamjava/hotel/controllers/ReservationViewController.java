@@ -3,23 +3,18 @@ package pl.teamjava.hotel.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollBar;
-import javafx.scene.control.SplitMenuButton;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.ManagmentDao;
 import pl.teamjava.hotel.models.dao.impl.ManagmentDaoImpl;
 
-import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ReservationViewController implements Initializable {
+public class
+ReservationViewController implements Initializable {
 
     @FXML
     Button buttonLogout, buttonCancel, buttonShowProfile, buttonBack;
@@ -31,28 +26,45 @@ public class ReservationViewController implements Initializable {
     ListView<String> listReservation;
 
     @FXML
-    SplitMenuButton splitProperty;
+    ChoiceBox splitProperty;
 
     private ManagmentDao managmentDao = new ManagmentDaoImpl();
     private ObservableList<String> observableList;
+    private Utils utils = new Utils();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttonBack.setOnMouseClicked(e-> switchView(buttonBack, "managmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> switchView(buttonLogout, "mainView.fxml"));
+        buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "managmentView.fxml"));
+        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
 
         observableList = FXCollections.observableList(managmentDao.bookedRooms());
         listReservation.setItems(observableList);
+
+        buttonCancel.setOnMouseClicked(e-> tryCancel());
+
+        splitProperty.getItems().addAll(managmentDao.placeNames());
+//        splitProperty.getSelectionModel().getSelectedItem().toString();
     }
 
-    public void switchView(Button button, String name){
-        Stage stage = (Stage)button.getScene().getWindow();
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
-            stage.setScene(new Scene(root,600,420));
-            stage.setResizable(false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void tryCancel() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Usuwanie rezerwacji");
+        alert.setHeaderText("");
+        alert.setContentText("Czy na pewno chcesz usunąć rezerwacje?");
+
+        listReservation.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            buttonCancel.setOnMouseClicked(e-> {
+                if(e.getClickCount() == 1) {
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK) {
+                        managmentDao.deleteFromReservation(newValue);
+                    } else {
+                        Utils.createSimpleDialog("Usuwanie rezerwacji", "", "Nie udało się usunąć rezerwacji!");
+                    }
+                }
+            });
+        });
+
+        listReservation.refresh();
     }
 }

@@ -13,7 +13,6 @@ import javafx.stage.StageStyle;
 import pl.teamjava.hotel.models.Utils;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,7 +31,6 @@ public class MainViewController implements Initializable {
         buttonRegister.setOnMouseClicked(e -> registerOpen());
         labelAuthor.setOnMouseClicked(e -> authorsOpen());
 
-
     }
 
     private void authorsOpen() {
@@ -48,7 +46,7 @@ public class MainViewController implements Initializable {
     private void registerOpen() {
         try {
 
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("registerView.fxml"));      // getClassLoader - przeszukuje wszystkie foldery w obrebie projektu
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("registerView.fxml"));
             Stage stageRoot = (Stage)buttonLogin.getScene().getWindow();
             stageRoot.close();
 
@@ -67,7 +65,7 @@ public class MainViewController implements Initializable {
 
     private void loginOpen() {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("loginView.fxml"));      // getClassLoader - przeszukuje wszystkie foldery w obrebie projektu
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("loginView.fxml"));
             Stage stageRoot = (Stage)buttonLogin.getScene().getWindow();
             stageRoot.close();
 
@@ -86,7 +84,7 @@ public class MainViewController implements Initializable {
 
     private void enterAsGuest() {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("guestView.fxml"));      // getClassLoader - przeszukuje wszystkie foldery w obrebie projektu
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("guestView.fxml"));
             Stage stageRoot = (Stage)buttonLogin.getScene().getWindow();
             stageRoot.close();
 

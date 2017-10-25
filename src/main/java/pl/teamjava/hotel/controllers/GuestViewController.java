@@ -61,7 +61,7 @@ public class GuestViewController implements Initializable, IWeatherOberver {
         rButtonFreeRoomC.setOnMouseClicked(s -> GuestUtils.sortByFreeRooms(observableCamp,new PlaceModel("Camping"),listCamp));
         rButtonCityC.setOnMouseClicked(s -> GuestUtils.sortByCities(observableCamp,new PlaceModel("Camping"),listCamp));
 
-        createToggleGroup(rButtonPriceApartmentT,rButtonFreeRoomT,rButtonCityT,rButtonPriceApartmentT);
+        createToggleGroup(rButtonPriceApartmentT,rButtonFreeRoomT,rButtonCityT,null);
 
         rButtonPriceApartmentT.setOnMouseClicked(s -> GuestUtils.sortByApartmentPrice(observableTent,new PlaceModel("Tent"),listTent));
         rButtonFreeRoomT.setOnMouseClicked(s -> GuestUtils.sortByFreeRooms(observableTent,new PlaceModel("Tent"),listTent));
@@ -69,9 +69,9 @@ public class GuestViewController implements Initializable, IWeatherOberver {
 
         reserve();
 
-        showList(listHotel, labelNameH, labelCityH, labelRegionH, labelFreeRoomsH,"Hotel");
-        showList(listCamp, labelNameC, labelCityC, labelRegionC,labelFreeC,"Camping");
-        showList(listTent, labelNameT, labelCityT, labelRegionT,labelFreeT,"Tent");
+        showList(listHotel, labelNameH, labelCityH, labelRegionH,"Hotel");
+        showList(listCamp, labelNameC, labelCityC, labelRegionC,"Camping");
+        showList(listTent, labelNameT, labelCityT, labelRegionT,"Tent");
 
         boxAnimals(cBoxAnimalsH, observableHotel, "Hotel",listHotel);
         boxPool(cBoxPoolH, observableHotel, "Hotel",listHotel);

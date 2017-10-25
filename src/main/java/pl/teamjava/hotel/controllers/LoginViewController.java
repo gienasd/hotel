@@ -49,30 +49,26 @@ public class LoginViewController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
       //  buttonMainPage.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
 // buttonLogin.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
-
+    buttonMainPage.setOnMouseClicked(e->Utils.switchView2(buttonLogin,"/mainView.fxml",600,600,true));
         buttonLogin.setOnMouseClicked(e -> tryLogin());
-        labelRegistration.setOnMouseClicked((e -> switchView(labelRegistration,"registerView.fxml",600,420,false)));
+        labelRegistration.setOnMouseClicked((e -> Utils.switchView2(labelRegistration,"/registerView.fxml",600,420,false)));
        Parent parent= textLogin.getParent();
        parent.addEventHandler(KeyEvent.KEY_PRESSED, e->{
            if (e.getCode() == KeyCode.ENTER) {
               tryLogin();
-
            }
        });
-
     }
-
-
 
     private boolean checkLoginData(){
         String login = textLogin.getText();
         String password = textPassword.getText();
 
         if(login.isEmpty()|| password.isEmpty()){
-            Utils.createSimpleDialog("Logowanie","","Pola nie mog± byæ puste !");
+            Utils.createSimpleDialog("Logowanie","","Pola nie mogï¿½ byï¿½ puste !");
         }
         if(login.length()<=3 || password.length() <=5){
-            Utils.createSimpleDialog("Logowanie","","Dane za krótkie !");
+            Utils.createSimpleDialog("Logowanie","","Dane za krï¿½tkie !");
             textLogin.clear();
             textPassword.clear();
         }
@@ -89,41 +85,12 @@ public class LoginViewController implements Initializable{
             userSession.setUsername(login);
             userSession.setLogedIn(true);
 
-       switchView(buttonLogin,"loggedGuestView.fxml",800,500,true);
+       Utils.switchView2(buttonLogin,"/guestView.fxml",800,500,true);
 
         }else{
             Utils.createSimpleDialog("Logowanie","","Podano niepoprawne dane !");
         }
 
     }
-    private void switchView(Node node, String fxml, int width, int height, boolean newWindow){
-        Stage stage = (Stage)node.getScene().getWindow();
-        if(!newWindow) {
-            try {
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
-                stage.setScene(new Scene(root, width, height));
-                stage.setResizable(false);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else{
-            stage.close();
-            Parent root = null;
-            try {
 
-                root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
-                Stage newStage = new Stage();
-                Scene scene=new Scene(root,width,height);
-                newStage.setResizable(false);
-                newStage.initStyle(StageStyle.DECORATED);
-                newStage.setTitle("Hotel");
-                newStage.setScene(scene);
-//
-                newStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
 }

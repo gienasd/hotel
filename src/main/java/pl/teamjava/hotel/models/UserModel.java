@@ -1,5 +1,8 @@
 package pl.teamjava.hotel.models;
 
+import lombok.Data;
+
+@Data
 public class UserModel {
     private String name;
     private String lastname;
@@ -17,16 +20,10 @@ public class UserModel {
         this.isBlocked = isBlocked;
     }
 
-    public UserModel() {
-    }
-
-    public UserModel(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -34,6 +31,7 @@ public class UserModel {
     public String getLastname() {
         return lastname;
     }
+
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
@@ -41,6 +39,7 @@ public class UserModel {
     public String getUsername() {
         return username;
     }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -48,6 +47,7 @@ public class UserModel {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -55,6 +55,7 @@ public class UserModel {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -62,6 +63,7 @@ public class UserModel {
     public boolean isBlocked() {
         return isBlocked;
     }
+
     public void setBlocked(boolean blocked) {
         isBlocked = blocked;
     }

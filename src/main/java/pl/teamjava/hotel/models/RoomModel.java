@@ -1,5 +1,8 @@
 package pl.teamjava.hotel.models;
 
+import lombok.Data;
+
+@Data
 public class RoomModel {
     private String name;
     private String kindOfRoom;
