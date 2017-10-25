@@ -82,7 +82,6 @@ public class PlaceDaoImpl implements PlaceDao {
             PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
                     "SELECT place.name, COUNT(room.isBooked) AS num FROM place INNER JOIN room ON room.hotel_id = place.id WHERE place.category = ? AND room.isBooked = ? AND place.name = ? GROUP BY place.name"
             );
-//TODO: rozdzielić liczby dla poszczególnych hoteli
             preparedStatement.setString(1,model.getCategory());
             preparedStatement.setInt(2,0);
             preparedStatement.setString(3,model.getName());
