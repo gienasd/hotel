@@ -50,7 +50,7 @@ public class GuestUtils {
     }
 
     public static void sortByFreeRooms(ObservableList<String> observableList, PlaceModel model, ListView<String> listView) {
-        observableList = FXCollections.observableList(placeDao.getFreePlace(model));
+        observableList = FXCollections.observableList(placeDao.getAllFreePlace(model));
         listView.setItems(observableList);
     }
 
@@ -174,6 +174,8 @@ public class GuestUtils {
     }
 
 
-
-
+    public static void showFreePlaces(ObservableList<String> observableList, ListView<String> listView, String category){
+        observableList = FXCollections.observableList(placeDao.getAllFreePlace(new PlaceModel(category)));
+        listView.setItems(observableList);
+    }
 }

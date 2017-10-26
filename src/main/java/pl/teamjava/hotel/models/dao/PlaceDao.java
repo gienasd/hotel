@@ -9,7 +9,7 @@ public interface PlaceDao {
 
     List<String> getPlaceNames(PlaceModel model);
 
-    List<String> getFreePlace(PlaceModel model);
+    List<String> getAllFreePlace(PlaceModel model);
 
     List<String> getCheapApartment(PlaceModel model);
 
@@ -32,5 +32,6 @@ public interface PlaceDao {
     List<String> getPlaceByAmount(PlaceModel model);
 
     Integer getFreePlaceNumber(PlaceModel model);
+    List<String> getFreePlace(PlaceModel model, int freeRooms);
 
 }

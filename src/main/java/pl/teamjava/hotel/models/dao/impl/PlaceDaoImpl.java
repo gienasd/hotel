@@ -55,12 +55,11 @@ public class PlaceDaoImpl implements PlaceDao {
     }
 
 
-    public List<String> getFreePlace(PlaceModel model) {
+    public List<String> getAllFreePlace(PlaceModel model) {
         List<String> sortedFreeList = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
-                  "SELECT DISTINCT place.name FROM place INNER JOIN room ON room.hotel_id = place.id WHERE place.category = ? AND room.isBooked = ?" //
-                    //TODO: jak posortować ilością wolnych miejsc, nie zlicza normalnie
+                  "SELECT DISTINCT place.name FROM place INNER JOIN room ON room.hotel_id = place.id WHERE place.category = ? AND room.isBooked = ?"
             );
 
             preparedStatement.setString(1,model.getCategory());
@@ -96,6 +95,28 @@ public class PlaceDaoImpl implements PlaceDao {
         }
             return null;
     }
+
+    @Override
+    public List<String> getFreePlace(PlaceModel model, int freeRooms) {
+        List<String> getFreeList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
+                    "SELECT place.name, COUNT(room.isBooked) AS num FROM place INNER JOIN room ON room.hotel_id = place.id WHERE place.category = ? AND room.isBooked = ? AND place.name = ? GROUP BY place.name HAVING COUNT(*) >= ?"
+            );
+            preparedStatement.setString(1,model.getCategory());
+            preparedStatement.setInt(2,0);
+            preparedStatement.setString(3,model.getName());
+            preparedStatement.setInt(4,freeRooms);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                getFreeList.add(resultSet.getString("name"));
+            }
+        return getFreeList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;    }
 
     public List<String> getCheapApartment(PlaceModel model) {
         List<String> sortedCheapList = new ArrayList<>();

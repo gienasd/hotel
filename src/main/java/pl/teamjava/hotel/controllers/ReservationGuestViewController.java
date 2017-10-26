@@ -19,6 +19,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import static pl.teamjava.hotel.models.GuestUtils.showFreePlaces;
+import static pl.teamjava.hotel.models.GuestUtils.showPlaces;
+
 public class ReservationGuestViewController implements Initializable {
 
     @FXML
@@ -42,21 +45,16 @@ public class ReservationGuestViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-       // observableHotel = FXCollections.observableList(placeDao.getAllPlaceNames(new PlaceModel("Hotel")));
-       // listViewHotel.setItems(observableHotel);
-       // observableCamp = FXCollections.observableList(placeDao.getAllPlaceNames(new PlaceModel("Camping")));
-       // listViewCamp.setItems(observableCamp);
-       // observableTent = FXCollections.observableList(placeDao.getAllPlaceNames(new PlaceModel("Tent")));
-       // listViewTent.setItems(observableTent);
+        showAllPlaces();
 
-        datePickArrivalDate.setShowWeekNumbers(false);
-        datePickDepartureDate.setShowWeekNumbers(false);
+        weeksOfPickerDate();
 
         GuestUtils.dateUtils(LocalDate.now(),datePickArrivalDate);
         GuestUtils.dateUtils(datePickArrivalDate,datePickDepartureDate);
 
         choiceBoxPeople.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10));
         choiceBoxPeopleInRoom.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10));
+
         choiceBoxPeople.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             choiceBoxPeople.setValue(newValue);
         });
@@ -64,9 +62,9 @@ public class ReservationGuestViewController implements Initializable {
             choiceBoxPeopleInRoom.setValue(newValue);
             checkChoiceBoxValue(choiceBoxPeopleInRoom,choiceBoxPeople);
             howManyRooms(choiceBoxPeopleInRoom,choiceBoxPeople);
-            showPlaces(observableHotel,new PlaceModel("Hotel"),listViewHotel);
-            showPlaces(observableCamp,new PlaceModel("Camping"),listViewCamp);
-            showPlaces(observableTent,new PlaceModel("Tent"),listViewTent);
+            showNeededPlace(observableHotel,new PlaceModel("Hotel"),listViewHotel,howManyRooms(choiceBoxPeopleInRoom,choiceBoxPeople));
+            showNeededPlace(observableCamp,new PlaceModel("Camping"),listViewCamp,howManyRooms(choiceBoxPeopleInRoom,choiceBoxPeople));
+            showNeededPlace(observableTent,new PlaceModel("Tent"),listViewTent,howManyRooms(choiceBoxPeopleInRoom,choiceBoxPeople));
         });
 
         buttonReserve.setOnMouseClicked(s -> tryToReserve());
@@ -74,7 +72,17 @@ public class ReservationGuestViewController implements Initializable {
         buttonLogOut.setOnMouseClicked(s -> tryToLogOut(buttonLogOut));
     }
 
-    private void howManyRooms(ChoiceBox<Integer> box1, ChoiceBox<Integer> box2) {
+    private void weeksOfPickerDate() {
+        datePickArrivalDate.setShowWeekNumbers(false);
+        datePickDepartureDate.setShowWeekNumbers(false);
+    }
+
+    private void showNeededPlace(ObservableList<String> observableList, PlaceModel model, ListView<String> listView, int rooms){
+        observableList = FXCollections.observableList(placeDao.getFreePlace(model,rooms));
+        listView.setItems(observableList);
+    }
+
+    private int howManyRooms(ChoiceBox<Integer> box1, ChoiceBox<Integer> box2) {
         int rooms = 0, value1, value2;
         value1 = box1.getSelectionModel().selectedItemProperty().getValue();
         value2 = box2.getSelectionModel().selectedItemProperty().getValue();
@@ -85,6 +93,8 @@ public class ReservationGuestViewController implements Initializable {
         }else if(value1 < value2 && value2%value1 != 0){
             rooms = (value2/value1)+1;
         }
+
+        return rooms;
     }
 
     private void showPlaces(ObservableList<String> observableList, PlaceModel model, ListView<String> listView){
@@ -123,5 +133,11 @@ public class ReservationGuestViewController implements Initializable {
             labelInfo.setText("Rezerwacja przebiegła poprawnie");
         } else
             labelInfo.setText("Wypełnij wszystkie dane");
+    }
+
+    private void showAllPlaces() {
+        showFreePlaces(observableHotel,listViewHotel, "Hotel");
+        showFreePlaces(observableCamp,listViewCamp, "Camping");
+        showFreePlaces(observableTent,listViewTent, "Tent");
     }
 }
