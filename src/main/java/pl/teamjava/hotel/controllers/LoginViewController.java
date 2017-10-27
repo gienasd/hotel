@@ -47,11 +47,10 @@ public class LoginViewController implements Initializable{
 
 
     public void initialize(URL location, ResourceBundle resources) {
-      //  buttonMainPage.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
-// buttonLogin.getStylesheets().add(getClass().getClassLoader().getResource("css/btnLogin.css").toExternalForm());
-    buttonMainPage.setOnMouseClicked(e->Utils.switchView2(buttonLogin,"/mainView.fxml",600,600,true));
+
+    buttonMainPage.setOnMouseClicked(e->Utils.switchView2(buttonLogin,"/mainView.fxml",600,600,true,StageStyle.UTILITY));
         buttonLogin.setOnMouseClicked(e -> tryLogin());
-        labelRegistration.setOnMouseClicked((e -> Utils.switchView2(labelRegistration,"/registerView.fxml",600,420,false)));
+        labelRegistration.setOnMouseClicked((e -> Utils.switchView2(labelRegistration,"/registerView.fxml",600,420,false,StageStyle.UTILITY)));
        Parent parent= textLogin.getParent();
        parent.addEventHandler(KeyEvent.KEY_PRESSED, e->{
            if (e.getCode() == KeyCode.ENTER) {
@@ -65,10 +64,10 @@ public class LoginViewController implements Initializable{
         String password = textPassword.getText();
 
         if(login.isEmpty()|| password.isEmpty()){
-            Utils.createSimpleDialog("Logowanie","","Pola nie mog� by� puste !");
+            Utils.createSimpleDialog("Logowanie","","Pola nie mogą być puste !");
         }
         if(login.length()<=3 || password.length() <=5){
-            Utils.createSimpleDialog("Logowanie","","Dane za kr�tkie !");
+            Utils.createSimpleDialog("Logowanie","","Dane za krótkie !");
             textLogin.clear();
             textPassword.clear();
         }
@@ -85,7 +84,7 @@ public class LoginViewController implements Initializable{
             userSession.setUsername(login);
             userSession.setLogedIn(true);
 
-       Utils.switchView2(buttonLogin,"/guestView.fxml",800,500,true);
+       Utils.switchView2(buttonLogin,"/reservationGuestView.fxml",800,500,true,StageStyle.DECORATED);
 
         }else{
             Utils.createSimpleDialog("Logowanie","","Podano niepoprawne dane !");

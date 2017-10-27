@@ -3,6 +3,7 @@ package pl.teamjava.hotel.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.StageStyle;
 import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.UserDao;
 import pl.teamjava.hotel.models.dao.impl.UserDaoImpl;
@@ -34,7 +35,7 @@ public class RegisterViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttonMainPageR.setOnMouseClicked(e -> Utils.switchView2(buttonMainPageR, "/mainView.fxml", 600, 600, true));
+        buttonMainPageR.setOnMouseClicked(e -> Utils.switchView2(buttonMainPageR, "/mainView.fxml", 600, 600, true, StageStyle.UTILITY));
         buttonRegister.setOnMouseClicked(e -> checkRegisterData());//tryRegister());
 
     }

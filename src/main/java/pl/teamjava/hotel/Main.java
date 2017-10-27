@@ -10,14 +10,14 @@ import javafx.stage.StageStyle;
 import pl.teamjava.hotel.models.Utils;
 
 public class Main extends Application {
-    ;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("reservationGuestView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
         primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
         primaryStage.initStyle(StageStyle.UTILITY);
-        primaryStage.setScene(new Scene(root, 600, 430));
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

@@ -1,28 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.AccountViewController">
+<AnchorPane prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.AccountViewController">
    <children>
-      <Label layoutX="14.0" layoutY="28.0" text="Imię" />
-      <Label layoutX="14.0" layoutY="81.0" text="Nazwisko" />
-      <Label layoutX="14.0" layoutY="134.0" text="userName" />
-      <Label layoutX="14.0" layoutY="238.0" text="Numer telefonu" />
-      <Label layoutX="14.0" layoutY="183.0" text="Adres e-mail" />
-      <Label layoutX="14.0" layoutY="290.0" text="Hasło" />
-      <TextField fx:id="textName" layoutX="14.0" layoutY="45.0" />
-      <TextField fx:id="textLastName" layoutX="14.0" layoutY="98.0" />
-      <TextField fx:id="textUserName" layoutX="14.0" layoutY="151.0" />
-      <TextField fx:id="textMail" layoutX="14.0" layoutY="200.0" />
-      <TextField fx:id="textPhoneNumber" layoutX="14.0" layoutY="255.0" />
-      <PasswordField fx:id="textPassword" layoutX="14.0" layoutY="307.0" />
-      <ListView fx:id="listViewUser" layoutX="400.0" layoutY="-1.0" prefHeight="400.0" prefWidth="200.0" />
-      <Button fx:id="buttonBack" layoutX="67.0" layoutY="351.0" mnemonicParsing="false" text="Wróć" />
+      <ImageView fitHeight="448.0" fitWidth="606.0" layoutY="-3.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@images/index.jpg" />
+         </image>
+      </ImageView>
+      <ListView fx:id="listViewUser" layoutX="398.0" layoutY="-3.0" prefHeight="448.0" prefWidth="208.0" />
+      <VBox alignment="CENTER" layoutX="57.0" layoutY="68.0" prefHeight="306.0" prefWidth="296.0">
+         <children>
+            <TextField fx:id="textUserName" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Nazwa użytkownika">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="textName" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Imię">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="textLastName" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Nazwisko">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="textMail" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="E-mail">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="textPhoneNumber" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Nr telefonu">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="textPassword" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Hasło">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="buttonBack" mnemonicParsing="false" opacity="0.72" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: black;" text="Wróć">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutX="101.0" layoutY="21.0" prefHeight="40.0" prefWidth="208.0" text="Konto użytkownika" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

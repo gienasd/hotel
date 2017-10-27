@@ -15,7 +15,7 @@
 
 <AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.RegisterViewController">
    <children>
-      <ImageView fitHeight="438.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
+      <ImageView fitHeight="438.0" fitWidth="600.0" pickOnBounds="true">
          <image>
             <Image url="@images/index.jpg" />
          </image>
@@ -28,27 +28,14 @@
             <Reflection />
          </effect>
       </Label>
-      <Label layoutX="53.0" layoutY="14.0" text="by JavaTeam" textFill="WHITE">
-         <font>
-            <Font name="Times New Roman Bold" size="14.0" />
-         </font>
-         <effect>
-            <Reflection />
-         </effect>
-      </Label>
-      <Button fx:id="buttonRegister" defaultButton="true" layoutX="489.0" layoutY="379.0" mnemonicParsing="false" opacity="0.6" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: black;" text="Zarejestruj" textFill="WHITE" textOverrun="CLIP">
+      <Button fx:id="buttonRegister" defaultButton="true" layoutX="471.0" layoutY="382.0" mnemonicParsing="false" opacity="0.6" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: black;" text="Zarejestruj" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="buttonMainPageR" layoutX="450.0" layoutY="10.0" mnemonicParsing="false" opacity="0.6" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 20;" text="Strona główna">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <VBox layoutX="188.0" layoutY="55.0" opacity="0.89" prefHeight="375.0" prefWidth="271.0">
+      <VBox layoutX="165.0" layoutY="54.0" opacity="0.89" prefHeight="375.0" prefWidth="271.0">
          <children>
-            <TextField fx:id="textUsernameR" alignment="CENTER" opacity="0.92" prefHeight="8.0" prefWidth="310.0" promptText="Nazwa użytkownika">
+            <TextField fx:id="textUsernameR" alignment="CENTER" prefHeight="8.0" prefWidth="310.0" promptText="Nazwa użytkownika">
                <font>
                   <Font size="14.0" />
                </font>
@@ -69,7 +56,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="textEmailR" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="E-mail">
+            <TextField fx:id="textEmailR" alignment="CENTER" opacity="0.85" prefHeight="25.0" prefWidth="255.0" promptText="E-mail">
                <font>
                   <Font size="14.0" />
                </font>
@@ -140,10 +127,15 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="240.0" layoutY="2.0" text="Rejestracja" textFill="#f8f8f8">
+      <Label layoutX="221.0" layoutY="13.0" text="Rejestracja" textFill="#f8f8f8">
          <font>
-            <Font name="Times New Roman Bold Italic" size="36.0" />
+            <Font name="Times New Roman Bold Italic" size="30.0" />
          </font>
       </Label>
+      <Button fx:id="buttonMainPageR" layoutX="455.0" layoutY="5.0" mnemonicParsing="false" opacity="0.6" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 20;" stylesheets="@css/main.css" text="Strona główna">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
