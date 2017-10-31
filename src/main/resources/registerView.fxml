@@ -80,7 +80,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </PasswordField>
-            <TextField fx:id="textTelephoneR" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Nr telefonu - opcjonalnie">
+            <TextField fx:id="textPhoneNumberR" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Nr telefonu - opcjonalnie">
                <font>
                   <Font size="14.0" />
                </font>
@@ -88,7 +88,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="textCodeR" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="KOD DOSTĘPU">
+            <TextField fx:id="textAccessCodeR" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="KOD DOSTĘPU">
                <font>
                   <Font size="14.0" />
                </font>
@@ -96,7 +96,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
-            <CheckBox fx:id="checkBoxTermsAccept" mnemonicParsing="false" opacity="0.89" text="Akceptuję warunki korzytsania z seriwsu" textFill="#3418ab">
+            <CheckBox fx:id="checkBoxTermsAccept" mnemonicParsing="false" opacity="0.89" text="Akceptuję warunki korzystania z seriwsu" textFill="#3418ab">
                <font>
                   <Font size="10.0" />
                </font>

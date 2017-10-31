@@ -1,5 +1,8 @@
 package pl.teamjava.hotel;
 
+import com.sun.javafx.css.Style;
+import com.sun.javafx.css.StyleManager;
+import com.sun.javafx.css.Stylesheet;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +16,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
+       Stylesheet style =  StyleManager.loadStylesheet("/css/main.css");
+      //  Application.setUserAgentStylesheet("/css/main.css");
+        StyleManager.getInstance().addUserAgentStylesheet("/css/main.css");
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
         primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
         primaryStage.initStyle(StageStyle.UTILITY);

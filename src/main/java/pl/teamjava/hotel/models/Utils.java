@@ -114,4 +114,22 @@ public class Utils {
 
 
     }
+
+
+
+    public static void loadMainPage() {
+        Stage primaryStage=new Stage();
+        Parent root;
+        try {
+            root = FXMLLoader.load(Utils.class.getResource("/mainView.fxml"));
+            primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
+            primaryStage.initStyle(StageStyle.UTILITY);
+            primaryStage.setScene(new Scene(root, 600, 600));
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

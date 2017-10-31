@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.GuestViewController">
     <children>
-        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane prefHeight="600.0" prefWidth="800.0" stylesheets="@css/main.css" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab text="HOTELE">
                     <content>
@@ -38,13 +38,13 @@
                         <Label fx:id="labelRegionH" alignment="CENTER" layoutX="408.0" layoutY="128.0" prefHeight="17.0" prefWidth="194.0" />
                         <Label fx:id="labelFreeRoomsH" alignment="CENTER" layoutX="408.0" layoutY="145.0" prefHeight="17.0" prefWidth="193.0" />
                         <Label fx:id="labelFreeApartamentsH" alignment="CENTER" layoutX="408.0" layoutY="165.0" prefHeight="17.0" prefWidth="194.0" />
-                        <Label alignment="CENTER" layoutX="408.0" layoutY="200.0" prefHeight="17.0" prefWidth="193.0" text="Pogoda">
+                        <Label alignment="CENTER" layoutX="400.0" layoutY="205.0" prefHeight="17.0" prefWidth="193.0" text="Pogoda">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
                         <Label fx:id="labelWeatherH" alignment="CENTER" layoutX="408.0" layoutY="244.0" prefHeight="17.0" prefWidth="193.0" />
-                        <Separator layoutX="400.0" layoutY="197.0" prefWidth="200.0" />
+                        <Separator layoutX="400.0" layoutY="200.0" prefWidth="200.0" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -71,8 +71,8 @@
                         <Label fx:id="labelCityC" alignment="CENTER" layoutX="408.0" layoutY="110.0" prefHeight="17.0" prefWidth="193.0" />
                         <Label fx:id="labelRegionC" alignment="CENTER" layoutX="408.0" layoutY="127.0" prefHeight="17.0" prefWidth="192.0" />
                         <Label fx:id="labelFreeC" alignment="CENTER" layoutX="408.0" layoutY="144.0" prefHeight="17.0" prefWidth="192.0" />
-                        <Separator layoutX="400.0" layoutY="198.0" prefWidth="200.0" />
-                        <Label alignment="CENTER" layoutX="406.0" layoutY="201.0" prefHeight="17.0" prefWidth="196.0" text="Pogoda">
+                        <Separator layoutX="400.0" layoutY="200.0" prefWidth="200.0" />
+                        <Label alignment="CENTER" layoutX="400.0" layoutY="205.0" prefHeight="17.0" prefWidth="196.0" text="Pogoda">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -102,8 +102,8 @@
                         <Label fx:id="labelCityT" alignment="CENTER" layoutX="408.0" layoutY="111.0" prefHeight="17.0" prefWidth="194.0" />
                         <Label fx:id="labelRegionT" alignment="CENTER" layoutX="408.0" layoutY="128.0" prefHeight="17.0" prefWidth="194.0" />
                         <Label fx:id="labelFreeT" alignment="CENTER" layoutX="408.0" layoutY="145.0" prefHeight="17.0" prefWidth="194.0" />
-                        <Separator layoutX="393.0" layoutY="197.0" prefWidth="200.0" />
-                        <Label alignment="CENTER" layoutX="394.0" layoutY="200.0" prefHeight="17.0" prefWidth="207.0" text="Pogoda">
+                        <Separator layoutX="400.0" layoutY="200.0" prefWidth="200.0" />
+                        <Label alignment="CENTER" layoutX="400.0" layoutY="205.0" prefHeight="17.0" prefWidth="207.0" text="Pogoda">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>

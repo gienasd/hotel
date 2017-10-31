@@ -37,34 +37,11 @@ public class MainViewController implements Initializable {
     }
 
     private void authorsOpen() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Hotel");
-        alert.setHeaderText("O Autorach");
-        alert.getDialogPane().setContent(node("authorView.fxml"));
 
-        alert.setContentText("JAVATEAM 2017\nKontakt : javateam@java.com");
-
-        alert.showAndWait();
+        Utils.switchView2(labelAuthor,"/authorView.fxml",500,342,true,StageStyle.UTILITY);
+//
     }
-    private Node node(String fxmlPath){
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource(fxmlPath));
-           // Stage stageRoot = (Stage)buttonLogin.getScene().getWindow();
-            //stageRoot.close();
 
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
-            primaryStage.initStyle(StageStyle.UTILITY);
-            primaryStage.setScene(new Scene(root, 600, 430));
-            primaryStage.setResizable(false);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-Node node =root;
-        return node;
-    }
     private void registerOpen() {
         try {
           Utils.switchView2(buttonLogin,"/registerView.fxml",600,430,true,StageStyle.UTILITY);

@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface UserDao {
     boolean addUser(ManagmentModel model);
-    boolean login(String name, String password);
-    boolean register (String username, String name,String lastname, String email,String password, String telephone,String accessCode,boolean mailing);
+    boolean login(String username, String password);
+    boolean register ( String name,String lastname, String username,String email, String phoneNumber,boolean isBlocked,String accessCode,String password,boolean mailing);
     boolean loginByAccessCode(String accessCode);
     String getName();
     String getLastName(String name);

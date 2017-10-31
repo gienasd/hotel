@@ -2,6 +2,7 @@ package pl.teamjava.hotel.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,8 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import pl.teamjava.hotel.models.GuestUtils;
 import pl.teamjava.hotel.models.PlaceModel;
+import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.PlaceDao;
 import pl.teamjava.hotel.models.dao.impl.PlaceDaoImpl;
 
@@ -18,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.concurrent.Callable;
 
 import static pl.teamjava.hotel.models.GuestUtils.showFreePlaces;
 import static pl.teamjava.hotel.models.GuestUtils.showPlaces;
@@ -51,7 +55,7 @@ public class ReservationGuestViewController implements Initializable {
 
         GuestUtils.dateUtils(LocalDate.now(),datePickArrivalDate);
         GuestUtils.dateUtils(datePickArrivalDate,datePickDepartureDate);
-
+Utils utils=new Utils();
         choiceBoxPeople.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10));
         choiceBoxPeopleInRoom.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10));
 
@@ -70,8 +74,7 @@ public class ReservationGuestViewController implements Initializable {
         buttonReserve.setOnMouseClicked(s -> tryToReserve());
         buttonAccount.setOnMouseClicked(s -> showAccount(buttonAccount));
         buttonLogOut.setOnMouseClicked(s -> tryToLogOut(buttonLogOut));
-    }
-
+        buttonAccount.getScene().getWindow().setOnCloseRequest(e->Utils.loadMainPage());}
     private void weeksOfPickerDate() {
         datePickArrivalDate.setShowWeekNumbers(false);
         datePickDepartureDate.setShowWeekNumbers(false);

@@ -1,6 +1,7 @@
 package pl.teamjava.hotel.controllers;
 
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,10 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import pl.teamjava.hotel.models.*;
 import pl.teamjava.hotel.models.dao.WeatherDao;
 import pl.teamjava.hotel.models.dao.impl.WeatherDaoImpl;
 import pl.teamjava.hotel.models.services.WeatherService1;
+import sun.plugin2.ipc.windows.WindowsEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +44,7 @@ public class GuestViewController implements Initializable, IWeatherOberver {
     private WeatherService1 weatherService = WeatherService1.getService();
 
     public void initialize(URL location, ResourceBundle resources) {
+
 
         weatherService.registerObserver(this);
 
@@ -90,6 +94,9 @@ public class GuestViewController implements Initializable, IWeatherOberver {
         showWeatherData(listCamp, "Camping");
         showWeatherData(listTent, "Tent");
 
+
+
+
     }
 
     private void reserve() {
@@ -109,7 +116,7 @@ public class GuestViewController implements Initializable, IWeatherOberver {
         Stage stage = (Stage)button.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("registerView.fxml"));
-            stage.setScene(new Scene(root,600,400));
+            stage.setScene(new Scene(root,600,420));
         } catch (IOException e) {
             e.printStackTrace();
         }

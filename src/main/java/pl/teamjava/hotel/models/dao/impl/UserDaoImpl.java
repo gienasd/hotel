@@ -19,7 +19,7 @@ public class UserDaoImpl implements UserDao {
 
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
-                    "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?)"
+                    "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?,?)"
             );
 
             statement.setInt(1,0);
@@ -31,6 +31,7 @@ public class UserDaoImpl implements UserDao {
             statement.setBoolean(7, false);
             statement.setString(8, model.getAccessCode());
             statement.setString(9, model.getPassword());
+            statement.setBoolean(10, model.getMailing());
 
 
             statement.execute();
@@ -44,10 +45,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean login(String name, String password) {
+    public boolean login(String username, String password) {
         try {
             PreparedStatement preparedStatement = connector.getConnection().prepareStatement("SELECT * FROM user WHERE username =?");
-            preparedStatement.setString(1,name);
+            preparedStatement.setString(1,username);
             ResultSet resulSet = preparedStatement.executeQuery();
             if(!resulSet.next()){  // na pocz�tku jest -1, sprawdzamy, jezeli jest 0 tzn �e jest taki uzytkownik, jezeli -1, zwracamy false, tzn nie ma takiego u�ytkownika
                 return  false;
@@ -64,19 +65,28 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean register(String username,String name, String lastname, String email,String password, String telephone, String accessCode, boolean mailing) {
+    public boolean register(String name, String lastname,String username, String email,String phoneNumber,boolean isBlocked, String accessCode, String password,boolean mailing ) {
 
             try {
                 PreparedStatement preparedStatement = connector.getConnection().prepareStatement("SELECT * FROM user WHERE username =?");
                 preparedStatement.setString(1,username);
                 ResultSet resulSet = preparedStatement.executeQuery();
-                if(resulSet.next()){  // na początku jest -1, sprawdzamy, jezeli jest 0 tzn że jest taki uzytkownik, jezeli -1, zwracamy false, tzn nie ma takiego użytkownika
+                if(resulSet.next()){
+                    Utils.createSimpleDialog("Rejestracja", "", "Użytkownik już istnieje w bazie !");
+                    // na początku jest -1, sprawdzamy, jezeli jest 0 tzn że jest taki uzytkownik, jezeli -1, zwracamy false, tzn nie ma takiego użytkownika
                     return  false;
                 }
-                PreparedStatement preparedStatementInsert = connector.getConnection().prepareStatement("INSERT INTO user VALUES(?,?,?)");
+                PreparedStatement preparedStatementInsert = connector.getConnection().prepareStatement("INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?,?)");
                 preparedStatementInsert.setInt(1,0);
                 preparedStatementInsert.setString(2,name);
-                preparedStatementInsert.setString(3,Utils.shaHash(password));
+                preparedStatementInsert.setString(3,lastname);
+                preparedStatementInsert.setString(4,username);
+                preparedStatementInsert.setString(5,email);
+                preparedStatementInsert.setString(6,phoneNumber);
+                preparedStatementInsert.setBoolean(7,false);
+                preparedStatementInsert.setString(8,accessCode);//.isEmpty()?"null":accessCode);
+                preparedStatementInsert.setString(9,Utils.shaHash(password));
+                preparedStatementInsert.setBoolean(10,mailing);
                 preparedStatementInsert.execute();
                 preparedStatement.close();
                 preparedStatementInsert.close();
@@ -93,6 +103,19 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean loginByAccessCode(String accessCode) {
+        try {
+            PreparedStatement preparedStatement = connector.getConnection().prepareStatement("SELECT * FROM user WHERE accesCode =?");
+            preparedStatement.setString(1,accessCode);
+            ResultSet resulSet = preparedStatement.executeQuery();
+            if(!resulSet.next()){  // na pocz�tku jest -1, sprawdzamy, jezeli jest 0 tzn �e jest taki uzytkownik, jezeli -1, zwracamy false, tzn nie ma takiego u�ytkownika
+                return  false;
+            }
+            session.setId(resulSet.getInt("id"));
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 

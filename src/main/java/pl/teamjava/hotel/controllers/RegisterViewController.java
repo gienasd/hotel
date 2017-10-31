@@ -10,6 +10,8 @@ import pl.teamjava.hotel.models.dao.impl.UserDaoImpl;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by lukasz on 2017-10-01.
@@ -17,14 +19,13 @@ import java.util.ResourceBundle;
 public class RegisterViewController implements Initializable {
 
     private UserDao userdao = new UserDaoImpl();
-    @FXML
-    private Hyperlink labelAuthorR;
+
 
     @FXML
     private Button buttonRegister, buttonMainPageR;
 
     @FXML
-    private TextField textUsernameR, textNameR, textLastnameR, textEmailR, textCodeR, textTelephoneR;
+    private TextField textUsernameR, textNameR, textLastnameR, textEmailR, textAccessCodeR, textPhoneNumberR;
 
     @FXML
     private PasswordField textPasswordR, textPasswordRepeatR;
@@ -36,7 +37,7 @@ public class RegisterViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonMainPageR.setOnMouseClicked(e -> Utils.switchView2(buttonMainPageR, "/mainView.fxml", 600, 600, true, StageStyle.UTILITY));
-        buttonRegister.setOnMouseClicked(e -> checkRegisterData());//tryRegister());
+        buttonRegister.setOnMouseClicked(e -> tryRegister());
 
     }
 
@@ -46,8 +47,8 @@ public class RegisterViewController implements Initializable {
         String lastname = textLastnameR.getText();
         String email = textEmailR.getText();
         String password = textPasswordR.getText();
-        String telephone = textTelephoneR.getText();
-        String accessCode = textCodeR.getText();
+        String phoneNumber = textPhoneNumberR.getText();
+        String accessCode = textAccessCodeR.getText();
         boolean mailing = checkBoxEmailsAccept.isSelected();
 
 
@@ -55,12 +56,17 @@ public class RegisterViewController implements Initializable {
             return;
         }
 
-        if (userdao.register(username, name, lastname, email, password, telephone, accessCode, mailing)) {
+        if (userdao.register( name, lastname,username, email,  phoneNumber,false, accessCode, password,mailing)) {
             Utils.createSimpleDialog("Rejestracja", "", "Zarejestrowałeś się poprawnie");
-        } else {
-            Utils.createSimpleDialog("Rejestracja", "", "Podany login już istnieje");
+            textUsernameR.clear();
             textNameR.clear();
+            textLastnameR.clear();
+            textEmailR.clear();
             textPasswordR.clear();
+            textPasswordRepeatR.clear();
+            textPhoneNumberR.clear();
+            textAccessCodeR.clear();
+             checkBoxEmailsAccept.setSelected(false);
         }
     }
 
@@ -71,9 +77,16 @@ public class RegisterViewController implements Initializable {
         String email = textEmailR.getText();
         String password = textPasswordR.getText();
         String passwordRepeat = textPasswordRepeatR.getText();
-        String telephone = textTelephoneR.getText();
-        String accessCode = textCodeR.getText();
+        String phoneNumber = textPhoneNumberR.getText();
+        //String accessCode = textAccessCodeR.getText();
         boolean terms = checkBoxTermsAccept.isSelected();
+        Pattern namePattern= Pattern.compile("^[\\p{L} .'-]+$");
+        Matcher nameMatcher=namePattern.matcher(name);
+        Matcher lastnameMatcher = namePattern.matcher(lastname);
+        if(!nameMatcher.matches()||!lastnameMatcher.matches()){
+            Utils.createSimpleDialog("Rejestracja", "", "Błędnie wypełnione pola : \"Imię\" lub \"Nazwisko\"");
+            return false;
+        }
         if (username.isEmpty() || name.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Utils.createSimpleDialog("Rejestracja", "", "Pola nie mogą być puste !");
             return false;
@@ -96,6 +109,12 @@ public class RegisterViewController implements Initializable {
                 Utils.createSimpleDialog("Rejestracja", "", "Podałeś błędny adres e-mail");
                 return false;
             }
+        Pattern teleponePattern= Pattern.compile("\\d{13}|\\d{9}|\\+\\d{11}");
+        Matcher phoneMatcher = teleponePattern.matcher(phoneNumber);
+        if(!phoneMatcher.matches()&&(!(textPhoneNumberR.getText().isEmpty()))){
+            Utils.createSimpleDialog("Rejestracja", "", "Podałeś błędny numer telefonu");
+            return false;
+        }
             return true;
         }
     }
