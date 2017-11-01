@@ -16,7 +16,7 @@
 
 <AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.LoginViewController">
    <children>
-      <ImageView fitHeight="441.0" fitWidth="609.0" pickOnBounds="true">
+      <ImageView fitHeight="430.0" fitWidth="600.0" pickOnBounds="true">
          <image>
             <Image url="@images/index.jpg" />
          </image>
@@ -70,12 +70,7 @@
             </Button>
          </children>
       </VBox>
-      <Hyperlink fx:id="labelAdmin" alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="11.0" text="Panel administracyjny" textFill="#2aa105">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Hyperlink>
-      <VBox fx:id="vBoxAccesCode" layoutX="173.0" layoutY="54.0" prefHeight="185.0" prefWidth="255.0">
+      <VBox fx:id="vBoxAccesCode" alignment="TOP_CENTER" layoutX="173.0" layoutY="121.0" prefHeight="200.0" prefWidth="255.0">
          <children>
             <PasswordField fx:id="textAccessCode" alignment="CENTER" opacity="0.8" prefHeight="25.0" prefWidth="255.0" promptText="ACCESS CODE">
                <font>
@@ -85,7 +80,25 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </PasswordField>
+            <Button fx:id="buttonLoginByAccessCode" defaultButton="true" mnemonicParsing="false" opacity="0.42" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: black;" text="OK" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="26.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
+      <VBox alignment="CENTER" layoutX="220.0" layoutY="22.0" prefHeight="30.0" prefWidth="160.0">
+         <children>
+            <Hyperlink fx:id="labelAdmin" alignment="CENTER" contentDisplay="CENTER" text="Panel administracyjny" textFill="#2aa105">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </VBox>
+      <Label fx:id="liii" layoutX="47.0" layoutY="52.0" text="Label" />
    </children>
 </AnchorPane>
