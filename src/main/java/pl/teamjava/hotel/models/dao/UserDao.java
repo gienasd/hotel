@@ -10,6 +10,7 @@ public interface UserDao {
     boolean login(String username, String password);
     boolean register ( String name,String lastname, String username,String email, String phoneNumber,boolean isBlocked,String accessCode,String password,boolean mailing);
     boolean loginByAccessCode(String accessCode);
+    String getNameById();
     String getName();
     String getLastName(String name);
     String getUserName(String name);

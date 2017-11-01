@@ -120,6 +120,24 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public String getNameById() {
+        try {
+            PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
+                    "SELECT * FROM user WHERE id = ?"
+            );
+            preparedStatement.setInt(1,session.getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                return resultSet.getString("name")+" "+resultSet.getString("lastname");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    @Override
     public String getName() {
         try {
             PreparedStatement preparedStatement = connector.getConnection().prepareStatement(

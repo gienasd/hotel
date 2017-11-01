@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.ManagmentDao;
+import pl.teamjava.hotel.models.dao.UserDao;
 import pl.teamjava.hotel.models.dao.impl.ManagmentDaoImpl;
+import pl.teamjava.hotel.models.dao.impl.UserDaoImpl;
 
 import java.net.URL;
 import java.util.Optional;
@@ -17,17 +19,19 @@ public class
 ReservationViewController implements Initializable {
 
     @FXML
-    Button buttonLogout, buttonCancel, buttonShowProfile, buttonBack;
+    Button buttonLogout, buttonCancel, buttonShowProfile, buttonBack, buttonMailer;
 
     @FXML
     ScrollBar scrollReservation;
 
     @FXML
     ListView<String> listReservation;
+    @FXML
+    private Label labelLogedUser;
 
     @FXML
     ChoiceBox splitProperty;
-
+    UserDao userDao=new UserDaoImpl();
     private ManagmentDao managmentDao = new ManagmentDaoImpl();
     private ObservableList<String> observableList;
     private Utils utils = new Utils();
@@ -44,6 +48,10 @@ ReservationViewController implements Initializable {
 
         splitProperty.getItems().addAll(managmentDao.placeNames());
 //        splitProperty.getSelectionModel().getSelectedItem().toString();
+        labelLogedUser.setText("Zalogowany : "+userDao.getNameById());
+        if(userDao.getNameById().equals("Jan Kowalski")){
+            buttonMailer.setVisible(true);
+        }
     }
 
     private void tryCancel() {
