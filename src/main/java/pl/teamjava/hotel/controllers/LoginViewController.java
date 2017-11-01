@@ -102,7 +102,7 @@ public class LoginViewController implements Initializable {
             userSession.setUsername(login);
             userSession.setLogedIn(true);
 
-            Utils.switchView2(buttonLogin, "/reservationGuestView.fxml", 800, 500, true, StageStyle.DECORATED);
+            Utils.switchView2(buttonLogin, "/reservationView.fxml", 800, 500, true, StageStyle.DECORATED);
 
         } else {
             Utils.createSimpleDialog("Logowanie", "", "Podano niepoprawne dane !");

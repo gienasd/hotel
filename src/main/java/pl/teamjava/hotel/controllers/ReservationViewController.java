@@ -35,7 +35,7 @@ ReservationViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "managmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
+        buttonLogout.setOnMouseClicked(e-> Utils.loadMainPage());
 
         observableList = FXCollections.observableList(managmentDao.bookedRooms());
         listReservation.setItems(observableList);
