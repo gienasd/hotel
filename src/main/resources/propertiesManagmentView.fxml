@@ -40,5 +40,10 @@
       <Button fx:id="buttonEdit" layoutX="230.0" layoutY="222.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Edytuj własność" />
       <Button fx:id="buttonRemove" layoutX="230.0" layoutY="179.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Usuń własność" />
       <Button fx:id="buttonAdd" layoutX="230.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Dodaj własność" />
+      <Label fx:id="labelLogedUser" layoutX="10.0" layoutY="408.0" prefHeight="17.0" prefWidth="240.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

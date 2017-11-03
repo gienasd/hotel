@@ -74,7 +74,7 @@ Utils utils=new Utils();
         buttonReserve.setOnMouseClicked(s -> tryToReserve());
         buttonAccount.setOnMouseClicked(s -> showAccount(buttonAccount));
         buttonLogOut.setOnMouseClicked(s -> tryToLogOut(buttonLogOut));
-        buttonAccount.getScene().getWindow().setOnCloseRequest(e->Utils.loadMainPage());}
+        buttonAccount.getScene().getWindow().setOnCloseRequest(e->Utils.loadMainPage(buttonAccount));}
     private void weeksOfPickerDate() {
         datePickArrivalDate.setShowWeekNumbers(false);
         datePickDepartureDate.setShowWeekNumbers(false);

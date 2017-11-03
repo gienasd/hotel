@@ -2,6 +2,7 @@ package pl.teamjava.hotel.controllers;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,8 +32,7 @@ public class LoginViewController implements Initializable {
     private Session userSession = Session.getInstance();
     @FXML
     private TextField textLogin;
-@FXML
-Label liii;
+
     @FXML
     private PasswordField textPassword,textAccessCode;
 
@@ -53,18 +53,21 @@ Label liii;
 
     public void initialize(URL location, ResourceBundle resources) {
         vBoxAccesCode.setVisible(false);
-        buttonMainPage.setOnMouseClicked(e -> Utils.switchView2(buttonLogin, "/mainView.fxml", 600, 600, true, StageStyle.UTILITY));
+        buttonMainPage.setOnMouseClicked(e -> Utils.switchView2(buttonLogin, "mainView.fxml", 600, 600, true, StageStyle.UTILITY));
         buttonLogin.setOnMouseClicked(e -> tryLogin());
         buttonLoginByAccessCode.setOnMouseClicked(e->tryLoginByAccessCode());
-        labelRegistration.setOnMouseClicked((e -> Utils.switchView2(labelRegistration, "/registerView.fxml", 600, 420, false, StageStyle.UTILITY)));
+        labelRegistration.setOnMouseClicked((e -> Utils.switchView2(labelRegistration, "registerView.fxml", 600, 420, false, StageStyle.UTILITY)));
         labelAdmin.setOnMouseClicked(e -> accessCode());
-        Parent parent = textLogin.getParent();
+        buttonLoginByAccessCode.setDisable(true);
+        Parent parent = buttonLogin.getParent();
+        if(!buttonLogin.isDisable())
         parent.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if ((e.getCode() == KeyCode.ENTER) ){
                 tryLogin();
             }
         });
-        Parent parent2 = textAccessCode.getParent();
+        Parent parent2 = buttonLoginByAccessCode.getParent();
+        if(!buttonLoginByAccessCode.isDisable())
         parent.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if ((e.getCode() == KeyCode.ENTER) ){
                 tryLoginByAccessCode();
@@ -76,22 +79,43 @@ Label liii;
     }
 
     private void tryLoginByAccessCode() {
-        Alert alert=new Alert(Alert.AlertType.ERROR,"błąd",ButtonType.APPLY);
-        alert.showAndWait();
+       if(!checkLoginByAccessCode()){
+           return;
+       }
+       if(userdao.loginByAccessCode(textAccessCode.getText())){
+           String accessCode=textAccessCode.getText();
+           userSession.setAccessCode(accessCode);
+           Utils.switchView2(buttonLoginByAccessCode,"managmentView.fxml",600,420,true,StageStyle.UNDECORATED);
+       }else {
+           Utils.createSimpleDialog("Logowanie", "", "Podano niepoprawne dane !");
+       }
     }
 
-    private boolean accessCode() {
+    private boolean checkLoginByAccessCode() {
+        String accessCode = textAccessCode.getText();
+        if (accessCode.isEmpty() ) {
+            Utils.createSimpleDialog("Logowanie", "", "Pola nie mogą być puste !");
+
+        }
+        return  true;
+    }
+
+    private void accessCode() {
         if (labelAdmin.getText().equals("Panel administracyjny")) {
-            labelAdmin.setText("Okno logowania");
+            buttonLogin.setDisable(true);
             vBoxLogin.setVisible(false);
+            buttonLoginByAccessCode.setDisable(false);
             vBoxAccesCode.setVisible(true);
-            return true;
-        } else if  (labelAdmin.getText().equals("Okno logowania"))
+            labelAdmin.setText("Okno logowania");
+
+        } else{// if  (labelAdmin.getText().equals("Okno logowania"))
+            buttonLogin.setDisable(false);
+            buttonLoginByAccessCode.setDisable(true);
             vBoxLogin.setVisible(true);
             vBoxAccesCode.setVisible(false);
-            labelAdmin.setText("Panel administracyjny");
+            labelAdmin.setText("Panel administracyjny");}
 
-            return false;
+
 
 
     }
@@ -118,11 +142,11 @@ Label liii;
             return;
         }
         if (userdao.login(login, password)) {
-
+//           userSession.setId(userdao.getUserId(login));
             userSession.setUsername(login);
             userSession.setLogedIn(true);
 
-            Utils.switchView2(buttonLogin, "/reservationView.fxml", 600, 420, true, StageStyle.DECORATED);
+            Utils.switchView2(buttonLogin, "reservationView.fxml", 600, 420, true, StageStyle.DECORATED);
 
         } else {
             Utils.createSimpleDialog("Logowanie", "", "Podano niepoprawne dane !");

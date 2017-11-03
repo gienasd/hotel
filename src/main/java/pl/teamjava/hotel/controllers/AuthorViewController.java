@@ -1,9 +1,13 @@
 package pl.teamjava.hotel.controllers;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -29,11 +33,9 @@ public class AuthorViewController implements Initializable {
         labelAuthor1.setOnMouseClicked(e -> author1());
         labelAuthor2.setOnMouseClicked(e -> author2());
         labelAuthor3.setOnMouseClicked(e -> author3());
-        labelAuthor4.setOnMouseClicked(e -> author4());}
+        labelAuthor4.setOnMouseClicked(e -> author4());
 
-
-
-
+    }
     private void author1() {
         Utils.createSimpleDialog("O Autorach :", "Agata Anaszewicz", "Junior Java Developer.Pasjonatka programowania... ");
     }

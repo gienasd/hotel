@@ -80,7 +80,7 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </PasswordField>
-            <Button fx:id="buttonLoginByAccessCode" defaultButton="true" mnemonicParsing="false" opacity="0.42" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: black;" text="OK" textFill="WHITE" textOverrun="CLIP">
+            <Button fx:id="buttonLoginByAccessCode" defaultButton="true" mnemonicParsing="false" opacity="0.42" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: black;" text="Enter" textFill="WHITE" textOverrun="CLIP">
                <font>
                   <Font size="14.0" />
                </font>

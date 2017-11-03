@@ -13,7 +13,6 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
 
     MySqlConnector connector = MySqlConnector.getInstance();
-    private Session session = Session.getInstance();
 
     public boolean addUser(ManagmentModel model) {
 
@@ -53,7 +52,6 @@ public class UserDaoImpl implements UserDao {
             if(!resulSet.next()){  // na pocz�tku jest -1, sprawdzamy, jezeli jest 0 tzn �e jest taki uzytkownik, jezeli -1, zwracamy false, tzn nie ma takiego u�ytkownika
                 return  false;
             }
-            session.setId(resulSet.getInt("id"));
             return resulSet.getString("password").equals(Utils.shaHash(password));  // has�o poprawne
 
 
@@ -104,14 +102,13 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean loginByAccessCode(String accessCode) {
         try {
-            PreparedStatement preparedStatement = connector.getConnection().prepareStatement("SELECT * FROM user WHERE accesCode =?");
+            PreparedStatement preparedStatement = connector.getConnection().prepareStatement("SELECT * FROM user WHERE accessCode =?");
             preparedStatement.setString(1,accessCode);
             ResultSet resulSet = preparedStatement.executeQuery();
             if(!resulSet.next()){  // na pocz�tku jest -1, sprawdzamy, jezeli jest 0 tzn �e jest taki uzytkownik, jezeli -1, zwracamy false, tzn nie ma takiego u�ytkownika
                 return  false;
             }
-            session.setId(resulSet.getInt("id"));
-
+            return resulSet.getString("accessCode").equals(accessCode);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,22 +116,7 @@ public class UserDaoImpl implements UserDao {
         return false;
     }
 
-    @Override
-    public String getNameById() {
-        try {
-            PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
-                    "SELECT * FROM user WHERE id = ?"
-            );
-            preparedStatement.setInt(1,session.getId());
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                return resultSet.getString("name")+" "+resultSet.getString("lastname");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
 
     @Override
@@ -147,6 +129,23 @@ public class UserDaoImpl implements UserDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 return resultSet.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Integer getUserId(String username) {
+        try {
+            PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
+                    "SELECT user.name FROM user WHERE username = ? "
+            );
+            preparedStatement.setString(1,username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                return resultSet.getInt("id");
             }
         } catch (SQLException e) {
             e.printStackTrace();

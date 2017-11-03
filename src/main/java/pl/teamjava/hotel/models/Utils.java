@@ -75,26 +75,28 @@ public class Utils {
             e.printStackTrace();
         }
     }
-    public static void switchView2(Node node, String fxml, int width, int height, boolean newWindow,StageStyle style){
+    public static Node switchView2(Node node, String fxml, int width, int height, boolean newWindow,StageStyle style){
         Stage stage = (Stage)node.getScene().getWindow();
         if(!newWindow) {
             Parent root =null;
             try {
 
-                root =  FXMLLoader.load(Utils.class.getResource(fxml));
+                root =  FXMLLoader.load(Utils.class.getClassLoader().getResource(fxml));
                // root = loader.load();
                 stage.setScene(new Scene(root, width, height));
                 stage.setResizable(false);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            return root;
         }else{
             stage.close();
             Parent root = null;
+            Stage newStage = new Stage();
             try {
-              root= FXMLLoader.load(Utils.class.getResource(fxml));
+              root= FXMLLoader.load(Utils.class.getClassLoader().getResource(fxml));
                // root = loader.load();
-                Stage newStage = new Stage();
+
                 Scene scene=new Scene(root,width,height);
                 newStage.setResizable(false);
                 newStage.initStyle(style);
@@ -104,6 +106,7 @@ public class Utils {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            return root;
         }
     }
 
@@ -117,13 +120,13 @@ public class Utils {
 
 
 
-    public static void loadMainPage() {
-        Stage primaryStage=new Stage();
-        Parent root;
+    public static void loadMainPage(Node node) {
+        Stage primaryStage = (Stage)node.getScene().getWindow();
+        Parent root=null;
         try {
-            root = FXMLLoader.load(Utils.class.getResource("/mainView.fxml"));
+            root = FXMLLoader.load(Utils.class.getClassLoader().getResource("mainView.fxml"));
             primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
-            primaryStage.initStyle(StageStyle.UTILITY);
+//            primaryStage.initStyle(StageStyle.UTILITY);
             primaryStage.setScene(new Scene(root, 600, 600));
             primaryStage.setResizable(false);
             primaryStage.show();

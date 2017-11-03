@@ -14,7 +14,7 @@ import pl.teamjava.hotel.models.*;
 import pl.teamjava.hotel.models.dao.WeatherDao;
 import pl.teamjava.hotel.models.dao.impl.WeatherDaoImpl;
 import pl.teamjava.hotel.models.services.WeatherService1;
-import sun.plugin2.ipc.windows.WindowsEvent;
+
 
 import java.io.IOException;
 import java.net.URL;

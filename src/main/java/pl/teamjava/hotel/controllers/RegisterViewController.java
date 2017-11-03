@@ -36,7 +36,7 @@ public class RegisterViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttonMainPageR.setOnMouseClicked(e -> Utils.switchView2(buttonMainPageR, "/mainView.fxml", 600, 600, true, StageStyle.UTILITY));
+        buttonMainPageR.setOnMouseClicked(e -> Utils.switchView2(buttonMainPageR, "mainView.fxml", 600, 600, true, StageStyle.UTILITY));
         buttonRegister.setOnMouseClicked(e -> tryRegister());
 
     }

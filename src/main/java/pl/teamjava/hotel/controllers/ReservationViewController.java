@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.ManagmentDao;
 import pl.teamjava.hotel.models.dao.UserDao;
@@ -35,11 +36,13 @@ ReservationViewController implements Initializable {
     private ManagmentDao managmentDao = new ManagmentDaoImpl();
     private ObservableList<String> observableList;
     private Utils utils = new Utils();
+    private Session userSession = Session.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "managmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> Utils.loadMainPage());
+        buttonLogout.setOnMouseClicked(e-> Utils.loadMainPage(buttonLogout));
+
 
         observableList = FXCollections.observableList(managmentDao.bookedRooms());
         listReservation.setItems(observableList);
@@ -48,8 +51,8 @@ ReservationViewController implements Initializable {
 
         splitProperty.getItems().addAll(managmentDao.placeNames());
 //        splitProperty.getSelectionModel().getSelectedItem().toString();
-        labelLogedUser.setText("Zalogowany : "+userDao.getNameById());
-        if(userDao.getNameById().equals("Jan Kowalski")){
+        labelLogedUser.setText("Zalogowany : "+userDao.getName()+" "+userDao.getLastName(userDao.getName()));
+        if(userSession.getId()==1){
             buttonMailer.setVisible(true);
         }
     }
