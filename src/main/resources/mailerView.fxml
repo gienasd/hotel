@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -41,13 +42,23 @@
                            <graphic>
                               <TextField />
                            </graphic></MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Login">
+                           <graphic>
+                              <TextField fx:id="textEmailLogin" />
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Hasło">
+                           <graphic>
+                              <PasswordField fx:id="textEmailPassword" />
+                           </graphic>
+                        </MenuItem>
                         <MenuItem mnemonicParsing="false" text="Temat">
                            <graphic>
-                              <TextField />
+                              <TextField fx:id="textEmailSubject" />
                            </graphic></MenuItem>
                         <MenuItem mnemonicParsing="false" text="Treść">
                            <graphic>
-                              <TextArea prefHeight="200.0" prefWidth="200.0" />
+                              <TextArea fx:id="textEmailContent" prefHeight="200.0" prefWidth="200.0" />
                            </graphic></MenuItem>
                   </items>
                 </Menu>

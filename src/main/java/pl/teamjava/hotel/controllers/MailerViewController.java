@@ -1,6 +1,7 @@
 package pl.teamjava.hotel.controllers;
 
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,13 +14,16 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by lukasz on 2017-11-01.
  */
-public class MailerViewController implements Initializable{
+public class MailerViewController implements Initializable {
 
     @FXML
     private ProgressBar sendingProgressBar;
@@ -32,47 +36,71 @@ public class MailerViewController implements Initializable{
     @FXML
     private TextField textRecipient;
 
+    private final String smtpHost = "poczta.interia.pl";
+    private final int smtpPort = 465;
+    private final String user = "hansonq@interia.pl";
+    private final String pwd = "Lolek13579";
+    private ObservableList<String> observableList;
 
-    private void mailSending(String recipient){
-        String destmailid = recipient;
-        String sender="";
-        String smtpHost="";
-        String smtpPort ="25";
-        final String user = "";
-        final String pwd = "";
-        Properties properties=new Properties();
+    private ExecutorService executorService;
+    private Session session;
+    private Properties properties;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        for (listRecipments.:
+             ) {
+            
+        }
+        buttonSend.setOnMouseClicked(listRecipments));
+    }
+
+    public MailerViewController() {
+        executorService = Executors.newSingleThreadExecutor();
+        listRecipments = new ArrayList<String>();
+    }
+
+
+
+    private void sendMessage(String messageText, String recipient, String sender) {
+
+        properties = new Properties();
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", smtpHost);
         properties.put("mail.smtp.port", smtpPort);
 
-        Session sessionobj = Session.getInstance(properties,
+        session = Session.getInstance(properties,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(user, pwd);
                     }
                 });
+
+
         try {
-            //Create MimeMessage object & set values
-            Message messageobj = new MimeMessage(sessionobj);
-            messageobj.setFrom(new InternetAddress(destmailid));
-            messageobj.setRecipients(Message.RecipientType.TO,InternetAddress.parse(sender));
-            messageobj.setSubject("This is test Subject");
-            messageobj.setText("Checking sending emails by using JavaMail APIs");
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(recipient));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(sender));
+            message.setSubject("This is test Subject");
+            message.setText("Checking sending emails by using JavaMail APIs");
             //Now send the message
-            Transport transport=sessionobj.getTransport("smtp");
-            transport.connect(smtpHost,25,user,pwd);
-            Transport.send(messageobj);
-            transport.close();
-            Utils.createSimpleDialog("Mailer","","Udało sie wysłać maila");
-        } catch (MessagingException exp) {
-            throw new RuntimeException(exp);
+            Runnable runnable = () -> {
+                try {
+                    Transport.send(message);
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
+            };
+            executorService.execute(runnable);
+            Utils.createSimpleDialog("Mailer", "", "Udało sie wysłać maila");
+        } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+
         }
 
-    }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-buttonSend.setOnMouseClicked(e->mailSending(textRecipient.getText()));
     }
 }
