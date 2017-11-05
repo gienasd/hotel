@@ -43,7 +43,7 @@ public class MailerDaoImpl implements MailerDao {
     @Override
     public boolean changeLogin(String login) {
         try {
-            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE login FROM mailer SET login = ? where id = ?");
+            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET login = ? where id = ?");
             statement.setString(1, login);
             statement.setInt(1, 1);
             ResultSet result = statement.executeQuery();
@@ -73,7 +73,7 @@ public class MailerDaoImpl implements MailerDao {
     @Override
     public boolean changePassword(String password) {
         try {
-            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE password FROM mailer SET password = ? where id = ?");
+            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET password = ? where id = ?");
             statement.setString(1, password);
             statement.setInt(1, 1);
             ResultSet result = statement.executeQuery();
@@ -104,7 +104,7 @@ public class MailerDaoImpl implements MailerDao {
     @Override
     public boolean changeSmtpServer(String server) {
         try {
-            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE smtpServer FROM mailer SET smtpServer = ? where id = ?");
+            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET smtpServer = ? where id = ?");
             statement.setString(1, server);
             statement.setInt(1, 1);
             ResultSet result = statement.executeQuery();
@@ -135,7 +135,7 @@ public class MailerDaoImpl implements MailerDao {
     @Override
     public boolean changeSmtpPort(int port) {
         try {
-            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE smtpPort FROM mailer SET smtpPort = ? where id = ?");
+            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET smtpPort = ? where id = ?");
             statement.setInt(1, port);
             statement.setInt(1, 1);
             ResultSet result = statement.executeQuery();
@@ -168,7 +168,7 @@ public class MailerDaoImpl implements MailerDao {
     @Override
     public boolean changeSubject(String subject) {
         try {
-            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE subject FROM mailer SET subject = ? where id = ?");
+            PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET subject = ? where id = ?");
             statement.setString(1, subject);
             statement.setInt(1, 1);
             ResultSet result = statement.executeQuery();
@@ -201,7 +201,7 @@ public class MailerDaoImpl implements MailerDao {
     @Override
     public boolean changeContent(String content) {
         try {
-        PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE content FROM mailer SET content = ? where id = ?");
+        PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET content = ? where id = ?");
         statement.setString(1, content);
         statement.setInt(1, 1);
         ResultSet result = statement.executeQuery();
