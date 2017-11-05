@@ -19,7 +19,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.Utils;
+import pl.teamjava.hotel.models.dao.MailerDao;
 import pl.teamjava.hotel.models.dao.UserDao;
+import pl.teamjava.hotel.models.dao.impl.MailerDaoImpl;
 import pl.teamjava.hotel.models.dao.impl.UserDaoImpl;
 
 import java.io.IOException;

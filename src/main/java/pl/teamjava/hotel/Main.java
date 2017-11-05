@@ -19,7 +19,7 @@ public class Main extends Application {
        Stylesheet style =  StyleManager.loadStylesheet("/css/main.css");
       //  Application.setUserAgentStylesheet("/css/main.css");
         StyleManager.getInstance().addUserAgentStylesheet("/css/main.css");
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mailerView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
         primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.setScene(new Scene(root, 600, 600));

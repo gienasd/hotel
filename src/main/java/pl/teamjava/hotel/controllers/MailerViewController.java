@@ -1,14 +1,15 @@
 package pl.teamjava.hotel.controllers;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import pl.teamjava.hotel.models.Utils;
+import pl.teamjava.hotel.models.dao.MailerDao;
+import pl.teamjava.hotel.models.dao.impl.MailerDaoImpl;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -24,43 +25,53 @@ import java.util.concurrent.Executors;
  * Created by lukasz on 2017-11-01.
  */
 public class MailerViewController implements Initializable {
+    @FXML
+    private TextField textEmailLogin;
 
+    @FXML
+    private PasswordField textEmailPassword;
+
+    @FXML
+    private TextField textEmailSubject;
+
+    @FXML
+    private TextArea textEmailContent;
+
+    @FXML
+    private Button buttonSave, buttonSend;
     @FXML
     private ProgressBar sendingProgressBar;
 
     @FXML
-    private ListView<String> listRecipments;
+    private ListView<String> listRecipients;
 
     @FXML
-    private Button buttonSend;
-    @FXML
-    private TextField textRecipient;
+    private TextField textRecipient, textSmtpPort, textSmtpServer;
 
-    private final String smtpHost = "poczta.interia.pl";
-    private final int smtpPort = 465;
-    private final String user = "hansonq@interia.pl";
-    private final String pwd = "Lolek13579";
-    private ObservableList<String> observableList;
+
+    private ObservableList<String> observableRecipientsList;
 
     private ExecutorService executorService;
     private Session session;
     private Properties properties;
 
+    MailerDao mailerDao = new MailerDaoImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for (listRecipments.:
-             ) {
-            
-        }
-        buttonSend.setOnMouseClicked(listRecipments));
+        textRecipient.setText(mailerDao.readLogin());
+        textEmailPassword.setText(mailerDao.readPassword());
+        textSmtpServer.setText(mailerDao.readSmtpServer());
+        textSmtpPort.setText(String.valueOf(mailerDao.readSmtpPort()));
+        textEmailSubject.setText(mailerDao.readSubject());
+        textEmailContent.appendText(mailerDao.readContent());
+        //    buttonSend.setOnMouseClicked(listRecipients));
     }
 
     public MailerViewController() {
         executorService = Executors.newSingleThreadExecutor();
-        listRecipments = new ArrayList<String>();
+        //  listRecipients = new ArrayList<String>();
     }
-
 
 
     private void sendMessage(String messageText, String recipient, String sender) {
@@ -68,13 +79,13 @@ public class MailerViewController implements Initializable {
         properties = new Properties();
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", smtpHost);
-        properties.put("mail.smtp.port", smtpPort);
+        //    properties.put("mail.smtp.host", smtpHost);
+        //   properties.put("mail.smtp.port", smtpPort);
 
         session = Session.getInstance(properties,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(user, pwd);
+                        return new PasswordAuthentication("user", "pwd");
                     }
                 });
 
@@ -96,11 +107,11 @@ public class MailerViewController implements Initializable {
             executorService.execute(runnable);
             Utils.createSimpleDialog("Mailer", "", "Udało sie wysłać maila");
         } catch (MessagingException e) {
-                e.printStackTrace();
-            }
-
+            e.printStackTrace();
         }
 
-
     }
+
+
 }
+
