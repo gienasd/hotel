@@ -31,4 +31,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-/// LOGIN : admin , HASLO : admin123
