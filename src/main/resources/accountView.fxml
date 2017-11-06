@@ -85,5 +85,10 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <Label fx:id="labelLogedUser" layoutX="5.0" layoutY="423.0" prefHeight="20.0" prefWidth="240.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.BlockedListViewController">
+<AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.BlockedListViewController">
     <children>
         <ImageView fitHeight="420.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
             <image>
@@ -36,9 +37,14 @@
                 <Font size="18.0" />
             </font>
         </Button>
-      <ListView fx:id="listBlocked" layoutX="200.0" layoutY="54.0" prefHeight="317.0" prefWidth="199.0" />
-      <Button fx:id="buttonRemove" layoutX="203.0" layoutY="381.0" mnemonicParsing="false" text="Odblokuj " />
-      <Button fx:id="buttonBack" layoutX="14.0" layoutY="381.0" mnemonicParsing="false" text="Wróć" />
-      <Button fx:id="buttonProfile" layoutX="320.0" layoutY="381.0" mnemonicParsing="false" text="Pokaż profil" />
+      <ListView fx:id="listBlocked" layoutX="200.0" layoutY="54.0" prefHeight="300.0" prefWidth="199.0" />
+      <Button fx:id="buttonRemove" layoutX="203.0" layoutY="369.0" mnemonicParsing="false" prefWidth="80.0" text="Odblokuj " />
+      <Button fx:id="buttonBack" layoutX="27.0" layoutY="370.0" mnemonicParsing="false" text="Wróć" />
+      <Button fx:id="buttonProfile" layoutX="320.0" layoutY="369.0" mnemonicParsing="false" prefWidth="80.0" text="Pokaż profil" />
+      <Label fx:id="labelLogedUser" layoutX="5.0" layoutY="400.0" prefHeight="20.0" prefWidth="240.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

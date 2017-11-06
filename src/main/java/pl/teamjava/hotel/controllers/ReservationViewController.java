@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.StageStyle;
 import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.ManagmentDao;
@@ -41,7 +42,7 @@ ReservationViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "managmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> Utils.loadMainPage(buttonLogout));
+        buttonLogout.setOnMouseClicked(e-> Utils.logoutToMainPage(buttonLogout));
 
 
         observableList = FXCollections.observableList(managmentDao.bookedRooms());
@@ -51,10 +52,11 @@ ReservationViewController implements Initializable {
 
         splitProperty.getItems().addAll(managmentDao.placeNames());
 //        splitProperty.getSelectionModel().getSelectedItem().toString();
-        labelLogedUser.setText("Zalogowany : "+userDao.getName()+" "+userDao.getLastName(userDao.getName()));
-        if(userSession.getId()==1){
+        labelLogedUser.setText("Zalogowany : "+userSession.getUsername());
+        if(userSession.getUsername().equals("admin")){
             buttonMailer.setVisible(true);
         }
+        buttonMailer.setOnMouseClicked(e->Utils.switchView2(buttonMailer,"/mailerViev.fxml",250,420,true, StageStyle.UNDECORATED));
     }
 
     private void tryCancel() {

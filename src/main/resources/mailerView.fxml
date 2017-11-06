@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="545.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.MailerViewController">
+<AnchorPane maxWidth="250.0" prefHeight="550.0" prefWidth="250.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.MailerViewController">
    <children>
-      <VBox prefHeight="50.0" prefWidth="600.0">
+      <VBox maxWidth="250.0" minHeight="50.0" minWidth="250.0" prefHeight="50.0" prefWidth="250.0">
          <children>
             <MenuBar prefHeight="20.0" prefWidth="600.0">
               <menus>
@@ -76,8 +76,8 @@
             </MenuBar>
          </children>
       </VBox>
-      <ProgressBar fx:id="sendingProgressBar" layoutY="361.0" prefHeight="39.0" prefWidth="600.0" progress="0.0" AnchorPane.bottomAnchor="0.0" />
-      <ListView fx:id="listRecipients" layoutY="25.0" prefHeight="423.0" prefWidth="231.0" />
+      <ProgressBar fx:id="sendingProgressBar" layoutY="361.0" prefHeight="25.0" prefWidth="252.0" progress="0.0" AnchorPane.bottomAnchor="0.0" />
+      <ListView fx:id="listRecipients" layoutY="25.0" prefHeight="420.0" prefWidth="250.0" />
       <Button fx:id="buttonSend" layoutX="64.0" layoutY="465.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Wyślij">
          <font>
             <Font name="Times New Roman Bold Italic" size="12.0" />

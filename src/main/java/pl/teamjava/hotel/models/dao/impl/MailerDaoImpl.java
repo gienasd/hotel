@@ -21,8 +21,18 @@ public class MailerDaoImpl implements MailerDao {
     @Override
    public List<String> recipientsList(){
         List<String>recipients= new ArrayList<>();
-        //PreparedStatement statement = connector.getConnection().prepareStatement("SELECT email FROM user WHERE // ")
-    return null;
+        try {
+            PreparedStatement statement = connector.getConnection().prepareStatement("SELECT * FROM user WHERE mailing = ? ");
+            statement.setInt(1,1);
+            ResultSet result = statement.executeQuery();
+            while(result.next()){
+                recipients.add(result.getString("email"));
+            }
+statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return recipients;
     }
 
     @Override

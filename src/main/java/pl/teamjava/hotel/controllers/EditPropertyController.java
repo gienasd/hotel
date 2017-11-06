@@ -3,6 +3,7 @@ package pl.teamjava.hotel.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.Utils;
 
 import java.net.URL;
@@ -23,16 +24,19 @@ public class EditPropertyController implements Initializable {
 
     @FXML
     TextField textName;
-
+    @FXML
+    Label labelLogedUser;
     @FXML
     CheckBox checkWifi, checkPets, checkPool, checkSpa;
 
     private Utils utils = new Utils();
-
+    private Session userSession = Session.getInstance();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "propertiesManagmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
+        buttonLogout.setOnMouseClicked(e-> Utils.logoutToMainPage(buttonLogout));
+        labelLogedUser.setText("Zalogowany : "+userSession.getUsername());
+
 
     }
 }

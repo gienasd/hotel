@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.EditRoomController">
+<AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.EditRoomController">
     <children>
         <ImageView fitHeight="420.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
             <image>
@@ -35,9 +40,9 @@
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="buttonBack" blendMode="COLOR_BURN" layoutX="27.0" layoutY="379.0" mnemonicParsing="false" text="Wróć" />
+        <Button fx:id="buttonBack" blendMode="COLOR_BURN" layoutX="27.0" layoutY="370.0" mnemonicParsing="false" text="Wróć" />
         <ListView fx:id="listRoom" layoutX="27.0" layoutY="50.0" opacity="0.6" prefHeight="310.0" prefWidth="200.0" />
-        <Button fx:id="buttonEdit" layoutX="512.0" layoutY="379.0" mnemonicParsing="false" text="Edytuj" />
+        <Button fx:id="buttonEdit" layoutX="513.0" layoutY="367.0" mnemonicParsing="false" text="Edytuj" />
         <ScrollBar fx:id="scrollRoom" layoutX="213.0" layoutY="50.0" orientation="VERTICAL" prefHeight="310.0" prefWidth="14.0" />
       <TextField fx:id="textName" layoutX="413.0" layoutY="210.0" promptText="Nowa nazwa" />
       <TextField fx:id="textPrice" layoutX="413.0" layoutY="335.0" promptText="Nowa cena" />
@@ -45,5 +50,15 @@
       <ChoiceBox fx:id="choiceCapacity" layoutX="413.0" layoutY="303.0" prefWidth="150.0" />
       <Label layoutX="450.0" layoutY="235.0" text="Kategoria:" />
       <Label layoutX="446.0" layoutY="286.0" text="Ilość miejsc:" />
+      <Label fx:id="labelLogedUser" layoutX="5.0" layoutY="400.0" prefHeight="20.0" prefWidth="240.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelLogedUser" layoutX="5.0" layoutY="400.0" prefHeight="20.0" prefWidth="240.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

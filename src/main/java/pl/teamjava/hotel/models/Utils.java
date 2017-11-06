@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 public class Utils {
     public static final String VERSION="1.0";
-
+Session userSession= Session.getInstance();
     public static String shaHash(String message){
         try {
             MessageDigest sha2 = MessageDigest.getInstance("SHA-256");
@@ -120,7 +120,8 @@ public class Utils {
 
 
 
-    public static void loadMainPage(Node node) {
+    public static void logoutToMainPage(Node node) {
+       Session.getInstance().setLogedIn(false);
         Stage primaryStage = (Stage)node.getScene().getWindow();
         Parent root=null;
         try {

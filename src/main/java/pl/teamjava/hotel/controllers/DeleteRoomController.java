@@ -27,7 +27,8 @@ public class DeleteRoomController implements Initializable {
 
     @FXML
     ScrollBar scrollProperty;
-
+    @FXML
+    Label labelLogedUser;
     private ManagmentDao managmentDao = new ManagmentDaoImpl();
     private Session session = Session.getInstance();
     private ObservableList<String> observableList;
@@ -43,6 +44,8 @@ public class DeleteRoomController implements Initializable {
         loadRooms();
 
         buttonDelete.setOnMouseClicked(e -> deleteRoom());
+        labelLogedUser.setText("Zalogowany : "+session.getUsername());
+
     }
 
     private void loadRooms() {

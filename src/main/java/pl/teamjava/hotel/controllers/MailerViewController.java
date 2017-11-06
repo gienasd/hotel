@@ -8,6 +8,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.MailerDao;
@@ -16,6 +20,7 @@ import pl.teamjava.hotel.models.dao.impl.MailerDaoImpl;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -47,6 +52,7 @@ public class MailerViewController implements Initializable {
     @FXML
     private ListView<String> listRecipients;
 
+
     @FXML
     private TextField textSmtpPort, textSmtpServer;
     @FXML
@@ -66,6 +72,13 @@ public class MailerViewController implements Initializable {
         readingData();
         buttonSave.setOnMouseClicked(e->savingData());
         buttonSend.setOnMouseClicked(e->sendMessage());
+        try{
+        observableRecipientsList=FXCollections.observableList(mailerDao.recipientsList());
+        listRecipients.setItems(observableRecipientsList);}
+        catch(Exception ex){
+            Utils.createSimpleDialog("Błąd","","Nie udało się odczytać listy adresatów !");
+        }
+
     }
 
     private void readingData() {

@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.dao.UserDao;
@@ -34,6 +31,9 @@ public class AccountViewController implements Initializable {
 
     @FXML
     Button buttonBack;
+    @FXML
+    private Label labelLogedUser;
+
 
     private UserDao userDao = new UserDaoImpl();
     private ObservableList<String> historyList;
@@ -46,6 +46,7 @@ public class AccountViewController implements Initializable {
         updateAllData(textName, textLastName, textUserName, textMail, textPhoneNumber);
         buttonBack.setOnMouseClicked(s -> tryBack(buttonBack));
         showHistory(historyList,listViewUser);
+        labelLogedUser.setText("Zalogowany : "+userSession.getUsername());
     }
 
     private void updateAllData(TextField name, TextField lastName, TextField username, TextField mail, TextField phoneNumber) {

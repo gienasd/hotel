@@ -16,18 +16,19 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-       Stylesheet style =  StyleManager.loadStylesheet("/css/main.css");
-      //  Application.setUserAgentStylesheet("/css/main.css");
+
         StyleManager.getInstance().addUserAgentStylesheet("/css/main.css");
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mailerView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
         primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
-        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
+
         launch(args);
+
     }
 }

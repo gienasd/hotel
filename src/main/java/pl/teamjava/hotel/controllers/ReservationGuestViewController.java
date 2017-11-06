@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import pl.teamjava.hotel.models.GuestUtils;
 import pl.teamjava.hotel.models.PlaceModel;
+import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.PlaceDao;
 import pl.teamjava.hotel.models.dao.impl.PlaceDaoImpl;
@@ -73,8 +74,8 @@ Utils utils=new Utils();
 
         buttonReserve.setOnMouseClicked(s -> tryToReserve());
         buttonAccount.setOnMouseClicked(s -> showAccount(buttonAccount));
-        buttonLogOut.setOnMouseClicked(s -> tryToLogOut(buttonLogOut));
-        buttonAccount.getScene().getWindow().setOnCloseRequest(e->Utils.loadMainPage(buttonAccount));}
+        buttonLogOut.setOnMouseClicked(s -> Utils.logoutToMainPage(buttonLogOut));
+        buttonAccount.getScene().getWindow().setOnCloseRequest(e->Utils.logoutToMainPage(buttonAccount));}
     private void weeksOfPickerDate() {
         datePickArrivalDate.setShowWeekNumbers(false);
         datePickDepartureDate.setShowWeekNumbers(false);

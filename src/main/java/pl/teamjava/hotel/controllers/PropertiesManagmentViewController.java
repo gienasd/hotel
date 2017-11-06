@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.UserDao;
 import pl.teamjava.hotel.models.dao.impl.UserDaoImpl;
@@ -19,14 +20,15 @@ UserDao userDao=new UserDaoImpl();
     Label labelLogedUser;
 
     private Utils utils = new Utils();
-
+    private Session userSession = Session.getInstance();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonAdd.setOnMouseClicked(e-> utils.switchView(buttonAdd, "addProperty.fxml"));
         buttonEdit.setOnMouseClicked(e-> utils.switchView(buttonEdit, "editProperty.fxml"));
         buttonRemove.setOnMouseClicked(e-> utils.switchView(buttonRemove, "deleteProperty.fxml"));
         buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "managmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
-        labelLogedUser.setText(userDao.getName()+" "+userDao.getLastName(userDao.getName()));//TODO wylogowanie
+        buttonLogout.setOnMouseClicked(e-> Utils.logoutToMainPage(buttonLogout));
+        labelLogedUser.setText("Zalogowany : "+userSession.getUsername());
+        buttonLogout.setOnMouseClicked(e-> Utils.logoutToMainPage(buttonLogout));
     }
 }

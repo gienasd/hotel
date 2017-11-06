@@ -3,6 +3,7 @@ package pl.teamjava.hotel.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.Utils;
 
 import java.net.URL;
@@ -23,16 +24,19 @@ public class EditRoomController implements Initializable {
 
     @FXML
     ScrollBar scrollRoom;
-
+    @FXML
+    Label labelLogedUser;
     @FXML
     TextField textName, textPrice;
-
+    private Session userSession = Session.getInstance();
     private Utils utils = new Utils();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "roomManagmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
+        buttonLogout.setOnMouseClicked(e-> Utils.logoutToMainPage(buttonLogout));
+        labelLogedUser.setText("Zalogowany : "+userSession.getUsername());
+
 
     }
 }

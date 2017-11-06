@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import pl.teamjava.hotel.models.PlaceModel;
+import pl.teamjava.hotel.models.Session;
 import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.ManagmentDao;
 import pl.teamjava.hotel.models.dao.impl.ManagmentDaoImpl;
@@ -24,18 +25,21 @@ public class AddPropertyController implements Initializable {
 
     @FXML
     Button buttonBack, buttonLogout, buttonAdd;
-
+    @FXML
+    Label labelLogedUser;
     private ManagmentDao managmentDao = new ManagmentDaoImpl();
     private Utils utils = new Utils();
-
+    private Session userSession = Session.getInstance();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "propertiesManagmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
-
+        buttonLogout.setOnMouseClicked(e-> Utils.logoutToMainPage(buttonLogout));
+        labelLogedUser.setText("Zalogowany : "+userSession.getUsername());
         buttonAdd.setOnMouseClicked(e-> addProperty());
 
         splitCategory.getItems().addAll("Hotel", "Camping", "Pole namiotowe");
+        labelLogedUser.setText("Zalogowany : "+userSession.getUsername());
+
     }
 
     private void addProperty() {
