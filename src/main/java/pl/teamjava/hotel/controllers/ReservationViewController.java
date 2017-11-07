@@ -56,7 +56,7 @@ ReservationViewController implements Initializable {
         if(userSession.getUsername().equals("admin")){
             buttonMailer.setVisible(true);
         }
-        buttonMailer.setOnMouseClicked(e->Utils.switchView2(buttonMailer,"/mailerViev.fxml",250,420,true, StageStyle.UNDECORATED));
+        buttonMailer.setOnMouseClicked(e->Utils.switchView2(buttonMailer,"mailerView.fxml",240,550,true, StageStyle.DECORATED,false));
     }
 
     private void tryCancel() {

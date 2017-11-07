@@ -71,7 +71,7 @@ public class MailerViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         readingData();
         buttonSave.setOnMouseClicked(e->savingData());
-        buttonSend.setOnMouseClicked(e->sendMessage());
+        buttonSend.setOnMouseClicked(e->sendMessage(listRecipients.getSelectionModel().getSelectedItem()));
         try{
         observableRecipientsList=FXCollections.observableList(mailerDao.recipientsList());
         listRecipients.setItems(observableRecipientsList);}
@@ -105,7 +105,7 @@ public class MailerViewController implements Initializable {
     }
 
 
-    private void sendMessage() {
+    private void sendMessage(String recepient) {
 
         properties = new Properties();
         properties.put("mail.smtp.auth", "true");

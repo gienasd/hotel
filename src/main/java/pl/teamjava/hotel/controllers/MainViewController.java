@@ -38,7 +38,7 @@ public class MainViewController implements Initializable {
 
     private void authorsOpen()  {
         try {
-           Utils.switchView2(buttonLogin,"authorView.fxml",500,342,true,StageStyle.UTILITY);
+           Utils.switchView2(buttonLogin,"authorView.fxml",500,342,true,StageStyle.DECORATED,false);
 //            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("registerView.fxml"));
 //            Stage stageRoot = (Stage)buttonLogin.getScene().getWindow();
 //            stageRoot.close();
@@ -58,7 +58,7 @@ public class MainViewController implements Initializable {
 
     private void registerOpen() {
         try {
-          Utils.switchView2(buttonLogin,"registerView.fxml",600,430,true,StageStyle.UTILITY);
+          Utils.switchView2(buttonLogin,"registerView.fxml",600,420,true,StageStyle.DECORATED,true);
 //            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("registerView.fxml"));
 //            Stage stageRoot = (Stage)buttonLogin.getScene().getWindow();
 //            stageRoot.close();
@@ -78,7 +78,7 @@ public class MainViewController implements Initializable {
 
     private void loginOpen() {
         try {
-            Utils.switchView2(buttonLogin,"loginView.fxml",600,430,true,StageStyle.UTILITY);
+            Utils.switchView2(buttonLogin,"loginView.fxml",600,420,true,StageStyle.DECORATED,true);
 //            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("loginView.fxml"));
 //            Stage stageRoot = (Stage)buttonLogin.getScene().getWindow();
 //            stageRoot.close();
@@ -98,7 +98,7 @@ public class MainViewController implements Initializable {
 
     private void enterAsGuest() {
        try {
-            Utils.switchView2(buttonLogin,"guestView.fxml",800,600,true,StageStyle.DECORATED);
+            Utils.switchView2(buttonLogin,"guestView.fxml",800,600,true,StageStyle.DECORATED,true);
 //            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("guestView.fxml"));
 //            Stage stageRoot = (Stage)buttonLogin.getScene().getWindow();
 //            stageRoot.close();

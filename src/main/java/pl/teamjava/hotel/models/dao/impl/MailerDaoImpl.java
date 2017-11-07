@@ -55,9 +55,8 @@ statement.close();
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET login = ? where id = ?");
             statement.setString(1, login);
-            statement.setInt(1, 1);
-            ResultSet result = statement.executeQuery();
-            return true;
+            statement.setInt(2, 1);
+            return statement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -85,9 +84,9 @@ statement.close();
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET password = ? where id = ?");
             statement.setString(1, password);
-            statement.setInt(1, 1);
-            ResultSet result = statement.executeQuery();
-            return true;
+            statement.setInt(2, 1);
+
+            return statement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -116,9 +115,9 @@ statement.close();
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET smtpServer = ? where id = ?");
             statement.setString(1, server);
-            statement.setInt(1, 1);
-            ResultSet result = statement.executeQuery();
-            return true;
+            statement.setInt(2, 1);
+
+            return statement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -147,10 +146,9 @@ statement.close();
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET smtpPort = ? where id = ?");
             statement.setInt(1, port);
-            statement.setInt(1, 1);
-            ResultSet result = statement.executeQuery();
-            return true;
+            statement.setInt(2, 1);
 
+            return statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -180,9 +178,9 @@ statement.close();
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET subject = ? where id = ?");
             statement.setString(1, subject);
-            statement.setInt(1, 1);
-            ResultSet result = statement.executeQuery();
-            return true;
+            statement.setInt(2, 1);
+
+            return statement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -213,9 +211,9 @@ statement.close();
         try {
         PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET content = ? where id = ?");
         statement.setString(1, content);
-        statement.setInt(1, 1);
-        ResultSet result = statement.executeQuery();
-        return true;
+        statement.setInt(2, 1);
+
+        return statement.execute();
 
         } catch (SQLException e) {
         e.printStackTrace();

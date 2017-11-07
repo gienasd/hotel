@@ -36,7 +36,7 @@ public class RegisterViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttonMainPageR.setOnMouseClicked(e -> Utils.switchView2(buttonMainPageR, "mainView.fxml", 600, 600, true, StageStyle.UTILITY));
+        buttonMainPageR.setOnMouseClicked(e -> Utils.switchView2(buttonMainPageR, "mainView.fxml", 600, 600, true, StageStyle.DECORATED,true));
         buttonRegister.setOnMouseClicked(e -> tryRegister());
 
     }
@@ -66,6 +66,7 @@ public class RegisterViewController implements Initializable {
             textPasswordRepeatR.clear();
             textPhoneNumberR.clear();
             textAccessCodeR.clear();
+            checkBoxTermsAccept.setSelected(false);
              checkBoxEmailsAccept.setSelected(false);
         }
     }

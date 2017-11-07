@@ -37,7 +37,7 @@ public class DeleteRoomController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonBack.setOnMouseClicked(e-> utils.switchView(buttonBack, "roomManagmentView.fxml"));
-        buttonLogout.setOnMouseClicked(e-> utils.switchView(buttonLogout, "mainView.fxml"));
+        buttonLogout.setOnMouseClicked(e-> Utils.logoutToMainPage(buttonLogout));
 
         splitProperty.getItems().addAll(managmentDao.showProperties(session.getAccessCode()));
 

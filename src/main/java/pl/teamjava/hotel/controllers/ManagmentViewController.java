@@ -25,7 +25,7 @@ public class ManagmentViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         buttonProperty.setOnMouseClicked(e -> utils.switchView(buttonProperty, "propertiesManagmentView.fxml"));
-        buttonMainPage.setOnMouseClicked(e -> utils.switchView2(buttonMainPage, "mainView.fxml", 600, 600, true, StageStyle.UTILITY));
+        buttonMainPage.setOnMouseClicked(e -> utils.switchView2(buttonMainPage, "mainView.fxml", 600, 600, true, StageStyle.DECORATED,true));
         buttonBlockedList.setOnMouseClicked(e -> utils.switchView(buttonBlockedList, "blockedListView.fxml"));
         buttonRoom.setOnMouseClicked(e -> utils.switchView(buttonRoom, "roomManagmentView.fxml"));
         buttonReservation.setOnMouseClicked(e -> utils.switchView(buttonReservation, "reservationView.fxml"));

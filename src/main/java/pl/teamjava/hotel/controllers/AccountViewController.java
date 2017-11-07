@@ -8,7 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import pl.teamjava.hotel.models.Session;
+import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.UserDao;
 import pl.teamjava.hotel.models.dao.impl.UserDaoImpl;
 
@@ -75,12 +77,6 @@ public class AccountViewController implements Initializable {
     }
 
     private void tryBack(Button button) {
-        Stage stage = (Stage)button.getScene().getWindow();
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("reservationGuestView.fxml"));
-            stage.setScene(new Scene(root,600,400));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Utils.switchView2(buttonBack,"reservationGuestView.fxml",600,400,true, StageStyle.DECORATED,true);
     }
 }

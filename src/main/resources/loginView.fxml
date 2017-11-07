@@ -16,7 +16,7 @@
 
 <AnchorPane minHeight="420.0" minWidth="600.0" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.LoginViewController">
    <children>
-      <ImageView fitHeight="430.0" fitWidth="600.0" pickOnBounds="true">
+      <ImageView fitHeight="445.0" fitWidth="625.0" pickOnBounds="true">
          <image>
             <Image url="@images/index.jpg" />
          </image>
@@ -70,7 +70,7 @@
             </Button>
          </children>
       </VBox>
-      <VBox fx:id="vBoxAccesCode" alignment="TOP_CENTER" layoutX="173.0" layoutY="121.0" prefHeight="200.0" prefWidth="255.0">
+      <VBox fx:id="vBoxAccesCode" alignment="TOP_CENTER" layoutX="173.0" layoutY="121.0" prefHeight="237.0" prefWidth="255.0">
          <children>
             <PasswordField fx:id="textAccessCode" alignment="CENTER" opacity="0.8" prefHeight="25.0" prefWidth="255.0" promptText="ACCESS CODE">
                <font>

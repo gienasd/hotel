@@ -75,7 +75,7 @@ Session userSession= Session.getInstance();
             e.printStackTrace();
         }
     }
-    public static Node switchView2(Node node, String fxml, int width, int height, boolean newWindow,StageStyle style){
+    public static Node switchView2(Node node, String fxml, int width, int height, boolean newWindow,StageStyle style, boolean closeOldWindow){
         Stage stage = (Stage)node.getScene().getWindow();
         if(!newWindow) {
             Parent root =null;
@@ -90,7 +90,8 @@ Session userSession= Session.getInstance();
             }
             return root;
         }else{
-            stage.close();
+            if(closeOldWindow){
+            stage.close();}
             Parent root = null;
             Stage newStage = new Stage();
             try {
@@ -127,7 +128,7 @@ Session userSession= Session.getInstance();
         try {
             root = FXMLLoader.load(Utils.class.getClassLoader().getResource("mainView.fxml"));
             primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
-//            primaryStage.initStyle(StageStyle.UTILITY);
+            primaryStage.initStyle(StageStyle.UNIFIED);
             primaryStage.setScene(new Scene(root, 600, 600));
             primaryStage.setResizable(false);
             primaryStage.show();

@@ -55,10 +55,10 @@ public class LoginViewController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         vBoxAccesCode.setVisible(false);
-        buttonMainPage.setOnMouseClicked(e -> Utils.switchView2(buttonLogin, "mainView.fxml", 600, 600, true, StageStyle.UTILITY));
+        buttonMainPage.setOnMouseClicked(e -> Utils.switchView2(buttonLogin, "mainView.fxml", 600, 600, true, StageStyle.DECORATED,true));
         buttonLogin.setOnMouseClicked(e -> tryLogin());
         buttonLoginByAccessCode.setOnMouseClicked(e->tryLoginByAccessCode());
-        labelRegistration.setOnMouseClicked((e -> Utils.switchView2(labelRegistration, "registerView.fxml", 600, 420, false, StageStyle.UTILITY)));
+        labelRegistration.setOnMouseClicked((e -> Utils.switchView2(labelRegistration, "registerView.fxml", 600, 420, false, StageStyle.DECORATED,true)));
         labelAdmin.setOnMouseClicked(e -> accessCode());
         buttonLoginByAccessCode.setDisable(true);
         Parent parent = buttonLogin.getParent();
@@ -87,7 +87,7 @@ public class LoginViewController implements Initializable {
        if(userdao.loginByAccessCode(textAccessCode.getText())){
            String accessCode=textAccessCode.getText();
            userSession.setAccessCode(accessCode);
-           Utils.switchView2(buttonLoginByAccessCode,"managmentView.fxml",600,420,true,StageStyle.UNDECORATED);
+           Utils.switchView2(buttonLoginByAccessCode,"managmentView.fxml",600,420,true,StageStyle.UNIFIED,true);
        }else {
            Utils.createSimpleDialog("Logowanie", "", "Podano niepoprawne dane !");
        }
@@ -148,10 +148,11 @@ public class LoginViewController implements Initializable {
             userSession.setUsername(login);
             userSession.setLogedIn(true);
 
-            Utils.switchView2(buttonLogin, "reservationView.fxml", 600, 420, true, StageStyle.DECORATED);
+            Utils.switchView2(buttonLogin, "reservationView.fxml", 600, 420, true, StageStyle.UNIFIED,true);
 
         } else {
             Utils.createSimpleDialog("Logowanie", "", "Podano niepoprawne dane !");
+            textPassword.clear();
         }
 
     }

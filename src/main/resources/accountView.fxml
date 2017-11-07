@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.AccountViewController">
+<AnchorPane maxHeight="420.0" maxWidth="620.0" minHeight="-Infinity" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.teamjava.hotel.controllers.AccountViewController">
    <children>
-      <ImageView fitHeight="448.0" fitWidth="606.0" layoutY="-3.0" pickOnBounds="true" smooth="false">
+      <ImageView fitHeight="445.0" fitWidth="625.0" layoutY="-3.0" pickOnBounds="true" smooth="false">
          <image>
             <Image url="@images/index.jpg" />
          </image>
       </ImageView>
-      <ListView fx:id="listViewUser" layoutX="398.0" layoutY="-3.0" prefHeight="448.0" prefWidth="208.0" />
+      <ListView fx:id="listViewUser" layoutX="398.0" layoutY="-3.0" prefHeight="420.0" prefWidth="208.0" />
       <VBox alignment="CENTER" layoutX="57.0" layoutY="68.0" prefHeight="306.0" prefWidth="296.0">
          <children>
             <TextField fx:id="textUserName" alignment="CENTER" opacity="0.92" prefHeight="25.0" prefWidth="255.0" promptText="Nazwa użytkownika">
