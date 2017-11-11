@@ -87,7 +87,7 @@ public class LoginViewController implements Initializable {
        if(userdao.loginByAccessCode(textAccessCode.getText())){
            String accessCode=textAccessCode.getText();
            userSession.setAccessCode(accessCode);
-           Utils.switchView2(buttonLoginByAccessCode,"managmentView.fxml",600,420,true,StageStyle.UNIFIED,true);
+           Utils.switchView2(buttonLoginByAccessCode,"managmentView.fxml",600,420,true,StageStyle.DECORATED,true);
        }else {
            Utils.createSimpleDialog("Logowanie", "", "Podano niepoprawne dane !");
        }
@@ -148,7 +148,7 @@ public class LoginViewController implements Initializable {
             userSession.setUsername(login);
             userSession.setLogedIn(true);
 
-            Utils.switchView2(buttonLogin, "reservationView.fxml", 600, 420, true, StageStyle.UNIFIED,true);
+            Utils.switchView2(buttonLogin, "reservationView.fxml", 600, 420, true, StageStyle.DECORATED,true);
 
         } else {
             Utils.createSimpleDialog("Logowanie", "", "Podano niepoprawne dane !");

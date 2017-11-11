@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class ManagmentViewController implements Initializable {
     UserDao userDao = new UserDaoImpl();
     @FXML
-    Button buttonMainPage, buttonProperty, buttonRoom, buttonReservation, buttonBlockedList, buttonEdit;
+    Button buttonMainPage, buttonProperty, buttonRoom, buttonReservation, buttonBlockedList,buttonMailerOpen, buttonEdit;
     @FXML
     Label labelLogedUser;
     private Session userSession = Session.getInstance();
@@ -29,7 +29,8 @@ public class ManagmentViewController implements Initializable {
         buttonBlockedList.setOnMouseClicked(e -> utils.switchView(buttonBlockedList, "blockedListView.fxml"));
         buttonRoom.setOnMouseClicked(e -> utils.switchView(buttonRoom, "roomManagmentView.fxml"));
         buttonReservation.setOnMouseClicked(e -> utils.switchView(buttonReservation, "reservationView.fxml"));
-        labelLogedUser.setText("Zalogowany : " + userSession.getUsername());//TODO wylogowanie
+        labelLogedUser.setText("Zalogowany : " + userSession.getUsername());
+        buttonMailerOpen.setOnMouseClicked(e->Utils.switchView2(buttonMailerOpen,"mailerView.fxml",240,550,true, StageStyle.DECORATED,false));
         buttonMainPage.setOnMouseClicked(e -> Utils.logoutToMainPage(buttonMainPage));
         // buttonEdit.setOnMouseClicked(e -> switchView(buttonEdit, ?)); TODO
     }

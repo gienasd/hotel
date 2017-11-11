@@ -51,7 +51,7 @@ statement.close();
     }
 
     @Override
-    public boolean changeLogin(String login) {
+    public boolean changeLogin(MailerModel mailerModel,String login) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET login = ? where id = ?");
             statement.setString(1, login);
@@ -80,7 +80,7 @@ statement.close();
     }
 
     @Override
-    public boolean changePassword(String password) {
+    public boolean changePassword(MailerModel mailerModel,String password) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET password = ? where id = ?");
             statement.setString(1, password);
@@ -111,7 +111,7 @@ statement.close();
 
 
     @Override
-    public boolean changeSmtpServer(String server) {
+    public boolean changeSmtpServer(MailerModel mailerModel,String server) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET smtpServer = ? where id = ?");
             statement.setString(1, server);
@@ -142,7 +142,7 @@ statement.close();
     }
 
     @Override
-    public boolean changeSmtpPort(int port) {
+    public boolean changeSmtpPort(MailerModel mailerModel,int port) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET smtpPort = ? where id = ?");
             statement.setInt(1, port);
@@ -174,7 +174,7 @@ statement.close();
 
 
     @Override
-    public boolean changeSubject(String subject) {
+    public boolean changeSubject(MailerModel mailerModel,String subject) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET subject = ? where id = ?");
             statement.setString(1, subject);
@@ -207,10 +207,10 @@ statement.close();
 
 
     @Override
-    public boolean changeContent(String content) {
+    public boolean changeContent(MailerModel mailerModel,String content) {
         try {
         PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET content = ? where id = ?");
-        statement.setString(1, content);
+        statement.setString(1, mailerModel.getContent());
         statement.setInt(2, 1);
 
         return statement.execute();

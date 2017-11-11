@@ -13,6 +13,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import pl.teamjava.hotel.models.MailerModel;
 import pl.teamjava.hotel.models.Utils;
 import pl.teamjava.hotel.models.dao.MailerDao;
 import pl.teamjava.hotel.models.dao.impl.MailerDaoImpl;
@@ -66,6 +67,7 @@ public class MailerViewController implements Initializable {
     private Properties properties;
 
     MailerDao mailerDao = new MailerDaoImpl();
+MailerModel mailerModel= new MailerModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -82,21 +84,17 @@ public class MailerViewController implements Initializable {
     }
 
     private void readingData() {
-        textEmailLogin.setText(mailerDao.readLogin());
-        textEmailPassword.setText(mailerDao.readPassword());
-        textSmtpServer.setText(mailerDao.readSmtpServer());
-        textSmtpPort.setText(String.valueOf(mailerDao.readSmtpPort()));
-        textEmailSubject.setText(mailerDao.readSubject());
-        textEmailContent.appendText(mailerDao.readContent());
+        textEmailLogin.setText(mailerModel.getUser());
+        textEmailPassword.setText(mailerModel.getPassword());
+        textSmtpServer.setText(mailerModel.getSmtpHost());
+        textSmtpPort.setText(String.valueOf(mailerModel.getSmtpPort()));
+        textEmailSubject.setText(mailerModel.getSubject());
+        textEmailContent.appendText(mailerModel.getContent());
     }
 
     private void savingData() {
-        mailerDao.changeLogin(textEmailLogin.getText());
-        mailerDao.changePassword(textEmailPassword.getText());
-        mailerDao.changeSmtpServer(textSmtpServer.getText());
-        mailerDao.changeSmtpPort(Integer.valueOf(textSmtpPort.getText()));
-        mailerDao.changeSubject(textEmailSubject.getText());
-        mailerDao.changeContent(textEmailContent.getText());
+        MailerModel mailerModel = new MailerModel(textEmailLogin.getText(),textEmailPassword.getText(),textSmtpServer.getText(),Integer.valueOf(textSmtpPort.getText()),textEmailSubject.getText(),textEmailContent.getText() );
+
     }
 
     public MailerViewController() {
@@ -105,43 +103,6 @@ public class MailerViewController implements Initializable {
     }
 
 
-    private void sendMessage(String recepient) {
-
-        properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-            properties.put("mail.smtp.host", textSmtpServer.getText());
-           properties.put("mail.smtp.port", textSmtpPort.getText());
-
-        session = Session.getInstance(properties,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(textEmailLogin.getText(), textEmailPassword.getText());
-                    }
-                });
-
-
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(textEmailLogin.getText()));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("lcacbcac@gmail.com"));
-            message.setSubject("This is test Subject");
-            message.setText("Checking sending emails by using JavaMail APIs");
-            //Now send the message
-           Runnable runnable = () -> {
-                try {
-                    Transport.send(message);
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
-           };
-            executorService.execute(runnable);
-            Utils.createSimpleDialog("Mailer", "", "Udało sie wysłać maila");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
 }

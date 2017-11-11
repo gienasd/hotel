@@ -21,7 +21,7 @@ public class
 ReservationViewController implements Initializable {
 
     @FXML
-    Button buttonLogout, buttonCancel, buttonShowProfile, buttonBack, buttonMailer;
+    Button buttonLogout, buttonCancel, buttonShowProfile, buttonBack;
 
     @FXML
     ScrollBar scrollReservation;
@@ -53,10 +53,8 @@ ReservationViewController implements Initializable {
         splitProperty.getItems().addAll(managmentDao.placeNames());
 //        splitProperty.getSelectionModel().getSelectedItem().toString();
         labelLogedUser.setText("Zalogowany : "+userSession.getUsername());
-        if(userSession.getUsername().equals("admin")){
-            buttonMailer.setVisible(true);
-        }
-        buttonMailer.setOnMouseClicked(e->Utils.switchView2(buttonMailer,"mailerView.fxml",240,550,true, StageStyle.DECORATED,false));
+
+
     }
 
     private void tryCancel() {

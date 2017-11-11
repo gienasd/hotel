@@ -1,5 +1,7 @@
 package pl.teamjava.hotel.models.dao;
 
+import pl.teamjava.hotel.models.MailerModel;
+
 import java.util.List;
 
 /**
@@ -7,16 +9,17 @@ import java.util.List;
  */
 public interface MailerDao {
   List<String>recipientsList();
+ // List<String> mailer(MailerModel mailerModel);
    String readLogin();
-   boolean changeLogin(String login);
+   boolean changeLogin(MailerModel mailerModel,String login);
     String readPassword();
-    boolean changePassword(String password);
+    boolean changePassword(MailerModel mailerModel,String password);
     String readSmtpServer();
-    boolean changeSmtpServer(String server);
+    boolean changeSmtpServer(MailerModel mailerModel,String smtpServer);
     int readSmtpPort();
-    boolean changeSmtpPort(int port );
+    boolean changeSmtpPort(MailerModel mailerModel,int smtpPort);
     String readSubject();
-    boolean changeSubject(String subject);
+    boolean changeSubject(MailerModel mailerModel,String subject);
     String readContent();
-    boolean changeContent(String content);
+    boolean changeContent(MailerModel mailerModel,String content);
 }
