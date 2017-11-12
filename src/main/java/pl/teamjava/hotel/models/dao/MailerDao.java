@@ -11,15 +11,15 @@ public interface MailerDao {
   List<String>recipientsList();
  // List<String> mailer(MailerModel mailerModel);
    String readLogin();
-   boolean changeLogin(MailerModel mailerModel,String login);
+  boolean changeLogin(String login);
     String readPassword();
-    boolean changePassword(MailerModel mailerModel,String password);
+    boolean changePassword(String password);
     String readSmtpServer();
-    boolean changeSmtpServer(MailerModel mailerModel,String smtpServer);
+    boolean changeSmtpServer(String smtpServer);
     int readSmtpPort();
-    boolean changeSmtpPort(MailerModel mailerModel,int smtpPort);
+    boolean changeSmtpPort(int smtpPort);
     String readSubject();
-    boolean changeSubject(MailerModel mailerModel,String subject);
+    boolean changeSubject(String subject);
     String readContent();
-    boolean changeContent(MailerModel mailerModel,String content);
+    boolean changeContent(String content);
 }

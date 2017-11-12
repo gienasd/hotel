@@ -18,7 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         StyleManager.getInstance().addUserAgentStylesheet("/css/main.css");
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mailerView.fxml"));
         primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
         primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setScene(new Scene(root, 600, 600));

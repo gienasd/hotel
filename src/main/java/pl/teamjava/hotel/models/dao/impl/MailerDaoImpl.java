@@ -44,6 +44,7 @@ statement.close();
             while (result.next()) {
                 return result.getString("login");
             }
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -51,12 +52,16 @@ statement.close();
     }
 
     @Override
-    public boolean changeLogin(MailerModel mailerModel,String login) {
+    public boolean changeLogin(String login) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET login = ? where id = ?");
             statement.setString(1, login);
             statement.setInt(2, 1);
-            return statement.execute();
+           statement.execute();
+           statement.close();
+           return true;
+
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,13 +85,15 @@ statement.close();
     }
 
     @Override
-    public boolean changePassword(MailerModel mailerModel,String password) {
+    public boolean changePassword(String password) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET password = ? where id = ?");
             statement.setString(1, password);
             statement.setInt(2, 1);
+            statement.execute();
+            statement.close();
+            return true;
 
-            return statement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -111,13 +118,16 @@ statement.close();
 
 
     @Override
-    public boolean changeSmtpServer(MailerModel mailerModel,String server) {
+    public boolean changeSmtpServer(String server) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET smtpServer = ? where id = ?");
             statement.setString(1, server);
             statement.setInt(2, 1);
 
-            return statement.execute();
+            statement.execute();
+            statement.close();
+            return true;
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -142,13 +152,16 @@ statement.close();
     }
 
     @Override
-    public boolean changeSmtpPort(MailerModel mailerModel,int port) {
+    public boolean changeSmtpPort(int port) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET smtpPort = ? where id = ?");
             statement.setInt(1, port);
             statement.setInt(2, 1);
 
-            return statement.execute();
+            statement.execute();
+            statement.close();
+            return true;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -174,13 +187,15 @@ statement.close();
 
 
     @Override
-    public boolean changeSubject(MailerModel mailerModel,String subject) {
+    public boolean changeSubject(String subject) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET subject = ? where id = ?");
             statement.setString(1, subject);
             statement.setInt(2, 1);
 
-            return statement.execute();
+            statement.execute();
+            statement.close();
+            return true;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -207,13 +222,16 @@ statement.close();
 
 
     @Override
-    public boolean changeContent(MailerModel mailerModel,String content) {
+    public boolean changeContent(String content) {
         try {
         PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE mailer SET content = ? where id = ?");
-        statement.setString(1, mailerModel.getContent());
+        statement.setString(1, content);
         statement.setInt(2, 1);
 
-        return statement.execute();
+            statement.execute();
+            statement.close();
+            return true;
+
 
         } catch (SQLException e) {
         e.printStackTrace();
