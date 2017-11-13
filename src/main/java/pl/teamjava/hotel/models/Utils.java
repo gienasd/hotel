@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -15,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -84,6 +86,8 @@ Session userSession= Session.getInstance();
                 root =  FXMLLoader.load(Utils.class.getClassLoader().getResource(fxml));
                // root = loader.load();
                 stage.setScene(new Scene(root, width, height));
+                stage.getIcons().add(new Image(Utils.class.getClassLoader().getResourceAsStream("images/icon.png")));
+
                 stage.setResizable(false);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -99,7 +103,8 @@ Session userSession= Session.getInstance();
                // root = loader.load();
 
                 Scene scene=new Scene(root,width,height);
-                newStage.setResizable(false);
+                newStage.getIcons().add(new Image(Utils.class.getClassLoader().getResourceAsStream("images/icon.png")));
+                 newStage.setResizable(false);
                 newStage.initStyle(style);
                 newStage.setTitle("Hotel");
                 newStage.setScene(scene);
@@ -128,7 +133,7 @@ Session userSession= Session.getInstance();
         try {
             root = FXMLLoader.load(Utils.class.getClassLoader().getResource("mainView.fxml"));
             primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
-            primaryStage.initStyle(StageStyle.UNIFIED);
+           // primaryStage.initStyle(StageStyle.DECORATED);
             primaryStage.setScene(new Scene(root, 600, 600));
             primaryStage.setResizable(false);
             primaryStage.show();
@@ -137,4 +142,18 @@ Session userSession= Session.getInstance();
         }
 
     }
+
+   public static String passwordGenerator(){
+       String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+       StringBuilder builder = new StringBuilder();
+       Random rand = new Random();
+       while (builder.length() < 9) {
+           int index = (int) (rand.nextFloat() * chars.length());
+           builder.append(chars.charAt(index));
+       }
+       String password = builder.toString();
+       return password;
+   }
+
+
 }

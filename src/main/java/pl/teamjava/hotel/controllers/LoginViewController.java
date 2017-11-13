@@ -61,6 +61,7 @@ public class LoginViewController implements Initializable {
         labelRegistration.setOnMouseClicked((e -> Utils.switchView2(labelRegistration, "registerView.fxml", 600, 420, false, StageStyle.DECORATED,true)));
         labelAdmin.setOnMouseClicked(e -> accessCode());
         buttonLoginByAccessCode.setDisable(true);
+        labelPasswordRecovery.setOnMouseClicked(e->Utils.switchView2(labelPasswordRecovery, "passwordRecovery.fxml", 600, 420, false, StageStyle.DECORATED,true));
         Parent parent = buttonLogin.getParent();
         if(!buttonLogin.isDisable())
         parent.addEventHandler(KeyEvent.KEY_PRESSED, e -> {

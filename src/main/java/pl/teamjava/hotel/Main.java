@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,7 +19,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         StyleManager.getInstance().addUserAgentStylesheet("/css/main.css");
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mailerView.fxml"));
+
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
+       primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("images/icon.png")));
         primaryStage.setTitle("Hotel ver: "+ Utils.VERSION);
         primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setScene(new Scene(root, 600, 600));

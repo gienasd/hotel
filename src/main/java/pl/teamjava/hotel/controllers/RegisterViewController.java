@@ -68,7 +68,10 @@ public class RegisterViewController implements Initializable {
             textAccessCodeR.clear();
             checkBoxTermsAccept.setSelected(false);
              checkBoxEmailsAccept.setSelected(false);
+
         }
+        Utils.switchView2(buttonRegister, "reservationView.fxml", 600, 420, true, StageStyle.DECORATED,true);
+
     }
 
     private boolean checkRegisterData() {

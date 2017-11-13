@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import pl.teamjava.hotel.models.Utils;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,8 +18,7 @@ public class PasswordRecoveryController implements Initializable {
     @FXML
     private Button buttonMainPage;
 
-    @FXML
-    private VBox vBoxLogin;
+
 
     @FXML
     private TextField textEmail;
@@ -28,10 +28,11 @@ public class PasswordRecoveryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        buttonSend.setOnMouseClicked(e->sending(textEmail.getText()));
+buttonMainPage.setOnMouseClicked(e->Utils.logoutToMainPage(buttonMainPage));
+        buttonSend.setOnMouseClicked(e->System.out.println(Utils.passwordGenerator()));//e->sending(textEmail.getText(), Utils.passwordGenerator()));
+        System.out.println(Utils.passwordGenerator());
     }
-    private void sending(String recipient){
+    private void sending(String recipient,String password){
 
     }
 }

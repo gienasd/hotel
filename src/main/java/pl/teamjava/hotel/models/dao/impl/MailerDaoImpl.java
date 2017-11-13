@@ -48,7 +48,7 @@ statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+return  null;
     }
 
     @Override
@@ -81,7 +81,7 @@ statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return  null;
     }
 
     @Override
@@ -113,7 +113,7 @@ statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return  null;
     }
 
 
@@ -147,8 +147,8 @@ statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0;
 
+        return 0;
     }
 
     @Override
@@ -180,7 +180,7 @@ statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return  null;
     }
 
 
@@ -215,7 +215,7 @@ statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return  null;
     }
 
 
